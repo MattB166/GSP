@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static Unity.Burst.Intrinsics.X86.Avx;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask groundLayer;
+    [SerializeField] private GameObject axePrefab; 
 
     private SpriteRenderer spriteRenderer; //used as jump animation only had one side 
     
@@ -48,6 +50,12 @@ public class PlayerMovement : MonoBehaviour
             spriteRenderer.flipX = false;
         }
 
+        if(Input.GetKeyDown(KeyCode.Mouse0))
+        {
+            animator.SetTrigger("Attack");
+            throwAxe(0); 
+        }
+
         
         
         Flip();
@@ -76,6 +84,24 @@ public class PlayerMovement : MonoBehaviour
             Vector3 localScale = transform.localScale;
             localScale.x *= -1f;
             transform.localScale = localScale;
+        }
+    }
+
+    public void throwAxe(int value)
+    {
+        if(isFacingRight)
+        {
+          GameObject tmp = (GameObject) Instantiate(axePrefab, transform.position, Quaternion.identity);
+            tmp.GetComponent<AxeThrow>().Initialise(Vector2.right);
+            tmp.GetComponent<AxeThrow>().z = -20;
+        }
+        else
+        {
+            GameObject tmp = (GameObject)Instantiate(axePrefab, transform.position, Quaternion.identity);
+            tmp.GetComponent<AxeThrow>().Initialise(Vector2.left);
+            axePrefab.GetComponent<SpriteRenderer>().flipX = true;
+            tmp.GetComponent <AxeThrow>().z = 20;
+
         }
     }
 }

@@ -332,6 +332,7 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
+  axePrefab: {fileID: 2574917574530841889, guid: 0843bbe077583294f95574e9b9a373c4, type: 3}
   animator: {fileID: 516823878}
 --- !u!95 &516823878
 Animator:
