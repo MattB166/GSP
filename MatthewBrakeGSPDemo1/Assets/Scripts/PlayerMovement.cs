@@ -54,6 +54,7 @@ public class PlayerMovement : MonoBehaviour
         {
             animator.SetTrigger("Attack");
             throwAxe(0); 
+
         }
 
         
@@ -89,19 +90,31 @@ public class PlayerMovement : MonoBehaviour
 
     public void throwAxe(int value)
     {
-        if(isFacingRight)
-        {
-          GameObject tmp = (GameObject) Instantiate(axePrefab, transform.position, Quaternion.identity);
-            tmp.GetComponent<AxeThrow>().Initialise(Vector2.right);
-            tmp.GetComponent<AxeThrow>().z = -20;
-        }
-        else
-        {
-            GameObject tmp = (GameObject)Instantiate(axePrefab, transform.position, Quaternion.identity);
-            tmp.GetComponent<AxeThrow>().Initialise(Vector2.left);
-            axePrefab.GetComponent<SpriteRenderer>().flipX = true;
-            tmp.GetComponent <AxeThrow>().z = 20;
+        //if (isFacingRight)
+        //{
+        //    GameObject tmp = (GameObject)Instantiate(axePrefab, transform.position, Quaternion.identity);
+        //    tmp.GetComponent<AxeThrow>().Initialise(Vector2.right);
+        //    tmp.GetComponent<AxeThrow>().z = -20;
+        //}
+        //else
+        //{
+        //    GameObject tmp = (GameObject)Instantiate(axePrefab, transform.position, Quaternion.identity);
+        //    tmp.GetComponent<AxeThrow>().Initialise(Vector2.left);
+        //    axePrefab.GetComponent<SpriteRenderer>().flipX = true;
+        //    tmp.GetComponent<AxeThrow>().z = 20;
 
-        }
+        //}
+
+
+
+        Vector2 ThrowDirection = isFacingRight ? Vector2.right : Vector2.left;
+        float rotationZ = isFacingRight ? -20 : 20;
+
+        GameObject tmp = Instantiate(axePrefab, transform.position, Quaternion.identity);
+        AxeThrow axethrowScript = tmp.GetComponent<AxeThrow>();
+        axethrowScript.Initialise(ThrowDirection);
+        axethrowScript.z = rotationZ;
+
+        axethrowScript.initialPosition = tmp.transform.position;
     }
 }

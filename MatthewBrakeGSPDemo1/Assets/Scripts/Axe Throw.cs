@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 
@@ -12,12 +13,17 @@ public class AxeThrow : MonoBehaviour
     Vector3 currentEulerAngles;
     public float z;
     private Rigidbody2D rb;
-    private Vector2 initialPosition;
-    public float maxDistance = 10f;
+    public Vector2 initialPosition;
+    public float maxDistance = 1f;
 
     private Vector2 direction;
 
     private bool isReturning = false;
+    float distanceToPlayer;
+    public float returnDistanceDestroy = 0.1f;
+
+    private Transform playerTransform;
+    
     
     
     // Start is called before the first frame update
@@ -25,6 +31,9 @@ public class AxeThrow : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         initialPosition = transform.position;
+
+        playerTransform = GameObject.FindGameObjectWithTag("Ethan Sprite").transform;
+        
         
     }
 
@@ -32,16 +41,28 @@ public class AxeThrow : MonoBehaviour
     {
        if(!isReturning)
         {
-            rb.velocity = direction * speed;
+            rb.velocity = direction.normalized * speed;
+           // Debug.Log("Axe Thrown");
         }
         else
         {
-            rb.velocity = -direction * speed;
+            Vector2 returnDirection = (initialPosition - (Vector2)transform.position).normalized;
+            rb.velocity = returnDirection * speed; 
+            //Debug.Log("axe returning");
+
+            distanceToPlayer = Vector2.Distance(playerTransform.position, transform.position);
+
+            if(distanceToPlayer < returnDistanceDestroy)
+            {
+                DestroyAxe();
+                Debug.Log("Axe Destroyed");
+            }
+           
         }
         
         
         
-        rb.velocity = direction * speed;
+        //rb.velocity = direction * speed;
         currentEulerAngles += new Vector3(0,0,z) * Time.deltaTime * rotationSpeed;
         transform.localEulerAngles = currentEulerAngles; 
 
@@ -51,8 +72,9 @@ public class AxeThrow : MonoBehaviour
         {
             direction = -direction;
 
-            isReturning = !isReturning;
+            isReturning = true;
         }
+
        
     }
 
@@ -61,7 +83,10 @@ public class AxeThrow : MonoBehaviour
         this.direction = direction;
     }
 
-
+    private void DestroyAxe()
+    {
+        Destroy(gameObject);
+    }
 
     // Update is called once per frame
     void Update()
@@ -71,6 +96,6 @@ public class AxeThrow : MonoBehaviour
 
     private void OnBecameInvisible()
     {
-        Destroy(gameObject);
+        DestroyAxe();
     }
 }
