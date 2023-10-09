@@ -130,4 +130,3 @@ MonoBehaviour:
   initialPosition: {x: 0, y: 0}
   maxDistance: 5
   returnDistanceDestroy: 0.1
-  playerTransform: {fileID: 0}
