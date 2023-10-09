@@ -45,7 +45,7 @@ public class LadderMovement : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerStay2D(Collider2D collision)
     {
         if(collision.CompareTag("Ethan Sprite"))
         {
@@ -61,4 +61,6 @@ public class LadderMovement : MonoBehaviour
         animator.SetBool("IsClimbing", false);
         Debug.Log("Exited ladder trigger"); 
     }
+
+    
 }
