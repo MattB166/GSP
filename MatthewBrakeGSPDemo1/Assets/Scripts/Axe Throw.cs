@@ -56,6 +56,7 @@ public class AxeThrow : MonoBehaviour
             if(distanceToPlayer < returnDistanceDestroy)
             {
                 DestroyAxe();
+                playerTransform.GetComponent<PlayerMovement>().ResetAxeThrow();
                 Debug.Log("Axe Destroyed");
             }
            

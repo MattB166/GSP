@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using static Unity.Burst.Intrinsics.X86.Avx;
 
@@ -9,6 +10,7 @@ public class PlayerMovement : MonoBehaviour
     public float speed = 8f;
     public float jumpingPower = 16f;
     private bool isFacingRight = true;
+    public bool axeThrown = false; 
 
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Transform groundCheck;
@@ -23,6 +25,11 @@ public class PlayerMovement : MonoBehaviour
     private void Awake()
     {
          spriteRenderer = GetComponent<SpriteRenderer>();
+    }
+
+    private void Start()
+    {
+        
     }
 
 
@@ -50,10 +57,11 @@ public class PlayerMovement : MonoBehaviour
             spriteRenderer.flipX = false;
         }
 
-        if(Input.GetKeyDown(KeyCode.Mouse0))
+        if(Input.GetKeyDown(KeyCode.Mouse0) && axeThrown == false) 
         {
             animator.SetTrigger("Attack");
-            throwAxe(0); 
+            throwAxe(0);
+            axeThrown = true; 
 
         }
 
@@ -116,5 +124,10 @@ public class PlayerMovement : MonoBehaviour
         axethrowScript.z = rotationZ;
 
         axethrowScript.initialPosition = tmp.transform.position;
+    }
+
+    public void ResetAxeThrow()
+    {
+        axeThrown = false;
     }
 }

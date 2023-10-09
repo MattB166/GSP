@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 8534656250826734305}
   - component: {fileID: 1830832063388644508}
   m_Layer: 6
-  m_Name: Moving_Platform_Horizontal
+  m_Name: Moving_Platform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -7,6 +7,7 @@ TagManager:
   - Wall
   - Axe
   - Ethan Sprite
+  - Ladder
   layers:
   - Default
   - TransparentFX
