@@ -128,7 +128,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      axe_05_lumberjack_0: -353297386775414754
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
