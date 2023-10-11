@@ -46,7 +46,7 @@ public class AxeThrow : MonoBehaviour
         }
         else
         {
-           
+
             Vector2 returnDirection = ((Vector2)playerTransform.position - (Vector2)transform.position).normalized;
             rb.velocity = returnDirection * speed; 
             //Debug.Log("axe returning");
