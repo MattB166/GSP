@@ -824,7 +824,6 @@ GameObject:
   - component: {fileID: 516823875}
   - component: {fileID: 516823877}
   - component: {fileID: 516823878}
-  - component: {fileID: 516823879}
   m_Layer: 0
   m_Name: Ethan Sprite
   m_TagString: Ethan Sprite
@@ -1017,23 +1016,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &516823879
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 516823872}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9e2ad3d54b5544d44937ab11b44d8b37, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  jetSpeed: 500
-  maxJetFill: 20
-  minJetFill: 0
-  jetFill: 0
-  DirectionUp: {x: 0, y: 1, z: 0}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0

@@ -10,12 +10,14 @@ public class PlayerMovement : MonoBehaviour
     public float speed = 8f;
     public float jumpingPower = 16f;
     private bool isFacingRight = true;
-    public bool axeThrown = false; 
+    public bool axeThrown = false;
+    private float jetForce = 20f;
 
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private GameObject axePrefab; 
+    [SerializeField] private bool isJetPackActive = false;
 
     private SpriteRenderer spriteRenderer; //used as jump animation only had one side 
     
@@ -37,8 +39,13 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
+        
         //horizontal movement input and only allows jumping when grounded 
         horizontal = Input.GetAxisRaw("Horizontal");
+        
+        
+        
         if(Input.GetButtonDown("Jump") && isGrounded())
         {
           
@@ -64,6 +71,13 @@ public class PlayerMovement : MonoBehaviour
             axeThrown = true; 
 
         }
+        if(Input.GetKeyUp(KeyCode.J))
+        {
+            isJetPackActive = false;
+            animator.SetBool("IsJetPack", false);
+        }
+        
+        
 
 
         
@@ -76,9 +90,23 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        rb.velocity = new Vector2(horizontal * speed, rb.velocity.y);
-
-      
+       if(!isJetPackActive)
+        {
+            rb.velocity = new Vector2(horizontal * speed, rb.velocity.y);
+        }
+        else
+        {
+            rb.velocity = new Vector2(0f,rb.velocity.y);    
+        }
+       
+        if(Input.GetKey(KeyCode.J))
+        {
+            isJetPackActive = true; 
+            rb.AddForce(Vector2.up * jetForce,ForceMode2D.Force);
+            animator.SetBool("IsJetPack", true);
+            rb.gravityScale = 1f;
+        }
+       
     }
 
     private bool isGrounded()
@@ -98,6 +126,7 @@ public class PlayerMovement : MonoBehaviour
             transform.localScale = localScale;
         }
     }
+    
 
     public void throwAxe(int value)
     {
