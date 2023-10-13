@@ -2,22 +2,25 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UIElements;
 using static Unity.Burst.Intrinsics.X86.Avx;
 
 public class PlayerMovement : MonoBehaviour
 {
     private float horizontal;
     public float speed = 8f;
+    public float rotationSpeed = 5f; 
     public float jumpingPower = 16f;
     private bool isFacingRight = true;
     public bool axeThrown = false;
-    private float jetForce = 20f;
+    private float jetForce = 15f;
 
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private GameObject axePrefab; 
     [SerializeField] private bool isJetPackActive = false;
+    private Quaternion targetRot = Quaternion.identity;
 
     private SpriteRenderer spriteRenderer; //used as jump animation only had one side 
     
@@ -73,6 +76,7 @@ public class PlayerMovement : MonoBehaviour
         }
         if(Input.GetKeyUp(KeyCode.J))
         {
+            rb.AddForce(-rb.velocity.normalized * jetForce, ForceMode2D.Force);
             isJetPackActive = false;
             animator.SetBool("IsJetPack", false);
         }
@@ -93,10 +97,26 @@ public class PlayerMovement : MonoBehaviour
        if(!isJetPackActive)
         {
             rb.velocity = new Vector2(horizontal * speed, rb.velocity.y);
+            rb.transform.rotation = Quaternion.Slerp(rb.transform.rotation, targetRot, rotationSpeed * Time.deltaTime);
+            rb.freezeRotation = true;
+
         }
         else
         {
-            rb.velocity = new Vector2(0f,rb.velocity.y);    
+            //// rb.velocity = new Vector2(horizontal/2 * speed,rb.velocity.y);
+            float invertedRotation = -horizontal * rotationSpeed;
+            Vector3 rotation = new Vector3(0, 0, invertedRotation);
+            transform.Rotate(rotation);
+            rb.freezeRotation = false;
+            transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.identity, Time.deltaTime * rotationSpeed).normalized;
+            rb.AddForce(transform.rotation * Vector2.up * jetForce);
+            //rb.AddTorque(horizontal * rotationSpeed, ForceMode2D.Force);
+
+
+            
+           
+             
+
         }
        
         if(Input.GetKey(KeyCode.J))
@@ -104,9 +124,11 @@ public class PlayerMovement : MonoBehaviour
             isJetPackActive = true; 
             rb.AddForce(Vector2.up * jetForce,ForceMode2D.Force);
             animator.SetBool("IsJetPack", true);
-            rb.gravityScale = 1f;
+            rb.gravityScale = 0.8f;
         }
        
+
+        
     }
 
     private bool isGrounded()
