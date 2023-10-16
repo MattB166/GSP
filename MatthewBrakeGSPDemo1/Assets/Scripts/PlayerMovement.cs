@@ -14,7 +14,7 @@ public class PlayerMovement : MonoBehaviour
     public float jumpingPower = 16f;
     private bool isFacingRight = true;
     public bool axeThrown = false;
-    private float jetForce = 15f;
+    private float jetForce = 45f;
     private float fuel = 100f;
     private float currentFuelAmount;
     private bool haveFuel = true;
