@@ -19,7 +19,7 @@ public class LadderMovement : MonoBehaviour
     void Update()
     {
         vertical = Input.GetAxis("Vertical");
-        if (isLadder && Mathf.Abs(vertical) > 0 || isLadder &&  Mathf.Abs(vertical) < 1)
+        if (isLadder && Mathf.Abs(vertical) > 0 || isLadder &&  Mathf.Abs(vertical) < 1) //if player is by ladder and up or down is being pressed 
         {
             isClimbing = true;
             Debug.Log("Climbing!");
@@ -37,7 +37,7 @@ public class LadderMovement : MonoBehaviour
         if (isClimbing == true)
         {
             rb.gravityScale = 0;
-            rb.velocity = new Vector2(rb.velocity.x, vertical * speed);
+            rb.velocity = new Vector2(rb.velocity.x, vertical * speed); //allows player to climb without any gravity acting against 
         }
         else
         {

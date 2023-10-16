@@ -6,7 +6,7 @@ public class StickToPlatform : MonoBehaviour
 {
     
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D collision) //stops player from falling from moving platform 
     {
         if (collision.gameObject.name == "Ethan Sprite")
         {
@@ -14,7 +14,7 @@ public class StickToPlatform : MonoBehaviour
         }
     }
 
-    private void OnTriggerExit2D(Collider2D collision)
+    private void OnTriggerExit2D(Collider2D collision) // releases as a parent 
     {
         if (collision.gameObject.name == "Ethan Sprite")
         {

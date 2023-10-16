@@ -120,11 +120,11 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-       if(!isJetPackActive && haveFuel)
+       if(!isJetPackActive && haveFuel)  // 
         {
             rb.velocity = new Vector2(horizontal * speed, rb.velocity.y);
-            rb.transform.rotation = Quaternion.Slerp(rb.transform.rotation, targetRot, rotationSpeed * Time.deltaTime);
-            rb.freezeRotation = true;
+            rb.transform.rotation = Quaternion.Slerp(rb.transform.rotation, targetRot, rotationSpeed * Time.deltaTime); //rotates back towards original rotation when JP not active 
+            rb.freezeRotation = true; //stops further rot 
             RefillFuel();
 
         }
@@ -134,7 +134,7 @@ public class PlayerMovement : MonoBehaviour
             rb.transform.rotation = Quaternion.Slerp(rb.transform.rotation, targetRot, rotationSpeed * Time.deltaTime);
             rb.freezeRotation = true;
             timer += Time.deltaTime;
-            if(timer >= refillCoolDown)
+            if(timer >= refillCoolDown) //punishes player for running out of fuel 
             {
                 haveFuel = true;
                 timer = 0;
@@ -142,14 +142,12 @@ public class PlayerMovement : MonoBehaviour
         }
         else
         {
-            //// rb.velocity = new Vector2(horizontal/2 * speed,rb.velocity.y);
-            float invertedRotation = -horizontal * rotationSpeed;
+            float invertedRotation = -horizontal * rotationSpeed; //fixed rotation when using jetpack to rotate the appropriate way 
             Vector3 rotation = new Vector3(0, 0, invertedRotation);
             transform.Rotate(rotation);
             rb.freezeRotation = false;
             transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.identity, Time.deltaTime * rotationSpeed).normalized;
             rb.AddForce(transform.rotation * Vector2.up * jetForce);
-            //rb.AddTorque(horizontal * rotationSpeed, ForceMode2D.Force);
             currentFuelAmount -= fuelBurnRate * Time.deltaTime; 
 
             
@@ -200,24 +198,10 @@ public class PlayerMovement : MonoBehaviour
 
     public void throwAxe(int value)
     {
-        //if (isFacingRight)
-        //{
-        //    GameObject tmp = (GameObject)Instantiate(axePrefab, transform.position, Quaternion.identity);
-        //    tmp.GetComponent<AxeThrow>().Initialise(Vector2.right);
-        //    tmp.GetComponent<AxeThrow>().z = -20;
-        //}
-        //else
-        //{
-        //    GameObject tmp = (GameObject)Instantiate(axePrefab, transform.position, Quaternion.identity);
-        //    tmp.GetComponent<AxeThrow>().Initialise(Vector2.left);
-        //    axePrefab.GetComponent<SpriteRenderer>().flipX = true;
-        //    tmp.GetComponent<AxeThrow>().z = 20;
-
-        //}
 
 
 
-        Vector2 ThrowDirection = isFacingRight ? Vector2.right : Vector2.left; //ternary condition checking state of player 
+      Vector2 ThrowDirection = isFacingRight ? Vector2.right : Vector2.left; //ternary condition checking state of player 
         float rotationZ = isFacingRight ? -20 : 20; 
 
         GameObject tmp = Instantiate(axePrefab, transform.position, Quaternion.identity);

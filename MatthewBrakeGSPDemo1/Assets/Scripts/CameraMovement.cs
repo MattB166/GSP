@@ -13,7 +13,7 @@ public class CameraMovement : MonoBehaviour
     private Vector3 velocity = Vector3.zero;
     public GameObject room1;
 
-    private void Awake()
+    private void Awake() //immediately snaps camera to first zone to avoid any drift 
     {
         currentPosX = room1.transform.position.x;
         currentPosY = room1.transform.position.y;

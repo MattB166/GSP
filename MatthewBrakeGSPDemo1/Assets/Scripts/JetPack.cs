@@ -52,12 +52,12 @@ public class JetPack : MonoBehaviour
 
     public void JetPackUp()
     {
-      jetFill -= Time.deltaTime;
+      jetFill -= Time.deltaTime; //losing fuel 
 
     }
 
     private void JetPackDown()
     {
-        jetFill += Time.deltaTime; 
+        jetFill += Time.deltaTime; //regen fuel 
     }
 }

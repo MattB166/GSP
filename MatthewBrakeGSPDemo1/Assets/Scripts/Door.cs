@@ -12,7 +12,8 @@ public class Door : MonoBehaviour
     {
         if(collision.tag == "Ethan Sprite")
         {
-            if (collision.transform.position.x > transform.position.x || collision.transform.position.y < transform.position.y)
+            if (collision.transform.position.x > transform.position.x || collision.transform.position.y < transform.position.y) // checks which side of the collider
+                //has been triggered to judge which way the camera needs to go
                 cam.MoveToNewRoom(NextRoom);
             else
                 cam.MoveToNewRoom(previousRoom);
