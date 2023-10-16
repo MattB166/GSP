@@ -32,7 +32,7 @@ public class AxeThrow : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         initialPosition = transform.position;
 
-        playerTransform = GameObject.FindGameObjectWithTag("Ethan Sprite").transform;
+        playerTransform = GameObject.FindGameObjectWithTag("Ethan Sprite").transform; //sets initial position to player origin 
         
         
     }
@@ -41,19 +41,19 @@ public class AxeThrow : MonoBehaviour
     {
        if(!isReturning)
         {
-            rb.velocity = direction.normalized * speed;
+            rb.velocity = direction.normalized * speed; //keeps axe travelling away from player 
            // Debug.Log("Axe Thrown");
         }
         else
         {
 
-            Vector2 returnDirection = ((Vector2)playerTransform.position - (Vector2)transform.position).normalized;
+            Vector2 returnDirection = ((Vector2)playerTransform.position - (Vector2)transform.position).normalized; //calculate return direction/distance 
             rb.velocity = returnDirection * speed; 
             //Debug.Log("axe returning");
 
             distanceToPlayer = Vector2.Distance(playerTransform.position, transform.position);
 
-            if(distanceToPlayer < returnDistanceDestroy)
+            if(distanceToPlayer < returnDistanceDestroy) //destroys axe when it comes back to player 
             {
                 DestroyAxe();
                 playerTransform.GetComponent<PlayerMovement>().ResetAxeThrow();
@@ -70,7 +70,7 @@ public class AxeThrow : MonoBehaviour
 
         float currentDistance = Vector2.Distance(initialPosition, transform.position);
 
-        if(currentDistance >= maxDistance)
+        if(currentDistance >= maxDistance) //if hits max distance the direction is flipped 
         {
             direction = -direction;
 

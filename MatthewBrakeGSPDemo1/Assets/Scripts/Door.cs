@@ -12,11 +12,12 @@ public class Door : MonoBehaviour
     {
         if(collision.tag == "Ethan Sprite")
         {
-            if (collision.transform.position.x > transform.position.x)
+            if (collision.transform.position.x > transform.position.x || collision.transform.position.y < transform.position.y)
                 cam.MoveToNewRoom(NextRoom);
             else
                 cam.MoveToNewRoom(previousRoom);
         }
+        Debug.Log("Entering Room: " + NextRoom);
     }
 
 }

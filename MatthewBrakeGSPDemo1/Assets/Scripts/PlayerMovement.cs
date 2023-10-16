@@ -217,11 +217,11 @@ public class PlayerMovement : MonoBehaviour
 
 
 
-        Vector2 ThrowDirection = isFacingRight ? Vector2.right : Vector2.left;
-        float rotationZ = isFacingRight ? -20 : 20;
+        Vector2 ThrowDirection = isFacingRight ? Vector2.right : Vector2.left; //ternary condition checking state of player 
+        float rotationZ = isFacingRight ? -20 : 20; 
 
         GameObject tmp = Instantiate(axePrefab, transform.position, Quaternion.identity);
-        AxeThrow axethrowScript = tmp.GetComponent<AxeThrow>();
+        AxeThrow axethrowScript = tmp.GetComponent<AxeThrow>(); //fetching throw script to initialise functions 
         axethrowScript.Initialise(ThrowDirection);
         axethrowScript.z = rotationZ;
 
