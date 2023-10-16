@@ -47,7 +47,7 @@ public class JetPack : MonoBehaviour
             jetFill -= Time.deltaTime;
         }
 
-        jetFill = Mathf.Clamp(jetFill, 0, maxJetFill);
+        //jetFill = Mathf.Clamp(jetFill, 0, maxJetFill);
     }
 
     public void JetPackUp()
