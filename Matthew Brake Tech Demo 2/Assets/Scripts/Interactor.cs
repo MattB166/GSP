@@ -31,6 +31,8 @@ public class Interactor : MonoBehaviour
         {
             if (hit.collider.GetComponent<Interactable>() != false)
             {
+               
+
                 if (interactable == null || interactable.ID != hit.collider.GetComponent<Interactable>().ID)
                 {
                     interactable = hit.collider.GetComponent<Interactable>();
