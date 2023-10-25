@@ -8,14 +8,14 @@ using UnityEngine.UIElements;
 public class ToolTipManager : MonoBehaviour
 {
    public static ToolTipManager instance;
-    private Text toolTipText;
+    private TextMeshProUGUI toolTipText;
     private RectTransform backgroundRectTransform; 
     
     private void Awake()
     {
         instance = this;
         backgroundRectTransform = transform.Find("Background").GetComponent<RectTransform>();
-        toolTipText = transform.Find("ToolTipText").GetComponent<Text>();
+        toolTipText = transform.Find("ToolTipText").GetComponent<TextMeshProUGUI>();
         
        
     }

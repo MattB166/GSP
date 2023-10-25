@@ -28,14 +28,15 @@ public class Interactor2 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.P))
+       
         {
             Ray r = new Ray(InteractorSource.position, InteractorSource.forward);
             if(Physics.Raycast(r,out RaycastHit hitInfo, InteractRange))
             {
                 if (hitInfo.collider.gameObject.TryGetComponent(out IInteractable interactObj))
                 {
-                    ToolTipManager.ShowToolTip_Static("Press P to Pickup"); 
+                    ToolTipManager.ShowToolTip_Static("Press P to Pickup");  
+                    if(Input.GetKeyDown(KeyCode.P))
                     interactObj.Collect();
                   
                    

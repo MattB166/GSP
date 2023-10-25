@@ -87,7 +87,7 @@ GameObject:
   - component: {fileID: 1261422500077639993}
   - component: {fileID: 7246325723208760599}
   m_Layer: 5
-  m_Name: Text
+  m_Name: ToolTipText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -109,7 +109,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 32.4, y: -19.9}
+  m_AnchoredPosition: {x: 36.5, y: -76.7}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1261422500077639993
@@ -140,7 +140,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: ToolTip
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -167,8 +167,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 12
-  m_fontSizeBase: 12
+  m_fontSize: 16
+  m_fontSizeBase: 16
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -203,7 +203,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 50.379395, y: 0, z: 103.230415, w: 31.339624}
+  m_margin: {x: 31.604801, y: -47.612926, z: 92.36832, w: 77.02819}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -218,6 +218,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2720098298259908143}
+  - component: {fileID: 410633355652130448}
   m_Layer: 5
   m_Name: ToolTip
   m_TagString: Untagged
@@ -234,7 +235,7 @@ RectTransform:
   m_GameObject: {fileID: 6079039264127590326}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.3317952, y: 0.52417785, z: 0.83206}
+  m_LocalScale: {x: 1.3317952, y: 0.9476872, z: 0.83206}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 608639186107548002}
@@ -246,3 +247,15 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 3.899994}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &410633355652130448
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6079039264127590326}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ba465b8b08cf474f904321c10ad7125, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
