@@ -27,13 +27,39 @@ public class Interactable : MonoBehaviour, IInteractable
 
     public void Interact()
     {
-        gameObject.SetActive(false);
+        Debug.Log("Interacted");
     }
     public void Collect()
     {
+        //gameObject.SetActive(false);
+        Inventory inventory = Object.FindFirstObjectByType<Inventory>();
+        if (inventory != null)
+        {
+            inventory.AddItem(this);
+           // Debug.Log("Item collected");
+        }
+        else
+        {
+            Debug.Log("Warning. Inventory not found");
+        }
         gameObject.SetActive(false);
-        Debug.Log("Item collected");
     }
+
+    public void Drop()
+    {
+        Inventory inventory = Object.FindFirstObjectByType<Inventory>();
+        if(inventory != null)
+        {
+            inventory.DropItem(this);
+        }
+        else
+        {
+            Debug.Log("Warning. Inventory not found");
+        }
+    }
+    
+    public string Name { get; }
+    
 
     // Start is called before the first frame update
     void Start()
