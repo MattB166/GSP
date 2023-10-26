@@ -2,8 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Inventory Item Data")]
-public class InventoryItemData : ScriptableObject
+[CreateAssetMenu(fileName =  "New Collectible Item", menuName = "Inventory/Collectible Item")]
+public class CollectibleItem : ScriptableObject
 {
     public string id;
     public string displayName;
