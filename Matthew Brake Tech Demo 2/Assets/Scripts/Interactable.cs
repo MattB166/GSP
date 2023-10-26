@@ -11,7 +11,8 @@ public class Interactable : MonoBehaviour, IInteractable
     public int ID;
     public Sprite interactIcon;
     public Vector2 iconSize;
-
+    [SerializeField]
+    private CollectibleItem collectible; 
     
     public enum ObjectType
     {
@@ -31,18 +32,24 @@ public class Interactable : MonoBehaviour, IInteractable
     }
     public void Collect()
     {
-        //gameObject.SetActive(false);
-        Inventory inventory = Object.FindFirstObjectByType<Inventory>();
-        if (inventory != null)
+        InventorySO inventory = Object.FindFirstObjectByType<InventorySO>();
+        if(inventory != null)
         {
-            inventory.AddItem(this);
-           // Debug.Log("Item collected");
+            if(collectible != null)
+            {
+                inventory.AddItem(collectible);
+                gameObject.SetActive(false);
+                Debug.Log("Item Collected: " + collectible.Name);
+            }
+            else
+            {
+                Debug.Log("Collectible Item not assigned to this interactable");
+            }
         }
         else
         {
-            Debug.Log("Warning. Inventory not found");
+            Debug.Log("Inventory not found"); 
         }
-        gameObject.SetActive(false);
     }
 
     public void Drop()

@@ -171,6 +171,7 @@ MonoBehaviour:
   ID: 0
   interactIcon: {fileID: 0}
   iconSize: {x: 0, y: 0}
+  collectible: {fileID: 11400000, guid: 42c2370e1eb3d02489d8cd322c19e51d, type: 2}
   objectType: 0
 --- !u!54 &182173908
 Rigidbody:
@@ -595,6 +596,51 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &644405489
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 644405491}
+  - component: {fileID: 644405490}
+  m_Layer: 0
+  m_Name: Inventory
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &644405490
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 644405489}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f6af4096e8743e45a12add40092dc07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  collectedItems: []
+--- !u!4 &644405491
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 644405489}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -25.718302, y: -17.597626, z: -4.230884}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1178,7 +1224,8 @@ MonoBehaviour:
   ID: 0
   interactIcon: {fileID: 0}
   iconSize: {x: 0, y: 0}
-  objectType: 3
+  collectible: {fileID: 11400000, guid: b5d9d8e8087ab234f95b145c80829b27, type: 2}
+  objectType: 1
 --- !u!1 &1537768981
 GameObject:
   m_ObjectHideFlags: 0
@@ -1337,6 +1384,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4124954477645424279, guid: 620a59e311fe36d419ed2df08d1076a5, type: 3}
+      propertyPath: collectible
+      value: 
+      objectReference: {fileID: 11400000, guid: 42c2370e1eb3d02489d8cd322c19e51d, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1457,3 +1508,4 @@ SceneRoots:
   - {fileID: 577203862}
   - {fileID: 1250550812}
   - {fileID: 21611158548029312}
+  - {fileID: 644405491}
