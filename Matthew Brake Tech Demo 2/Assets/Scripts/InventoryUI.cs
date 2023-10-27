@@ -5,11 +5,15 @@ using UnityEngine.UI;
 
 public class InventoryUI : MonoBehaviour
 {
-    public Transform itemSlotParent;
-    public GameObject itemSlotPrefab;
-    private List<GameObject> itemSlots = new List<GameObject>();
+    public Transform itemParent;
+   // public GameObject itemSlotPrefab;
+   // private List<GameObject> itemSlots = new List<GameObject>();
 
     InventorySO inventory;
+
+
+    [SerializeField]
+    private inventorySlot[] slots; 
    
     
     // Start is called before the first frame update
@@ -17,14 +21,62 @@ public class InventoryUI : MonoBehaviour
     {
         inventory = InventorySO.instance;
         inventory.OnItemChangedCallback += UpdateUI;
+
+       slots = itemParent.GetComponentsInChildren<inventorySlot>();
         
        
     }
 
-   
+
 
     void UpdateUI()
     {
-        Debug.Log("Updating UI");
+
+        if (inventory == null)
+        {
+            Debug.LogError("Inventory is not assigned in the Inspector.");
+            return;
+        }
+        if (slots == null)
+        {
+            Debug.LogWarning("Inventory slots array is null.");
+            return; // Exit the method to prevent further errors
+        }
+
+
+        if (itemParent == null)
+        {
+            Debug.LogError("itemParent is not assigned in the Inspector.");
+            return;
+        }
+
+        if (slots == null || slots.Length == 0)
+        {
+            Debug.LogError("No inventory slots (inventorySlot) are assigned.");
+            return;
+        }
+
+
+        if (slots != null)
+        {
+
+
+            for (int i = 0; i < slots.Length; i++)
+            {
+                if (i < inventory.collectedItems.Count)
+                {
+                    slots[i].AddItem(inventory.collectedItems[i]);
+                    Debug.Log("Item added to inventory");
+                }
+                else
+                {
+                    slots[i].ClearSlot();
+                }
+            }
+        }
+        else
+        {
+            Debug.LogWarning("Inventory slots array is not defined");
+        }
     }
 }

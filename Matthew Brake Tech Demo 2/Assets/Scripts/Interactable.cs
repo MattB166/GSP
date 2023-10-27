@@ -39,7 +39,7 @@ public class Interactable : MonoBehaviour, IInteractable
             {
                 inventory.AddItem(collectible);
                 gameObject.SetActive(false);
-                Debug.Log("Item Collected: " + collectible.Name);
+               // Debug.Log("Item Collected: " + collectible.Name);
             }
             else
             {
