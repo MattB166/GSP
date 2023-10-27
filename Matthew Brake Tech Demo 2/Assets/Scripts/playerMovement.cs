@@ -12,12 +12,13 @@ public class playerMovement : MonoBehaviour
     public Transform groundCheck;
     public float groundDistance = 0.4f;
     public LayerMask groundMask;
-    private bool isGrounded; 
+    private bool isGrounded;
+    [SerializeField] private GameObject Inventory; 
     
     // Start is called before the first frame update
     void Start()
     {
-        
+        Inventory.SetActive(false);
     }
 
     // Update is called once per frame
@@ -42,7 +43,29 @@ public class playerMovement : MonoBehaviour
 
         controller.Move(velocity  * Time.deltaTime);
 
+        if(Input.GetKeyDown(KeyCode.I))
+        {
+            if (Inventory != null)
+            {
+                if (Inventory.activeSelf)
+                {
+                    Inventory.SetActive(false);
+                    Time.timeScale = 1f;
+                }
+                   
+                else
+                {
+                    Inventory.SetActive(true);
+                     Time.timeScale = 0f; 
 
+                }
+            }
+            else
+                Debug.Log("Inventory could not be found");
+           
+            
+            
+        }
 
 
 
