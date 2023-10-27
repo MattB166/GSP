@@ -52,18 +52,18 @@ public class Interactable : MonoBehaviour, IInteractable
         }
     }
 
-    public void Drop()
-    {
-        Inventory inventory = Object.FindFirstObjectByType<Inventory>();
-        if(inventory != null)
-        {
-            inventory.DropItem(this);
-        }
-        else
-        {
-            Debug.Log("Warning. Inventory not found");
-        }
-    }
+    //public void Drop()
+    //{
+    //    InventorySO inventory = Object.FindFirstObjectByType<InventorySO>();
+    //    if(inventory != null)
+    //    {
+    //        inventory.DropItem(this);
+    //    }
+    //    else
+    //    {
+    //        Debug.Log("Warning. Inventory not found");
+    //    }
+    //}
     
     public string Name { get; }
     

@@ -5,17 +5,26 @@ using UnityEngine.UI;
 
 public class InventoryUI : MonoBehaviour
 {
-   public InventorySO inventory; 
+    public Transform itemSlotParent;
+    public GameObject itemSlotPrefab;
+    private List<GameObject> itemSlots = new List<GameObject>();
+
+    InventorySO inventory;
+   
     
     // Start is called before the first frame update
     void Start()
     {
+        inventory = InventorySO.instance;
+        inventory.OnItemChangedCallback += UpdateUI;
+        
        
     }
 
-    // Update is called once per frame
-    void Update()
+   
+
+    void UpdateUI()
     {
-        
+        Debug.Log("Updating UI");
     }
 }

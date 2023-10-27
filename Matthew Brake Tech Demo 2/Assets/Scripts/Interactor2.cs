@@ -47,7 +47,7 @@ public class Interactor2 : MonoBehaviour
                 ToolTipManager.HideToolTip_Static();
             }
         }
-        if (Input.GetKeyDown(KeyCode.I))
+        if (Input.GetKeyDown(KeyCode.H))
         {
             Ray r = new Ray(InteractorSource.position, InteractorSource.forward);
             if (Physics.Raycast(r, out RaycastHit hitInfo, InteractRange))
