@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 
@@ -33,5 +34,13 @@ public class InventorySO : MonoBehaviour
         if (OnItemChangedCallback != null)
             OnItemChangedCallback.Invoke();
         
+    }
+
+    public void RemoveItem(CollectibleItem item)
+    {
+        collectedItems.Remove(item);
+        Debug.Log("Item Removed:" + item.Name);
+        if(OnItemChangedCallback != null)
+            OnItemChangedCallback.Invoke();
     }
 }
