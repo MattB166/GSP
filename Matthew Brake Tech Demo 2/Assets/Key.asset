@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8178fa31b4c989e44b8c2282abed9db9, type: 3}
   m_Name: Key
   m_EditorClassIdentifier: 
-  id: Collected_Key
   displayName: KEY
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: d1969631045efe34d8d0e8a99b411607, type: 3}
   prefab: {fileID: 1801738338884299648, guid: 620a59e311fe36d419ed2df08d1076a5, type: 3}

@@ -117,6 +117,7 @@ MonoBehaviour:
   ID: 0
   interactIcon: {fileID: 0}
   iconSize: {x: 0, y: 0}
+  collectible: {fileID: 11400000, guid: 42c2370e1eb3d02489d8cd322c19e51d, type: 2}
   objectType: 0
 --- !u!65 &4615227986163071953
 BoxCollider:
