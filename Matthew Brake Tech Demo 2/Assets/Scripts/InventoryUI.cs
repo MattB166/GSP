@@ -13,7 +13,7 @@ public class InventoryUI : MonoBehaviour
 
 
     [SerializeField]
-    private inventorySlot[] slots; 
+    private inventorySlot[] slots;
    
     
     // Start is called before the first frame update
@@ -60,12 +60,19 @@ public class InventoryUI : MonoBehaviour
         if (slots != null)
         {
 
-
-            for (int i = 0; i < slots.Length; i++)
+            
+           
+            
+            for (int i = 0; i < slots.Length && i < inventory.collectedItems.Count; i++)
             {
                 if (i < inventory.collectedItems.Count)
                 {
+                    
                     slots[i].AddItem(inventory.collectedItems[i]);
+                    Debug.Log("Collected items: ");
+                    print(inventory.collectedItems);
+                    Debug.Log("length of slots");
+                    print(slots.Length);
                     Debug.Log("Item added to inventory");
                 }
                 else
@@ -73,6 +80,8 @@ public class InventoryUI : MonoBehaviour
                     slots[i].ClearSlot();
                 }
             }
+
+           
         }
         else
         {
