@@ -14,4 +14,15 @@ public class CollectibleItem : ScriptableObject
     {
         get { return displayName; }
     }
+
+    public virtual void Use()
+    {
+        Debug.Log("Using: " + name); 
+
+        
+    }
+    public virtual void DisplayItem()
+    {
+        Debug.Log("Item Displaying");
+    }
 }

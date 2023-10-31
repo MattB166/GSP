@@ -32,4 +32,20 @@ public class inventorySlot : MonoBehaviour
         Debug.Log("Removed! Button Clicked");
         
     }
+    public void UseItem()
+    {
+        if(item != null)
+        {
+            item.Use();
+            if(item.displayName == "DOCUMENT")
+            {
+                item.DisplayItem();
+            }
+            else
+            {
+               
+                ClearSlot();
+            }
+        }
+    }
 }
