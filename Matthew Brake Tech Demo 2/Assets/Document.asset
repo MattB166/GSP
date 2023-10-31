@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Document
   m_EditorClassIdentifier: 
   displayName: DOCUMENT
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: db75637f0e6549044b3e0b59a6d05835, type: 3}
   prefab: {fileID: 0}
