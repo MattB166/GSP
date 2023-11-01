@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using TMPro;
 using UnityEngine;
 
@@ -23,6 +24,7 @@ public class DocumentDisplay : MonoBehaviour
         {
             Debug.LogError("Document text is not assigned in inspector");
         }
+       
         
         
        
