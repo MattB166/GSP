@@ -5,14 +5,22 @@ using UnityEngine;
 public class AudioTrigger : MonoBehaviour
 {
     public AudioClip cliptoPlay;
-    public Typewriter typewriter; 
+    public Typewriter typewriter;
+    private bool hasTriggered = false;
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") && !hasTriggered)
+        {
             Debug.Log("Player collided");
             Audio.instance.Say(cliptoPlay);
             typewriter.StartSubtitles();
+            hasTriggered = true;
+        }
+            
+           
+        
+        
         
     }
 }

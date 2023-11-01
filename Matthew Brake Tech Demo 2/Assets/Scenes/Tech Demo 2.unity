@@ -871,7 +871,9 @@ MonoBehaviour:
   subtitleText: {fileID: 909854779}
   subtitles:
   - Welcome Stranger
-  - 'You have blah blah blah '
+  - You have just broken the access code to this game...
+  - A game in which your destiny depends on your own decisions
+  - 'And where the ultimate weapon.... Is your mind '
   delayBetweenSubtitles: 1
 --- !u!1 &947294528
 GameObject:
@@ -1714,7 +1716,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d58017715e2b3bf4dafe6d57c7074fa7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cliptoPlay: {fileID: 8300000, guid: aff8ab591e00294498680a650ac18a54, type: 3}
+  cliptoPlay: {fileID: 8300000, guid: 93a30c2377ce08c4095612bc8ca5b35d, type: 3}
   typewriter: {fileID: 909854781}
 --- !u!1001 &21611158548029312
 PrefabInstance:

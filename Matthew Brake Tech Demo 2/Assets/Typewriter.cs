@@ -14,27 +14,19 @@ public class Typewriter : MonoBehaviour
     private int currentSubtitleIndex = 0;
 
     private bool subtitlesStarted = false;
+    //private bool subtitlesPlaying = false;
 
     // Start is called before the first frame update
     void Start()
     {
-       // StartCoroutine(PlaySubtitles());  //plays it from beginning. dont want that 
+        //StartCoroutine(PlaySubtitles());  //plays it from beginning. dont want that 
     }
 
-    private void Update()
-    {
-        if(subtitlesStarted)                    ////// trying to start subtitles when trigger audio clip 
-        {
-            if(currentSubtitleIndex < subtitles.Length)
-            {
-                StartCoroutine(PlaySubtitles());
-            }
-            else
-            {
-                subtitlesStarted = false;
-            }
-        }
-    }
+    //private void Update()
+    //{
+    ////    if (subtitlesStarted)
+    ////        StartCoroutine(PlaySubtitles());
+    ////}
 
     IEnumerator PlaySubtitles()
     {
@@ -52,10 +44,11 @@ public class Typewriter : MonoBehaviour
 
     public void StartSubtitles()
     {
-        if(!subtitlesStarted)
+        if (!subtitlesStarted)
         {
             currentSubtitleIndex = 0;
-            subtitlesStarted = true; 
+            subtitlesStarted = true;
+            StartCoroutine(PlaySubtitles());
         }
     }
 }
