@@ -7,6 +7,7 @@ public class inventorySlot : MonoBehaviour
     public Image icon; 
     CollectibleItem item;
     public Button removeButton; 
+    public DocumentDisplay display;
 
     public void AddItem(CollectibleItem newItem)
     {
@@ -37,9 +38,10 @@ public class inventorySlot : MonoBehaviour
         if(item != null)
         {
             item.Use();
-            if(item.displayName == "DOCUMENT")
+            if(item.displayName == "DOCUMENT" && item is DocumentItem documentItem)
             {
-                item.DisplayItem();
+                Debug.Log("carrying over document content to Doc Display: " + documentItem.content);
+                display.DisplayDocument(documentItem.content);
             }
             else
             {
@@ -48,4 +50,9 @@ public class inventorySlot : MonoBehaviour
             }
         }
     }
+
+    //public void DisplayDocument(string documentContent)
+    //{
+        
+    //}
 }
