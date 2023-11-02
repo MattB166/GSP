@@ -19,7 +19,8 @@ public class Interactable : MonoBehaviour, IInteractable
         Key,
         Document,
         Hint,
-        Weapon
+        Weapon,
+        KeyPad
 
     }
 

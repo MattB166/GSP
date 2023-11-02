@@ -35,9 +35,28 @@ public class Interactor2 : MonoBehaviour
             {
                 if (hitInfo.collider.gameObject.TryGetComponent(out IInteractable interactObj))
                 {
-                    ToolTipManager.ShowToolTip_Static("Press P to Pickup");  
-                    if(Input.GetKeyDown(KeyCode.P))
-                    interactObj.Collect();
+                    if (interactObj is Interactable interactableScript)
+                    {
+                        if(interactableScript.objectType != Interactable.ObjectType.KeyPad)
+                        {
+                            ToolTipManager.ShowToolTip_Static("Press P to Pickup");
+                            if (Input.GetKeyDown(KeyCode.P))
+                                interactObj.Collect();
+                        }
+                        else if(interactableScript.objectType == Interactable.ObjectType.KeyPad)
+                        {
+                            string toolTipText = "Press H to interact with " + interactObj.Name;
+                            ToolTipManager.ShowToolTip_Static(toolTipText);
+                            if(Input.GetKeyDown(KeyCode.H))
+                            
+                                interactObj.Interact();
+                            
+                        }
+                        
+                    }
+                    
+                    
+                    
                   
                    
                 }
@@ -47,23 +66,24 @@ public class Interactor2 : MonoBehaviour
                 ToolTipManager.HideToolTip_Static();
             }
         }
-        if (Input.GetKeyDown(KeyCode.H))
-        {
-            Ray r = new Ray(InteractorSource.position, InteractorSource.forward);
-            if (Physics.Raycast(r, out RaycastHit hitInfo, InteractRange))
-            {
-                if (hitInfo.collider.gameObject.TryGetComponent(out IInteractable interactObj))
-                {
-                    interactObj.Interact();
-                    string toolTipText = "Press I to interact with " + interactObj.Name;
-                    ToolTipManager.ShowToolTip_Static(toolTipText);
-                }
-            }
-            else
-            {
-                ToolTipManager.HideToolTip_Static();
-            }
-        }
+        
+        //{
+        //    Ray r = new Ray(InteractorSource.position, InteractorSource.forward);
+        //    if (Physics.Raycast(r, out RaycastHit hitInfo, InteractRange))
+        //    {
+        //        if (hitInfo.collider.gameObject.TryGetComponent(out IInteractable interactObj))
+        //        {
+        //            if(interactObj is IInteractable interactableScript)
+
+        //            interactObj.Interact();
+                    
+        //        }
+        //    }
+        //    else
+        //    {
+        //        ToolTipManager.HideToolTip_Static();
+        //    }
+        //}
        
     }
 }
