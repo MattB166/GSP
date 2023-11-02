@@ -39,7 +39,10 @@ public class Typewriter : MonoBehaviour
                 yield return new WaitForSeconds(0.05f);
             }
             yield return new WaitForSeconds(delayBetweenSubtitles);
+            subtitleText.text = " ";
+            subtitlesStarted = false;
         }
+        
     }
 
     public void StartSubtitles()
