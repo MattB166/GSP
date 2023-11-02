@@ -9,9 +9,19 @@ public class DocumentDisplay : MonoBehaviour
 
     public TextMeshProUGUI documentText;
     public GameObject documentDisplay;
-    
-    
-   public void DisplayDocument(string content)
+    private bool isDocumentOpen = false;
+
+
+    private void Update()
+    {
+        if(isDocumentOpen && Input.GetKeyDown(KeyCode.Escape))
+        {
+            CloseDocument();
+        }
+    }
+
+
+    public void DisplayDocument(string content)
     {
        if(documentText != null)
         {
@@ -19,11 +29,13 @@ public class DocumentDisplay : MonoBehaviour
             documentDisplay.SetActive(true);
             documentText.text = content;
             gameObject.SetActive(true);
+            isDocumentOpen = true; 
         }
         else
         {
             Debug.LogError("Document text is not assigned in inspector");
         }
+      
        
         
         
@@ -35,5 +47,6 @@ public class DocumentDisplay : MonoBehaviour
         documentDisplay.SetActive(false);  
         documentText.text = " ";
         gameObject.SetActive(false);
+        isDocumentOpen=false;
     }
 }
