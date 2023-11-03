@@ -12,10 +12,10 @@ public class KeyPadButton : MonoBehaviour
     public Image panel;
     public string CorrectCode = "8365";
     public GameObject keyPadPanel;
-    
+
     
 
-   public void OnNumberButtonClick(string number)
+    public void OnNumberButtonClick(string number)
     {
         panelText.text += number;
         AudioManager.instance.Play("KeyPadPress");
@@ -24,7 +24,7 @@ public class KeyPadButton : MonoBehaviour
 
     public void OnClearButtonClick()
     {
-        panelText.text = " ";
+        panelText.text = string.Empty;
         AudioManager.instance.Play("KeyPadPress");
         panel.color = Color.white;
     }
@@ -47,14 +47,28 @@ public class KeyPadButton : MonoBehaviour
 
         if(enteredCode == CorrectCode)
         {
-            panel.color = Color.green;
-            AudioManager.instance.Play("KeyPadGranted");
-           // keyPadPanel.SetActive(false);
+           
+            
+                Debug.Log("Correct Code");
+                panel.color = Color.green;
+                AudioManager.instance.Play("KeyPadGranted");
+
+            // keyPadPanel.SetActive(false);
+            //panelText.text = " ";
+
+            
         }
         else
         {
             panel.color= Color.red;
             AudioManager.instance.Play("KeyPadDenied");
+            panelText.text = " ";
         }
+        
+          
+
+            
+            
+            
     }
 }

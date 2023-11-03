@@ -69,6 +69,7 @@ public class Interactor2 : MonoBehaviour
                                     {
                                         Keypad.SetActive(true);
                                         Time.timeScale = 0f; 
+                                     
                                     }
                                 }
                             }
