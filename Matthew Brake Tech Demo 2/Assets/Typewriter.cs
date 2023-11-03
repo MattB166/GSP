@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -14,6 +15,7 @@ public class Typewriter : MonoBehaviour
     private int currentSubtitleIndex = 0;
 
     private bool subtitlesStarted = false;
+    public Action OnSubtitlesDone; 
     //private bool subtitlesPlaying = false;
 
     // Start is called before the first frame update
@@ -40,8 +42,10 @@ public class Typewriter : MonoBehaviour
             }
             yield return new WaitForSeconds(delayBetweenSubtitles);
             subtitleText.text = " ";
-            subtitlesStarted = false;
         }
+            subtitlesStarted = false;
+
+        OnSubtitlesDone?.Invoke();
         
     }
 

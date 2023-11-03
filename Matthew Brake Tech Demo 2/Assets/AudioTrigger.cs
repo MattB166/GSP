@@ -10,26 +10,20 @@ public class AudioTrigger : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") && !hasTriggered)
         {
             
-            if(!hasTriggered)
-            {
                 Debug.Log("Player collided");
                 Audio.instance.Say(cliptoPlay);
                 typewriter.StartSubtitles();
+            typewriter.OnSubtitlesDone += AllowAudioTrigger;
+
                 hasTriggered = true;
-            }
-            else
-            {
-                hasTriggered = false;
-            }
-           
         }
-            
-           
-        
-        
-        
+    }
+
+    private void AllowAudioTrigger()
+    {
+        hasTriggered = false;
     }
 }
