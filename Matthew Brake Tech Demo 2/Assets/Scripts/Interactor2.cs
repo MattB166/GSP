@@ -41,15 +41,22 @@ public class Interactor2 : MonoBehaviour
                         {
                             ToolTipManager.ShowToolTip_Static("Press P to Pickup");
                             if (Input.GetKeyDown(KeyCode.P))
+                            {
                                 interactObj.Collect();
+                                ToolTipManager.HideToolTip_Static();
+                            }
+                               
                         }
                         else if(interactableScript.objectType == Interactable.ObjectType.KeyPad)
                         {
                             string toolTipText = "Press H to interact with " + interactObj.Name;
                             ToolTipManager.ShowToolTip_Static(toolTipText);
                             if(Input.GetKeyDown(KeyCode.H))
-                            
+                            {
                                 interactObj.Interact();
+                                ToolTipManager.HideToolTip_Static();
+                            }
+                                
                             
                         }
                         
