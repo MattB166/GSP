@@ -10,7 +10,7 @@ public class Typewriter : MonoBehaviour
 
     public TextMeshProUGUI subtitleText;
     public string[] subtitles;
-    public float delayBetweenSubtitles = 1.0f;
+    public float delayBetweenSubtitles = 0.05f;
 
     private int currentSubtitleIndex = 0;
 
@@ -38,7 +38,7 @@ public class Typewriter : MonoBehaviour
             for (int i = 0; i < subtitle.Length; i++)
             {
                 subtitleText.text += subtitle[i];
-                yield return new WaitForSeconds(0.05f);
+                yield return new WaitForSeconds(0.04f);
             }
             yield return new WaitForSeconds(delayBetweenSubtitles);
             subtitleText.text = " ";
