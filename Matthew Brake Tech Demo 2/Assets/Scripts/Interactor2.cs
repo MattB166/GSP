@@ -15,6 +15,7 @@ public class Interactor2 : MonoBehaviour
     public Transform InteractorSource;
     public float InteractRange;
     public ToolTipManager ToolTipManager;
+    public GameObject Keypad;
 
     private IInteractable currentInteractable; 
     
@@ -23,6 +24,7 @@ public class Interactor2 : MonoBehaviour
     void Start()
     {
         ToolTipManager.HideToolTip_Static();
+        Keypad.SetActive(false);
     }
 
     // Update is called once per frame
@@ -55,6 +57,20 @@ public class Interactor2 : MonoBehaviour
                             {
                                 interactObj.Interact();
                                 ToolTipManager.HideToolTip_Static();
+                                if(Keypad != null)
+                                {
+                                    if (Keypad.activeSelf)
+                                    {
+                                        Keypad.SetActive(false);
+                                        Time.timeScale = 1.0f;
+
+                                    }
+                                    else
+                                    {
+                                        Keypad.SetActive(true);
+                                        Time.timeScale = 0f; 
+                                    }
+                                }
                             }
                                 
                             

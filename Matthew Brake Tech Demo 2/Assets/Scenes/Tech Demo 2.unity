@@ -5986,6 +5986,7 @@ MonoBehaviour:
   InteractorSource: {fileID: 1108647870}
   InteractRange: 4
   ToolTipManager: {fileID: 0}
+  Keypad: {fileID: 506286744}
 --- !u!114 &1108647873
 MonoBehaviour:
   m_ObjectHideFlags: 0
