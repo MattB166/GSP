@@ -16,6 +16,8 @@ public class Interactor2 : MonoBehaviour
     public float InteractRange;
     public ToolTipManager ToolTipManager;
     public GameObject Keypad;
+    public Material material;
+    private Renderer objectRenderer;
 
     private IInteractable currentInteractable; 
     
@@ -25,6 +27,7 @@ public class Interactor2 : MonoBehaviour
     {
         ToolTipManager.HideToolTip_Static();
         Keypad.SetActive(false);
+        
     }
 
     // Update is called once per frame
@@ -33,12 +36,14 @@ public class Interactor2 : MonoBehaviour
        
         {
             Ray r = new Ray(InteractorSource.position, InteractorSource.forward);
+            
             if(Physics.Raycast(r,out RaycastHit hitInfo, InteractRange))
             {
                 if (hitInfo.collider.gameObject.TryGetComponent(out IInteractable interactObj))
                 {
                     if (interactObj is Interactable interactableScript)
                     {
+                       
                         if(interactableScript.objectType != Interactable.ObjectType.KeyPad)
                         {
                             ToolTipManager.ShowToolTip_Static("Press P to Pickup");
@@ -76,6 +81,8 @@ public class Interactor2 : MonoBehaviour
                                 
                             
                         }
+                        objectRenderer = hitInfo.collider.GetComponent<MeshRenderer>();
+                        objectRenderer.material = material;
                         
                     }
                     
@@ -84,12 +91,23 @@ public class Interactor2 : MonoBehaviour
                   
                    
                 }
+               
             }
             else
             {
                 ToolTipManager.HideToolTip_Static();
+                
+                
+                    if (objectRenderer != null)
+                    {
+                        objectRenderer.material = objectRenderer.sharedMaterial;
+                        objectRenderer = null;
+                        Debug.Log("Resetting Material");
+                    }
+                
             }
         }
+       
         
         //{
         //    Ray r = new Ray(InteractorSource.position, InteractorSource.forward);
