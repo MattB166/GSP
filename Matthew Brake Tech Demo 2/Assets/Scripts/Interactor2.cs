@@ -1,3 +1,4 @@
+using Mono.Cecil.Cil;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -18,6 +19,8 @@ public class Interactor2 : MonoBehaviour
     public GameObject Keypad;
     public Material material;
     private Renderer objectRenderer;
+    public Material originalKeyMat;
+    public Material originalDocMat; 
 
     private IInteractable currentInteractable; 
     
@@ -83,13 +86,13 @@ public class Interactor2 : MonoBehaviour
                         }
                         objectRenderer = hitInfo.collider.GetComponent<MeshRenderer>();
                         objectRenderer.material = material;
-                        
+
                     }
                     
-                    
-                    
-                  
-                   
+
+
+
+
                 }
                
             }
@@ -100,10 +103,12 @@ public class Interactor2 : MonoBehaviour
                 
                     if (objectRenderer != null)
                     {
+                        
                         objectRenderer.material = objectRenderer.sharedMaterial;
                         objectRenderer = null;
                         Debug.Log("Resetting Material");
                     }
+               
                 
             }
         }
