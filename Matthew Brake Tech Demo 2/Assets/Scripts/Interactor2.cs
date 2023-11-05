@@ -85,12 +85,12 @@ public class Interactor2 : MonoBehaviour
                                 
                             
                         }
-                        objectRenderer = hitInfo.collider.GetComponent<MeshRenderer>();
+                      
+
+                    }  objectRenderer = hitInfo.collider.GetComponent<MeshRenderer>();
                         objectRenderer.material = material;
 
-                    }
                     
-
 
 
 

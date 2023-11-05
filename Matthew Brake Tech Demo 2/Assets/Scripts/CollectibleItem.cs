@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName =  "New Collectible Item", menuName = "Inventory/Collectible Item")]
+
 public class CollectibleItem : ScriptableObject
 {
     
@@ -26,3 +27,4 @@ public class CollectibleItem : ScriptableObject
         Debug.Log("Item Displaying");
     }
 }
+
