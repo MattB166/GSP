@@ -1818,6 +1818,8 @@ MonoBehaviour:
   panel: {fileID: 1675873035}
   CorrectCode: 8365
   keyPadPanel: {fileID: 506286744}
+  mouseLook: {fileID: 1108647871}
+  door: {fileID: 105634583}
 --- !u!1001 &326049020
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2103,6 +2105,8 @@ MonoBehaviour:
   panel: {fileID: 1675873035}
   CorrectCode: 8365
   keyPadPanel: {fileID: 506286744}
+  mouseLook: {fileID: 1108647871}
+  door: {fileID: 105634583}
 --- !u!4 &362966973 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 412390, guid: 22f5407fceb4bb74b930f5f2b49aa876, type: 3}
@@ -2607,6 +2611,33 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 438518, guid: 759f41d0d03c01c42891d874400f8ffb, type: 3}
   m_PrefabInstance: {fileID: 208097190}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &459131072 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 186586, guid: 39aa3d34987062c438ae976f64466405, type: 3}
+  m_PrefabInstance: {fileID: 973046951}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &459131076
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 459131072}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e6f7544d2ccee794db359c403994d77d, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &464934794
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5584,7 +5615,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 186586, guid: 39aa3d34987062c438ae976f64466405, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 459131076}
   m_SourcePrefab: {fileID: 100100000, guid: 39aa3d34987062c438ae976f64466405, type: 3}
 --- !u!1001 &1000969030
 PrefabInstance:
@@ -7147,6 +7181,8 @@ MonoBehaviour:
   panel: {fileID: 1675873035}
   CorrectCode: 8365
   keyPadPanel: {fileID: 506286744}
+  mouseLook: {fileID: 1108647871}
+  door: {fileID: 105634583}
 --- !u!1 &1250550808
 GameObject:
   m_ObjectHideFlags: 0
@@ -7498,6 +7534,8 @@ MonoBehaviour:
   panel: {fileID: 1675873035}
   CorrectCode: 8365
   keyPadPanel: {fileID: 506286744}
+  mouseLook: {fileID: 1108647871}
+  door: {fileID: 105634583}
 --- !u!1001 &1265845892
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8363,6 +8401,8 @@ MonoBehaviour:
   panel: {fileID: 1675873035}
   CorrectCode: 8365
   keyPadPanel: {fileID: 506286744}
+  mouseLook: {fileID: 1108647871}
+  door: {fileID: 105634583}
 --- !u!4 &1492818597 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 459340, guid: f531eff400a90054dbf121fa394b2965, type: 3}
@@ -9509,6 +9549,8 @@ MonoBehaviour:
   panel: {fileID: 1675873035}
   CorrectCode: 8365
   keyPadPanel: {fileID: 506286744}
+  mouseLook: {fileID: 1108647871}
+  door: {fileID: 105634583}
 --- !u!1 &1676063637
 GameObject:
   m_ObjectHideFlags: 0
@@ -9803,6 +9845,8 @@ MonoBehaviour:
   panel: {fileID: 1675873035}
   CorrectCode: 8365
   keyPadPanel: {fileID: 506286744}
+  mouseLook: {fileID: 1108647871}
+  door: {fileID: 105634583}
 --- !u!1 &1734446032
 GameObject:
   m_ObjectHideFlags: 0
@@ -10035,6 +10079,8 @@ MonoBehaviour:
   panel: {fileID: 1675873035}
   CorrectCode: 8365
   keyPadPanel: {fileID: 506286744}
+  mouseLook: {fileID: 1108647871}
+  door: {fileID: 105634583}
 --- !u!1001 &1749979114
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10657,6 +10703,8 @@ MonoBehaviour:
   panel: {fileID: 1675873035}
   CorrectCode: 8365
   keyPadPanel: {fileID: 506286744}
+  mouseLook: {fileID: 1108647871}
+  door: {fileID: 105634583}
 --- !u!4 &1955768796 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 469742, guid: 1e2caec477e1efa4ba16ee65a0fa358e, type: 3}
@@ -10822,6 +10870,8 @@ MonoBehaviour:
   panel: {fileID: 1675873035}
   CorrectCode: 8365
   keyPadPanel: {fileID: 506286744}
+  mouseLook: {fileID: 1108647871}
+  door: {fileID: 105634583}
 --- !u!4 &1981922632 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 458662, guid: facf14ae9ce68b7479827bcf72fba835, type: 3}
@@ -11555,6 +11605,8 @@ MonoBehaviour:
   panel: {fileID: 1675873035}
   CorrectCode: 8365
   keyPadPanel: {fileID: 506286744}
+  mouseLook: {fileID: 1108647871}
+  door: {fileID: 105634583}
 --- !u!4 &2064616709 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 458662, guid: facf14ae9ce68b7479827bcf72fba835, type: 3}
@@ -12208,6 +12260,8 @@ MonoBehaviour:
   panel: {fileID: 1675873035}
   CorrectCode: 8365
   keyPadPanel: {fileID: 506286744}
+  mouseLook: {fileID: 1108647871}
+  door: {fileID: 105634583}
 --- !u!4 &2144142794 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 458662, guid: facf14ae9ce68b7479827bcf72fba835, type: 3}
@@ -12563,7 +12617,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 0}
+  - {fileID: 2100000, guid: 7e34c8ec3440b504c9ed58bca1d2d606, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

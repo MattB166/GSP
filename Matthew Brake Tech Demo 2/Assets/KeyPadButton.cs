@@ -12,7 +12,11 @@ public class KeyPadButton : MonoBehaviour
     public Image panel;
     public string CorrectCode = "8365";
     public GameObject keyPadPanel;
-
+    public mouseLook mouseLook;
+    public Transform door;
+    private float panSpeed = 15f;
+    
+    
     
 
     public void OnNumberButtonClick(string number)
@@ -52,7 +56,8 @@ public class KeyPadButton : MonoBehaviour
                 Debug.Log("Correct Code");
                 panel.color = Color.green;
                 AudioManager.instance.Play("KeyPadGranted");
-
+            mouseLook.PanCameraToTarget(door, panSpeed);
+            
             // keyPadPanel.SetActive(false);
             //panelText.text = " ";
 
