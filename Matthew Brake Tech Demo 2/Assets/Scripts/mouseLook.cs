@@ -70,7 +70,8 @@ public class mouseLook : MonoBehaviour
 
         playerBody.rotation = Quaternion.LookRotation(targetPos - transform.position);
        
-        
+        playerBody.rotation.Normalize();
+        //playerBody.rotation = originalRot;
 
     }
 

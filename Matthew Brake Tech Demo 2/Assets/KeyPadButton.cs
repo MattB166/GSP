@@ -56,7 +56,7 @@ public class KeyPadButton : MonoBehaviour
                 Debug.Log("Correct Code");
                 panel.color = Color.green;
                 AudioManager.instance.Play("KeyPadGranted");
-            mouseLook.PanCameraToTarget(door, panSpeed);
+               mouseLook.PanCameraToTarget(door, panSpeed);
             
             // keyPadPanel.SetActive(false);
             //panelText.text = " ";
