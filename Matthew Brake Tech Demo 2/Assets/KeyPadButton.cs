@@ -17,10 +17,7 @@ public class KeyPadButton : MonoBehaviour
     private float panSpeed = 15f;
     public Animator animator;
 
-    private void Start()
-    {
-        animator.SetBool("IsKeyPadDone", false);
-    }
+   
 
 
     public void OnNumberButtonClick(string number)
@@ -61,7 +58,7 @@ public class KeyPadButton : MonoBehaviour
                 panel.color = Color.green;
                 AudioManager.instance.Play("KeyPadGranted");
                mouseLook.PanCameraToTarget(door, panSpeed);
-                animator.SetBool("IsKeyPadDone", true);
+            animator.SetTrigger("OpenDoor");
            
             // keyPadPanel.SetActive(false);
             //panelText.text = " ";

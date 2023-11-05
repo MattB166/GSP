@@ -1820,6 +1820,7 @@ MonoBehaviour:
   keyPadPanel: {fileID: 506286744}
   mouseLook: {fileID: 1108647871}
   door: {fileID: 105634583}
+  animator: {fileID: 459131076}
 --- !u!1001 &326049020
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2107,6 +2108,7 @@ MonoBehaviour:
   keyPadPanel: {fileID: 506286744}
   mouseLook: {fileID: 1108647871}
   door: {fileID: 105634583}
+  animator: {fileID: 459131076}
 --- !u!4 &362966973 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 412390, guid: 22f5407fceb4bb74b930f5f2b49aa876, type: 3}
@@ -7183,6 +7185,7 @@ MonoBehaviour:
   keyPadPanel: {fileID: 506286744}
   mouseLook: {fileID: 1108647871}
   door: {fileID: 105634583}
+  animator: {fileID: 459131076}
 --- !u!1 &1250550808
 GameObject:
   m_ObjectHideFlags: 0
@@ -7536,6 +7539,7 @@ MonoBehaviour:
   keyPadPanel: {fileID: 506286744}
   mouseLook: {fileID: 1108647871}
   door: {fileID: 105634583}
+  animator: {fileID: 459131076}
 --- !u!1001 &1265845892
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8403,6 +8407,7 @@ MonoBehaviour:
   keyPadPanel: {fileID: 506286744}
   mouseLook: {fileID: 1108647871}
   door: {fileID: 105634583}
+  animator: {fileID: 459131076}
 --- !u!4 &1492818597 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 459340, guid: f531eff400a90054dbf121fa394b2965, type: 3}
@@ -9551,6 +9556,7 @@ MonoBehaviour:
   keyPadPanel: {fileID: 506286744}
   mouseLook: {fileID: 1108647871}
   door: {fileID: 105634583}
+  animator: {fileID: 459131076}
 --- !u!1 &1676063637
 GameObject:
   m_ObjectHideFlags: 0
@@ -9847,6 +9853,7 @@ MonoBehaviour:
   keyPadPanel: {fileID: 506286744}
   mouseLook: {fileID: 1108647871}
   door: {fileID: 105634583}
+  animator: {fileID: 459131076}
 --- !u!1 &1734446032
 GameObject:
   m_ObjectHideFlags: 0
@@ -10081,6 +10088,7 @@ MonoBehaviour:
   keyPadPanel: {fileID: 506286744}
   mouseLook: {fileID: 1108647871}
   door: {fileID: 105634583}
+  animator: {fileID: 459131076}
 --- !u!1001 &1749979114
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10705,6 +10713,7 @@ MonoBehaviour:
   keyPadPanel: {fileID: 506286744}
   mouseLook: {fileID: 1108647871}
   door: {fileID: 105634583}
+  animator: {fileID: 459131076}
 --- !u!4 &1955768796 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 469742, guid: 1e2caec477e1efa4ba16ee65a0fa358e, type: 3}
@@ -10872,6 +10881,7 @@ MonoBehaviour:
   keyPadPanel: {fileID: 506286744}
   mouseLook: {fileID: 1108647871}
   door: {fileID: 105634583}
+  animator: {fileID: 459131076}
 --- !u!4 &1981922632 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 458662, guid: facf14ae9ce68b7479827bcf72fba835, type: 3}
@@ -11607,6 +11617,7 @@ MonoBehaviour:
   keyPadPanel: {fileID: 506286744}
   mouseLook: {fileID: 1108647871}
   door: {fileID: 105634583}
+  animator: {fileID: 459131076}
 --- !u!4 &2064616709 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 458662, guid: facf14ae9ce68b7479827bcf72fba835, type: 3}
@@ -12262,6 +12273,7 @@ MonoBehaviour:
   keyPadPanel: {fileID: 506286744}
   mouseLook: {fileID: 1108647871}
   door: {fileID: 105634583}
+  animator: {fileID: 459131076}
 --- !u!4 &2144142794 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 458662, guid: facf14ae9ce68b7479827bcf72fba835, type: 3}
