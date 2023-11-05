@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using Mono.Cecil.Cil;
 using System.Collections;
 using System.Collections.Generic;
@@ -104,9 +105,7 @@ public class Interactor2 : MonoBehaviour
                     if (objectRenderer != null)
                     {
 
-                    // objectRenderer.material = objectRenderer.sharedMaterial;
-                     objectRenderer.material = originalDocMat;
-                     objectRenderer = null;
+                        SetDocumentMaterial();
                         Debug.Log("Resetting Material");
                     }
                
@@ -115,23 +114,12 @@ public class Interactor2 : MonoBehaviour
         }
        
         
-        //{
-        //    Ray r = new Ray(InteractorSource.position, InteractorSource.forward);
-        //    if (Physics.Raycast(r, out RaycastHit hitInfo, InteractRange))
-        //    {
-        //        if (hitInfo.collider.gameObject.TryGetComponent(out IInteractable interactObj))
-        //        {
-        //            if(interactObj is IInteractable interactableScript)
-
-        //            interactObj.Interact();
-                    
-        //        }
-        //    }
-        //    else
-        //    {
-        //        ToolTipManager.HideToolTip_Static();
-        //    }
-        //}
-       
+      
     }
+    public void SetDocumentMaterial()
+    {
+        objectRenderer.material = originalDocMat;
+        objectRenderer = null;    
+    }
+
 }
