@@ -17,7 +17,7 @@ public class mouseLook : MonoBehaviour
     void Start()
     {
         //Cursor.lockState = CursorLockMode.Locked;
-        initialCameraRot = transform.localRotation;
+        initialCameraRot = transform.rotation;
     }
 
     // Update is called once per frame
@@ -70,7 +70,7 @@ public class mouseLook : MonoBehaviour
 
         playerBody.rotation = Quaternion.LookRotation(targetPos - transform.position);
        
-        playerBody.rotation.Normalize();
+        transform.localRotation.Normalize();
         //playerBody.rotation = originalRot;
 
     }

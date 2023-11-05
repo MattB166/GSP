@@ -19,6 +19,7 @@ public class playerMovement : MonoBehaviour
     void Start()
     {
         Inventory.SetActive(false);
+        AudioManager.instance.Play("LevelMusic");
     }
 
     // Update is called once per frame
