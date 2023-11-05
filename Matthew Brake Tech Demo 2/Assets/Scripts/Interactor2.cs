@@ -99,13 +99,14 @@ public class Interactor2 : MonoBehaviour
             else
             {
                 ToolTipManager.HideToolTip_Static();
-                
+               
                 
                     if (objectRenderer != null)
                     {
-                        
-                        objectRenderer.material = objectRenderer.sharedMaterial;
-                        objectRenderer = null;
+
+                    // objectRenderer.material = objectRenderer.sharedMaterial;
+                     objectRenderer.material = originalDocMat;
+                     objectRenderer = null;
                         Debug.Log("Resetting Material");
                     }
                
