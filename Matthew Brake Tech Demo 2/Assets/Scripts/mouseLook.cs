@@ -10,7 +10,8 @@ public class mouseLook : MonoBehaviour
     private float xRotation = 0f;
     private float targetHeightOffset = 4f;
     private float targetWidthOffset = 5f;
-    Quaternion initialCameraRot;
+    private Quaternion initialCameraRot;
+    private Quaternion initialPlayerRot;
     
     
     // Start is called before the first frame update
@@ -18,6 +19,7 @@ public class mouseLook : MonoBehaviour
     {
         //Cursor.lockState = CursorLockMode.Locked;
         initialCameraRot = transform.rotation;
+        initialPlayerRot = playerBody.rotation;
     }
 
     // Update is called once per frame
@@ -68,8 +70,8 @@ public class mouseLook : MonoBehaviour
            
         }
 
-        playerBody.rotation = Quaternion.LookRotation(targetPos - transform.position);
-       
+        //playerBody.rotation = Quaternion.LookRotation(targetPos - transform.position);
+        playerBody.rotation = initialPlayerRot;
         transform.localRotation.Normalize();
         //playerBody.rotation = originalRot;
 
