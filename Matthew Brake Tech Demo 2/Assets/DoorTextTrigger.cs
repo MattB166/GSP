@@ -8,7 +8,7 @@ public class DoorTextTrigger : MonoBehaviour
    
     public ToolTipManager ToolTipManager;
     public TextMeshProUGUI tooltipText;
-    private bool IsKeyPadDone = false;
+    public bool IsKeyPadDone = false;
 
 
     private void OnTriggerEnter(Collider other)
@@ -16,6 +16,10 @@ public class DoorTextTrigger : MonoBehaviour
         if(other.CompareTag("Player") && !IsKeyPadDone)
         {
             ToolTipManager.ShowToolTip_Static("I must need to unlock this door!");
+        }
+        else
+        {
+            ToolTipManager.HideToolTip_Static();
         }
     }
 

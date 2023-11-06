@@ -16,7 +16,7 @@ public class KeyPadButton : MonoBehaviour
     public Transform door;
     private float panSpeed = 15f;
     public Animator animator;
-
+    public DoorTextTrigger doorTextTrigger;
    
 
 
@@ -59,7 +59,7 @@ public class KeyPadButton : MonoBehaviour
                 AudioManager.instance.Play("KeyPadGranted");
                mouseLook.PanCameraToTarget(door, panSpeed);
             animator.SetTrigger("OpenDoor");
-           
+            doorTextTrigger.IsKeyPadDone = true;
             // keyPadPanel.SetActive(false);
             //panelText.text = " ";
 

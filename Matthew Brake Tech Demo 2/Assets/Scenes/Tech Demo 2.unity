@@ -1837,6 +1837,7 @@ MonoBehaviour:
   mouseLook: {fileID: 1108647871}
   door: {fileID: 105634583}
   animator: {fileID: 459131076}
+  doorTextTrigger: {fileID: 1003810315}
 --- !u!1001 &326049020
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2125,6 +2126,7 @@ MonoBehaviour:
   mouseLook: {fileID: 1108647871}
   door: {fileID: 105634583}
   animator: {fileID: 459131076}
+  doorTextTrigger: {fileID: 1003810315}
 --- !u!4 &362966973 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 412390, guid: 22f5407fceb4bb74b930f5f2b49aa876, type: 3}
@@ -5766,6 +5768,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ToolTipManager: {fileID: 7339565154603125318}
   tooltipText: {fileID: 460430878}
+  IsKeyPadDone: 0
 --- !u!65 &1003810316
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7356,6 +7359,7 @@ MonoBehaviour:
   mouseLook: {fileID: 1108647871}
   door: {fileID: 105634583}
   animator: {fileID: 459131076}
+  doorTextTrigger: {fileID: 1003810315}
 --- !u!1 &1250550808
 GameObject:
   m_ObjectHideFlags: 0
@@ -7710,6 +7714,7 @@ MonoBehaviour:
   mouseLook: {fileID: 1108647871}
   door: {fileID: 105634583}
   animator: {fileID: 459131076}
+  doorTextTrigger: {fileID: 1003810315}
 --- !u!1001 &1265845892
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8741,6 +8746,7 @@ MonoBehaviour:
   mouseLook: {fileID: 1108647871}
   door: {fileID: 105634583}
   animator: {fileID: 459131076}
+  doorTextTrigger: {fileID: 1003810315}
 --- !u!4 &1492818597 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 459340, guid: f531eff400a90054dbf121fa394b2965, type: 3}
@@ -9893,6 +9899,7 @@ MonoBehaviour:
   mouseLook: {fileID: 1108647871}
   door: {fileID: 105634583}
   animator: {fileID: 459131076}
+  doorTextTrigger: {fileID: 1003810315}
 --- !u!1 &1676063637
 GameObject:
   m_ObjectHideFlags: 0
@@ -10206,6 +10213,7 @@ MonoBehaviour:
   mouseLook: {fileID: 1108647871}
   door: {fileID: 105634583}
   animator: {fileID: 459131076}
+  doorTextTrigger: {fileID: 1003810315}
 --- !u!1 &1734446032
 GameObject:
   m_ObjectHideFlags: 0
@@ -10441,6 +10449,7 @@ MonoBehaviour:
   mouseLook: {fileID: 1108647871}
   door: {fileID: 105634583}
   animator: {fileID: 459131076}
+  doorTextTrigger: {fileID: 1003810315}
 --- !u!1001 &1749979114
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10627,6 +10636,59 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee2929703f34a6f4f90ab693a5683648, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1819656220
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1819656222}
+  - component: {fileID: 1819656221}
+  m_Layer: 0
+  m_Name: OuterDoorTrigger
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!65 &1819656221
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1819656220}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!4 &1819656222
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1819656220}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 3.82, y: 0.759, z: -66.56}
+  m_LocalScale: {x: 3.7286096, y: 1.123515, z: 1.5125457}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1821785749 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 491830, guid: a86da915c3eab8445a2c36519941510c, type: 3}
@@ -11071,6 +11133,7 @@ MonoBehaviour:
   mouseLook: {fileID: 1108647871}
   door: {fileID: 105634583}
   animator: {fileID: 459131076}
+  doorTextTrigger: {fileID: 1003810315}
 --- !u!4 &1955768796 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 469742, guid: 1e2caec477e1efa4ba16ee65a0fa358e, type: 3}
@@ -11244,6 +11307,7 @@ MonoBehaviour:
   mouseLook: {fileID: 1108647871}
   door: {fileID: 105634583}
   animator: {fileID: 459131076}
+  doorTextTrigger: {fileID: 1003810315}
 --- !u!4 &1981922632 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 458662, guid: facf14ae9ce68b7479827bcf72fba835, type: 3}
@@ -12000,6 +12064,7 @@ MonoBehaviour:
   mouseLook: {fileID: 1108647871}
   door: {fileID: 105634583}
   animator: {fileID: 459131076}
+  doorTextTrigger: {fileID: 1003810315}
 --- !u!4 &2064616709 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 458662, guid: facf14ae9ce68b7479827bcf72fba835, type: 3}
@@ -12677,6 +12742,7 @@ MonoBehaviour:
   mouseLook: {fileID: 1108647871}
   door: {fileID: 105634583}
   animator: {fileID: 459131076}
+  doorTextTrigger: {fileID: 1003810315}
 --- !u!4 &2144142794 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 458662, guid: facf14ae9ce68b7479827bcf72fba835, type: 3}
@@ -14713,3 +14779,4 @@ SceneRoots:
   - {fileID: 194616618}
   - {fileID: 1236459963}
   - {fileID: 1003810317}
+  - {fileID: 1819656222}

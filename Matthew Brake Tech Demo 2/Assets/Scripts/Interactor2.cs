@@ -65,7 +65,7 @@ public class Interactor2 : MonoBehaviour
                         }
                         else if(interactableScript.objectType == Interactable.ObjectType.KeyPad)
                         {
-                            string toolTipText = "Press H to interact with " + interactObj.Name;
+                            string toolTipText = "Press H to Use Key on " + interactObj.Name;
                             ToolTipManager.ShowToolTip_Static(toolTipText);
                             if(Input.GetKeyDown(KeyCode.H))
                             {
