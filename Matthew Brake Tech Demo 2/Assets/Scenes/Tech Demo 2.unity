@@ -9342,7 +9342,7 @@ MonoBehaviour:
   - clip: {fileID: 8300000, guid: 2bee2492a2aa2a649ba68100e9cf6be0, type: 3}
     name: JumpScare
     volume: 1
-    pitch: 1.08
+    pitch: 2.54
     source: {fileID: 0}
   - clip: {fileID: 8300000, guid: 7d939d371689f69408221f095ad85b34, type: 3}
     name: Pressure
