@@ -17,6 +17,7 @@ public class Interactor2 : MonoBehaviour
     public Transform InteractorSource;
     public float InteractRange;
     public ToolTipManager ToolTipManager;
+    public InventorySO InventorySO;
     public GameObject Keypad;
     public Material material;
     private Renderer objectRenderer;
@@ -24,6 +25,7 @@ public class Interactor2 : MonoBehaviour
     public Material originalKeyMat;
     public Material originalDocMat;
     public Material originalKeyPadMat;
+    public Material originalDoorMat;
 
     private IInteractable currentInteractable; 
     
@@ -52,8 +54,8 @@ public class Interactor2 : MonoBehaviour
                     currentInteractable = interactObj;
                     if (interactObj is Interactable interactableScript)
                     {
-                        
-                        if(interactableScript.objectType != Interactable.ObjectType.KeyPad)
+
+                        if (interactableScript.objectType == Interactable.ObjectType.Key || interactableScript.objectType == Interactable.ObjectType.Document)
                         {
                             ToolTipManager.ShowToolTip_Static("Press P to Pickup");
                             if (Input.GetKeyDown(KeyCode.P))
@@ -65,7 +67,7 @@ public class Interactor2 : MonoBehaviour
                         }
                         else if(interactableScript.objectType == Interactable.ObjectType.KeyPad)
                         {
-                            string toolTipText = "Press H to Use Key on " + interactObj.Name;
+                            string toolTipText = "Press H to Use " + interactObj.Name;
                             ToolTipManager.ShowToolTip_Static(toolTipText);
                             if(Input.GetKeyDown(KeyCode.H))
                             {
@@ -89,6 +91,26 @@ public class Interactor2 : MonoBehaviour
                             }
                                 
                             
+                        }
+                        else if (interactableScript.objectType == Interactable.ObjectType.Door)
+                        {
+                            if(InventorySO.ContainsKey())
+                            {
+                                string toolTipText = "Use the key to open the door!";
+                                ToolTipManager.ShowToolTip_Static(toolTipText);
+                               
+                                if (Input.GetKeyDown(KeyCode.I))
+                                {
+                                    ToolTipManager.HideToolTip_Static();
+                                }
+                                   
+                            }
+                            else
+                            {
+                                ToolTipManager.ShowToolTip_Static("You need a key to open the door!");
+                            }
+                            
+
                         }
                       
 
@@ -136,6 +158,10 @@ public class Interactor2 : MonoBehaviour
                     case Interactable.ObjectType.KeyPad:
                         Debug.Log("Restoring KeyPad Mat");
                         renderer.material = originalKeyPadMat;
+                        break;
+                    case Interactable.ObjectType.Door:
+                        Debug.Log("Restoring Door Mat");
+                        renderer.material = originalDoorMat;
                         break;
                         
 

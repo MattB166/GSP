@@ -20,7 +20,8 @@ public class Interactable : MonoBehaviour, IInteractable
         Document,
         Hint,
         Weapon,
-        KeyPad
+        KeyPad,
+        Door 
 
     }
 
@@ -51,6 +52,10 @@ public class Interactable : MonoBehaviour, IInteractable
         {
             Debug.Log("Inventory not found"); 
         }
+    }
+    public void OpenDoor()
+    {
+        Debug.Log("Opening Door");
     }
 
     //public void Drop()

@@ -43,4 +43,16 @@ public class InventorySO : MonoBehaviour
         if(OnItemChangedCallback != null)
             OnItemChangedCallback.Invoke();
     }
+
+    public bool ContainsKey()
+    {
+        foreach (CollectibleItem item in collectedItems)
+        {
+            if(item.displayName == "KEY")
+            {
+                return true;
+            }
+        }
+        return false;
+    }
 }

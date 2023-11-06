@@ -26,5 +26,6 @@ public class CollectibleItem : ScriptableObject
     {
         Debug.Log("Item Displaying");
     }
+    
 }
 

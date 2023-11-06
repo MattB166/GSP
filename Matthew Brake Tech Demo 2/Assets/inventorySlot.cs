@@ -8,6 +8,7 @@ public class inventorySlot : MonoBehaviour
     CollectibleItem item;
     public Button removeButton; 
     public DocumentDisplay display;
+    public Animator OutDoorAnimator;
 
     public void AddItem(CollectibleItem newItem)
     {
@@ -38,6 +39,12 @@ public class inventorySlot : MonoBehaviour
         if(item != null)
         {
             item.Use();
+            if(item.displayName == "KEY")
+            {
+                Debug.Log("Door Opening");
+                OutDoorAnimator.SetTrigger("IsOuterDoorUnlocked");
+                ToolTipManager.ShowToolTip_Static("Freedom!");
+            }
             if(item.displayName == "DOCUMENT" && item is DocumentItem documentItem)
             {
                 Debug.Log("carrying over document content to Doc Display: " + documentItem.content);

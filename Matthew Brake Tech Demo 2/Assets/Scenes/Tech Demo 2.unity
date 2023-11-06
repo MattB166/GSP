@@ -3461,6 +3461,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 458662, guid: facf14ae9ce68b7479827bcf72fba835, type: 3}
   m_PrefabInstance: {fileID: 1046403828}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &564019652 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 186586, guid: 39aa3d34987062c438ae976f64466405, type: 3}
+  m_PrefabInstance: {fileID: 1157967462}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &577203859
 GameObject:
   m_ObjectHideFlags: 0
@@ -3596,6 +3601,60 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 440834, guid: 39aa3d34987062c438ae976f64466405, type: 3}
   m_PrefabInstance: {fileID: 1157967462}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &587996812
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 564019652}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 645a1451a639b9842b914419bcfb72c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onInteract:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 587996812}
+        m_TargetAssemblyTypeName: Interactable, Assembly-CSharp
+        m_MethodName: OpenDoor
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  ID: 0
+  interactIcon: {fileID: 0}
+  iconSize: {x: 0, y: 0}
+  collectible: {fileID: 0}
+  objectType: 5
+--- !u!95 &587996816
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 564019652}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d9373e02c4d9e9e479df9dc5dedd8c40, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &603679367
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4998,6 +5057,7 @@ MonoBehaviour:
   icon: {fileID: 3343780}
   removeButton: {fileID: 686370841}
   display: {fileID: 1430900310}
+  OutDoorAnimator: {fileID: 587996816}
 --- !u!4 &879738008 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 456670, guid: 69d8c128bceb6394aa69d849207e7dce, type: 3}
@@ -6366,11 +6426,13 @@ MonoBehaviour:
   InteractorSource: {fileID: 1108647870}
   InteractRange: 4
   ToolTipManager: {fileID: 0}
+  InventorySO: {fileID: 644405490}
   Keypad: {fileID: 506286744}
   material: {fileID: 2100000, guid: 311313efa011949e98b6761d652ad13c, type: 2}
   originalKeyMat: {fileID: -3398277067490404444, guid: 6f861a5f3e542c94a80038eab2cb83d1, type: 3}
   originalDocMat: {fileID: 2100000, guid: 3dcea46a4420ba54d90040d5e46fc3e9, type: 2}
   originalKeyPadMat: {fileID: 2100000, guid: 7e34c8ec3440b504c9ed58bca1d2d606, type: 2}
+  originalDoorMat: {fileID: 2100000, guid: 4a07eb17452e0be4398aa22d30b4a627, type: 2}
 --- !u!114 &1108647873
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6410,6 +6472,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: door_03
       objectReference: {fileID: 0}
+    - target: {fileID: 186586, guid: 39aa3d34987062c438ae976f64466405, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 440834, guid: 39aa3d34987062c438ae976f64466405, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -6445,7 +6511,13 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 186586, guid: 39aa3d34987062c438ae976f64466405, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 587996812}
+    - targetCorrespondingSourceObject: {fileID: 186586, guid: 39aa3d34987062c438ae976f64466405, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 587996816}
   m_SourcePrefab: {fileID: 100100000, guid: 39aa3d34987062c438ae976f64466405, type: 3}
 --- !u!1 &1161369788 stripped
 GameObject:
@@ -11911,6 +11983,7 @@ MonoBehaviour:
   icon: {fileID: 1246490583}
   removeButton: {fileID: 1380838957}
   display: {fileID: 1430900310}
+  OutDoorAnimator: {fileID: 587996816}
 --- !u!1 &2064494831
 GameObject:
   m_ObjectHideFlags: 0
@@ -13460,13 +13533,29 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1430900310}
     - target: {fileID: 2241548364887169681, guid: fb5cb9e667a2a4343a046f2fe07f102b, type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 587996816}
+    - target: {fileID: 2241548364887169681, guid: fb5cb9e667a2a4343a046f2fe07f102b, type: 3}
       propertyPath: removeButton
       value: 
       objectReference: {fileID: 1205653115}
+    - target: {fileID: 2241548364887169681, guid: fb5cb9e667a2a4343a046f2fe07f102b, type: 3}
+      propertyPath: OutDoorAnimator
+      value: 
+      objectReference: {fileID: 587996816}
     - target: {fileID: 2322015804857313217, guid: fb5cb9e667a2a4343a046f2fe07f102b, type: 3}
       propertyPath: display
       value: 
       objectReference: {fileID: 1430900310}
+    - target: {fileID: 2322015804857313217, guid: fb5cb9e667a2a4343a046f2fe07f102b, type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 587996816}
+    - target: {fileID: 2322015804857313217, guid: fb5cb9e667a2a4343a046f2fe07f102b, type: 3}
+      propertyPath: OutDoorAnimator
+      value: 
+      objectReference: {fileID: 587996816}
     - target: {fileID: 2743024711134889974, guid: fb5cb9e667a2a4343a046f2fe07f102b, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
@@ -13567,6 +13656,14 @@ PrefabInstance:
       propertyPath: display
       value: 
       objectReference: {fileID: 1430900310}
+    - target: {fileID: 4033548010918109520, guid: fb5cb9e667a2a4343a046f2fe07f102b, type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 587996816}
+    - target: {fileID: 4033548010918109520, guid: fb5cb9e667a2a4343a046f2fe07f102b, type: 3}
+      propertyPath: OutDoorAnimator
+      value: 
+      objectReference: {fileID: 587996816}
     - target: {fileID: 4046159099664499012, guid: fb5cb9e667a2a4343a046f2fe07f102b, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
@@ -13647,6 +13744,14 @@ PrefabInstance:
       propertyPath: display
       value: 
       objectReference: {fileID: 1430900310}
+    - target: {fileID: 5940583845624671799, guid: fb5cb9e667a2a4343a046f2fe07f102b, type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 587996816}
+    - target: {fileID: 5940583845624671799, guid: fb5cb9e667a2a4343a046f2fe07f102b, type: 3}
+      propertyPath: OutDoorAnimator
+      value: 
+      objectReference: {fileID: 587996816}
     - target: {fileID: 6171599750930362024, guid: fb5cb9e667a2a4343a046f2fe07f102b, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 1
