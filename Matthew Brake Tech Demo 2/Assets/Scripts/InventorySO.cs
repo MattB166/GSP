@@ -4,7 +4,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 
 
-[CreateAssetMenu(fileName = "New Inventory", menuName = "Inventory/Inventory")]
+//[CreateAssetMenu(fileName = "New Inventory", menuName = "Inventory/Inventory")]
 
 public class InventorySO : MonoBehaviour
 {
