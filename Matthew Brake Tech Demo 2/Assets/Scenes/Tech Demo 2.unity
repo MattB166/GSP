@@ -7866,6 +7866,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3085205522079653519, guid: 92794c55695387544b0181380f46d6ec, type: 3}
+      propertyPath: collectible
+      value: 
+      objectReference: {fileID: 11400000, guid: cc3209c6c82e93046bcb93f890a9f1e7, type: 2}
     m_RemovedComponents:
     - {fileID: 5802652431529867255, guid: 92794c55695387544b0181380f46d6ec, type: 3}
     m_RemovedGameObjects: []
@@ -14320,7 +14324,7 @@ MonoBehaviour:
   interactIcon: {fileID: 0}
   iconSize: {x: 0, y: 0}
   collectible: {fileID: 11400000, guid: 42c2370e1eb3d02489d8cd322c19e51d, type: 2}
-  objectType: 0
+  objectType: 4
 --- !u!65 &7203544314876288902
 BoxCollider:
   m_ObjectHideFlags: 0
