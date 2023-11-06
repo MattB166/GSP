@@ -11,12 +11,16 @@ public class JumpTrigger : MonoBehaviour
     {
        jumpCam.SetActive(true);
        player.SetActive(true);
+        AudioManager.instance.Stop("LevelMusic");
+        AudioManager.instance.Play("JumpScare");
         StartCoroutine(EndJump());
     }
 
     IEnumerator EndJump()
     {
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(2f);
+        AudioManager.instance.Stop("JumpScare");
+        AudioManager.instance.Play("LevelMusic");
         player.SetActive(true);
         jumpCam.SetActive(false);
     }

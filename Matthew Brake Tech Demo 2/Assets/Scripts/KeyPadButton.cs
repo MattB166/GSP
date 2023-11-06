@@ -59,6 +59,7 @@ public class KeyPadButton : MonoBehaviour
                 AudioManager.instance.Play("KeyPadGranted");
                mouseLook.PanCameraToTarget(door, panSpeed);
             animator.SetTrigger("OpenDoor");
+            AudioManager.instance.Stop("LevelMusic");
             doorTextTrigger.IsKeyPadDone = true;
             // keyPadPanel.SetActive(false);
             //panelText.text = " ";

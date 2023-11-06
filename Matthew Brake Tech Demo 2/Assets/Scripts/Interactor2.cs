@@ -69,8 +69,11 @@ public class Interactor2 : MonoBehaviour
                         {
                             string toolTipText = "Press H to Use " + interactObj.Name;
                             ToolTipManager.ShowToolTip_Static(toolTipText);
+                            
                             if(Input.GetKeyDown(KeyCode.H))
                             {
+                                AudioManager.instance.Stop("LevelMusic");
+                                AudioManager.instance.Play("Pressure");
                                 interactObj.Interact();
                                 ToolTipManager.HideToolTip_Static();
                                 if(Keypad != null)
