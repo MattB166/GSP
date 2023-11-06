@@ -43,7 +43,7 @@ public class inventorySlot : MonoBehaviour
             {
                 Debug.Log("Door Opening");
                 OutDoorAnimator.SetTrigger("IsOuterDoorUnlocked");
-                ToolTipManager.ShowToolTip_Static("Freedom!");
+                //ToolTipManager.ShowToolTip_Static("Freedom!");
             }
             if(item.displayName == "DOCUMENT" && item is DocumentItem documentItem)
             {
