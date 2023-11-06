@@ -6245,6 +6245,7 @@ MonoBehaviour:
   material: {fileID: 2100000, guid: 311313efa011949e98b6761d652ad13c, type: 2}
   originalKeyMat: {fileID: -3398277067490404444, guid: 6f861a5f3e542c94a80038eab2cb83d1, type: 3}
   originalDocMat: {fileID: 2100000, guid: 3dcea46a4420ba54d90040d5e46fc3e9, type: 2}
+  originalKeyPadMat: {fileID: 2100000, guid: 7e34c8ec3440b504c9ed58bca1d2d606, type: 2}
 --- !u!114 &1108647873
 MonoBehaviour:
   m_ObjectHideFlags: 0

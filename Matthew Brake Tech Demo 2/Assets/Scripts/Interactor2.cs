@@ -20,8 +20,10 @@ public class Interactor2 : MonoBehaviour
     public GameObject Keypad;
     public Material material;
     private Renderer objectRenderer;
+    private Renderer storedRenderer;
     public Material originalKeyMat;
-    public Material originalDocMat; 
+    public Material originalDocMat;
+    public Material originalKeyPadMat;
 
     private IInteractable currentInteractable; 
     
@@ -45,9 +47,11 @@ public class Interactor2 : MonoBehaviour
             {
                 if (hitInfo.collider.gameObject.TryGetComponent(out IInteractable interactObj))
                 {
+                   storedRenderer = objectRenderer;
+                    currentInteractable = interactObj;
                     if (interactObj is Interactable interactableScript)
                     {
-                       
+                        
                         if(interactableScript.objectType != Interactable.ObjectType.KeyPad)
                         {
                             ToolTipManager.ShowToolTip_Static("Press P to Pickup");
@@ -100,14 +104,9 @@ public class Interactor2 : MonoBehaviour
             else
             {
                 ToolTipManager.HideToolTip_Static();
-               
-                
-                    if (objectRenderer != null)
-                    {
 
-                        SetDocumentMaterial();
-                        Debug.Log("Resetting Material");
-                    }
+                RestoreOriginalMat(storedRenderer);
+                   
                
                 
             }
@@ -116,10 +115,31 @@ public class Interactor2 : MonoBehaviour
         
       
     }
-    public void SetDocumentMaterial()
+   
+    private void RestoreOriginalMat(Renderer renderer)
     {
-        objectRenderer.material = originalDocMat;
-        objectRenderer = null;    
-    }
+        if(renderer != null)
+        {
+            if(currentInteractable is Interactable interactable)
+            {
+                switch(interactable.objectType)
+                {
+                    case Interactable.ObjectType.Document:
+                        Debug.Log("Restoring Document Material");
+                        renderer.material = originalDocMat;
+                        break;
+                    case Interactable.ObjectType.Key:
+                        Debug.Log("Restoring Key Mat");
+                        renderer.material = originalKeyMat;
+                        break;
+                    case Interactable.ObjectType.KeyPad:
+                        Debug.Log("Restoring KeyPad Mat");
+                        renderer.material = originalKeyPadMat;
+                        break;
+                        
 
+                }
+            }
+        }
+    }
 }
