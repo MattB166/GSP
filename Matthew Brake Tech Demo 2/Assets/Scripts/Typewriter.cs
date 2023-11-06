@@ -16,36 +16,28 @@ public class Typewriter : MonoBehaviour
 
     private bool subtitlesStarted = false;
     public Action OnSubtitlesDone; 
-    //private bool subtitlesPlaying = false;
+    
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        //StartCoroutine(PlaySubtitles());  //plays it from beginning. dont want that 
-    }
+   
 
-    //private void Update()
-    //{
-    ////    if (subtitlesStarted)
-    ////        StartCoroutine(PlaySubtitles());
-    ////}
+    
 
     IEnumerator PlaySubtitles()
     {
-        foreach(string subtitle in subtitles)
+        foreach(string subtitle in subtitles)   
         {
             subtitleText.text = " ";
             for (int i = 0; i < subtitle.Length; i++)
             {
                 subtitleText.text += subtitle[i];
-                yield return new WaitForSeconds(0.04f);
+                yield return new WaitForSeconds(0.04f); //delays between each letter by specified amount
             }
-            yield return new WaitForSeconds(delayBetweenSubtitles);
+            yield return new WaitForSeconds(delayBetweenSubtitles); //delay between each line 
             subtitleText.text = " ";
         }
             subtitlesStarted = false;
 
-        OnSubtitlesDone?.Invoke();
+        OnSubtitlesDone?.Invoke(); //sends call to audio trigger to allow audio and subtitles to restart if within trigger 
         
     }
 

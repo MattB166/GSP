@@ -5220,6 +5220,7 @@ MonoBehaviour:
   removeButton: {fileID: 686370841}
   display: {fileID: 1430900310}
   OutDoorAnimator: {fileID: 587996816}
+  toolTipManager: {fileID: 7339565154603125318}
 --- !u!4 &879738008 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 456670, guid: 69d8c128bceb6394aa69d849207e7dce, type: 3}
@@ -14181,6 +14182,7 @@ MonoBehaviour:
   removeButton: {fileID: 1380838957}
   display: {fileID: 1430900310}
   OutDoorAnimator: {fileID: 587996816}
+  toolTipManager: {fileID: 7339565154603125318}
 --- !u!1 &2064494831
 GameObject:
   m_ObjectHideFlags: 0
@@ -15738,6 +15740,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1205653115}
     - target: {fileID: 2241548364887169681, guid: fb5cb9e667a2a4343a046f2fe07f102b, type: 3}
+      propertyPath: toolTipManager
+      value: 
+      objectReference: {fileID: 7339565154603125318}
+    - target: {fileID: 2241548364887169681, guid: fb5cb9e667a2a4343a046f2fe07f102b, type: 3}
       propertyPath: OutDoorAnimator
       value: 
       objectReference: {fileID: 587996816}
@@ -15749,6 +15755,10 @@ PrefabInstance:
       propertyPath: animator
       value: 
       objectReference: {fileID: 587996816}
+    - target: {fileID: 2322015804857313217, guid: fb5cb9e667a2a4343a046f2fe07f102b, type: 3}
+      propertyPath: toolTipManager
+      value: 
+      objectReference: {fileID: 7339565154603125318}
     - target: {fileID: 2322015804857313217, guid: fb5cb9e667a2a4343a046f2fe07f102b, type: 3}
       propertyPath: OutDoorAnimator
       value: 
@@ -15858,6 +15868,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 587996816}
     - target: {fileID: 4033548010918109520, guid: fb5cb9e667a2a4343a046f2fe07f102b, type: 3}
+      propertyPath: toolTipManager
+      value: 
+      objectReference: {fileID: 7339565154603125318}
+    - target: {fileID: 4033548010918109520, guid: fb5cb9e667a2a4343a046f2fe07f102b, type: 3}
       propertyPath: OutDoorAnimator
       value: 
       objectReference: {fileID: 587996816}
@@ -15945,6 +15959,10 @@ PrefabInstance:
       propertyPath: animator
       value: 
       objectReference: {fileID: 587996816}
+    - target: {fileID: 5940583845624671799, guid: fb5cb9e667a2a4343a046f2fe07f102b, type: 3}
+      propertyPath: toolTipManager
+      value: 
+      objectReference: {fileID: 7339565154603125318}
     - target: {fileID: 5940583845624671799, guid: fb5cb9e667a2a4343a046f2fe07f102b, type: 3}
       propertyPath: OutDoorAnimator
       value: 

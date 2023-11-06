@@ -14,14 +14,14 @@ public class DocumentDisplay : MonoBehaviour
 
     private void Update()
     {
-        if(isDocumentOpen && Input.GetKeyDown(KeyCode.Escape))
+        if(isDocumentOpen && Input.GetKeyDown(KeyCode.Escape)) //closes document on command 
         {
             CloseDocument();
         }
     }
 
 
-    public void DisplayDocument(string content)
+    public void DisplayDocument(string content)  //allows documents to be viewed when pressed on in the inventory 
     {
        if(documentText != null)
         {

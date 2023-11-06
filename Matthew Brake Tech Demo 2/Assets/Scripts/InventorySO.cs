@@ -9,10 +9,10 @@ using UnityEngine;
 public class InventorySO : MonoBehaviour
 {
     public delegate void OnItemChanged();
-    public OnItemChanged OnItemChangedCallback;
+    public OnItemChanged OnItemChangedCallback; // checks for new items and removed items 
     
     
-    public List<CollectibleItem> collectedItems = new List<CollectibleItem>();
+    public List<CollectibleItem> collectedItems = new List<CollectibleItem>(); //list of collectibles 
     public static InventorySO instance;
 
     private void Awake()
@@ -27,7 +27,7 @@ public class InventorySO : MonoBehaviour
         }
     }
 
-    public void AddItem(CollectibleItem item)
+    public void AddItem(CollectibleItem item) //adds item to collected items list
     {
         collectedItems.Add(item);
         Debug.Log("Item collected: " + item.Name);
@@ -36,7 +36,7 @@ public class InventorySO : MonoBehaviour
         
     }
 
-    public void RemoveItem(CollectibleItem item)
+    public void RemoveItem(CollectibleItem item) //removes from list
     {
         collectedItems.Remove(item);
         Debug.Log("Item Removed:" + item.Name);
@@ -44,7 +44,7 @@ public class InventorySO : MonoBehaviour
             OnItemChangedCallback.Invoke();
     }
 
-    public bool ContainsKey()
+    public bool ContainsKey()   //checking whether a key exists within inventory to allow for outer door to be opened 
     {
         foreach (CollectibleItem item in collectedItems)
         {

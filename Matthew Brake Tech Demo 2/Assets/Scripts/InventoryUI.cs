@@ -13,14 +13,14 @@ public class InventoryUI : MonoBehaviour
 
 
     [SerializeField]
-    private inventorySlot[] slots;
+    private inventorySlot[] slots; //amount of inventory slots
    
     
     // Start is called before the first frame update
     void Start()
     {
         inventory = InventorySO.instance;
-        inventory.OnItemChangedCallback += UpdateUI;
+        inventory.OnItemChangedCallback += UpdateUI;  //logs change within the collectible items list 
 
        slots = itemParent.GetComponentsInChildren<inventorySlot>();
         
@@ -29,7 +29,7 @@ public class InventoryUI : MonoBehaviour
 
 
 
-    void UpdateUI()
+    void UpdateUI()  //carries out checks for null references 
     {
 
         if (inventory == null)
@@ -63,7 +63,7 @@ public class InventoryUI : MonoBehaviour
             
            
             
-            for (int i = 0; i < slots.Length && i < inventory.collectedItems.Count; i++)
+            for (int i = 0; i < slots.Length && i < inventory.collectedItems.Count; i++) //for every item collected, it is added to a slot in the inventory 
             {
                 if (i < inventory.collectedItems.Count)
                 {

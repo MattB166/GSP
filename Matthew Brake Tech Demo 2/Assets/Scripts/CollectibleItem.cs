@@ -4,7 +4,7 @@ using UnityEngine;
 
 [CreateAssetMenu(fileName =  "New Collectible Item", menuName = "Inventory/Collectible Item")]
 
-public class CollectibleItem : ScriptableObject
+public class CollectibleItem : ScriptableObject  //scriptable object which determines the type of object in scene it is
 {
     
     public string displayName;

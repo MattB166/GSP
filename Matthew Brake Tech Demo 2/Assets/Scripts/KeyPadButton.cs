@@ -20,21 +20,21 @@ public class KeyPadButton : MonoBehaviour
    
 
 
-    public void OnNumberButtonClick(string number)
+    public void OnNumberButtonClick(string number) // adds number to panel when selected
     {
         panelText.text += number;
         AudioManager.instance.Play("KeyPadPress");
         Debug.Log("adding number");
     }
 
-    public void OnClearButtonClick()
+    public void OnClearButtonClick()     //clears entire string
     {
         panelText.text = string.Empty;
         AudioManager.instance.Play("KeyPadPress");
         panel.color = Color.white;
     }
 
-    public void OnDeleteButtonClick()
+    public void OnDeleteButtonClick()   //deletes previous number
     {
         AudioManager.instance.Play("KeyPadPress");
         if (panelText.text.Length > 0)
@@ -44,7 +44,7 @@ public class KeyPadButton : MonoBehaviour
         panel.color = Color.white;
     }
 
-    public void OnConfirmButtonClick()
+    public void OnConfirmButtonClick()    //checks whether number is correct
     {
 
         AudioManager.instance.Play("KeyPadPress");
@@ -61,16 +61,15 @@ public class KeyPadButton : MonoBehaviour
             animator.SetTrigger("OpenDoor");
             AudioManager.instance.Stop("LevelMusic");
             doorTextTrigger.IsKeyPadDone = true;
-            // keyPadPanel.SetActive(false);
-            //panelText.text = " ";
-
-            
+            //if correct code entered panel lights up green 
+            //signals to door that correct code is entered
         }
         else
         {
             panel.color= Color.red;
             AudioManager.instance.Play("KeyPadDenied");
             panelText.text = " ";
+            //vice versa if wrong
         }
         
           

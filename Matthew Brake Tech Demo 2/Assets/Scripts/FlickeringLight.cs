@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FlickeringLight : MonoBehaviour
+public class FlickeringLight : MonoBehaviour   //flickers ceiling lights for effect 
 {
     public Light _light;
     public float MinTime;

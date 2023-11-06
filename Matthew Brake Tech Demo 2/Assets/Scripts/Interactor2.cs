@@ -33,7 +33,7 @@ public class Interactor2 : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        ToolTipManager.HideToolTip_Static();
+        ToolTipManager.HideToolTip_Static();  //hides initial tool tips and sets keypad to false 
         
         Keypad.SetActive(false);
         
@@ -48,7 +48,7 @@ public class Interactor2 : MonoBehaviour
             
             if(Physics.Raycast(r,out RaycastHit hitInfo, InteractRange))
             {
-                if (hitInfo.collider.gameObject.TryGetComponent(out IInteractable interactObj))
+                if (hitInfo.collider.gameObject.TryGetComponent(out IInteractable interactObj))   //detects objects with interactable script attached to them
                 {
                    storedRenderer = objectRenderer;
                     currentInteractable = interactObj;
@@ -117,7 +117,7 @@ public class Interactor2 : MonoBehaviour
                         }
                       
 
-                    }  objectRenderer = hitInfo.collider.GetComponent<MeshRenderer>();
+                    }  objectRenderer = hitInfo.collider.GetComponent<MeshRenderer>();   //sets the highlight material on these objects 
                         objectRenderer.material = material;
 
                     
@@ -131,7 +131,7 @@ public class Interactor2 : MonoBehaviour
             {
                 ToolTipManager.HideToolTip_Static();
 
-                RestoreOriginalMat(storedRenderer);
+                RestoreOriginalMat(storedRenderer); //restores original materials in function below 
                    
                
                 

@@ -44,7 +44,7 @@ public class mouseLook : MonoBehaviour
         StartCoroutine(PanCamera(target, panSpeed));
     }
 
-    private IEnumerator PanCamera(Transform target, float panSpeed)
+    private IEnumerator PanCamera(Transform target, float panSpeed)   //pans the camera to the door when keypad correctly entered 
     {
        // Quaternion startRot = transform.localRotation;
         Vector3 originalPos = playerBody.position;
@@ -70,10 +70,10 @@ public class mouseLook : MonoBehaviour
            
         }
 
-        //playerBody.rotation = Quaternion.LookRotation(targetPos - transform.position);
+        
         playerBody.rotation = initialPlayerRot;
         transform.localRotation.Normalize();
-        //playerBody.rotation = originalRot;
+        
 
     }
 

@@ -32,7 +32,7 @@ public class Interactable : MonoBehaviour, IInteractable
     {
         Debug.Log("Interacted");
     }
-    public void Collect()
+    public void Collect()  //sets the function for what happens when an item is collected in game. added to the inventory SO collected list. 
     {
         InventorySO inventory = Object.FindFirstObjectByType<InventorySO>();
         if(inventory != null)
@@ -41,7 +41,7 @@ public class Interactable : MonoBehaviour, IInteractable
             {
                 inventory.AddItem(collectible);
                 Destroy(gameObject);
-               // Debug.Log("Item Collected: " + collectible.Name);
+               
             }
             else
             {
@@ -53,36 +53,15 @@ public class Interactable : MonoBehaviour, IInteractable
             Debug.Log("Inventory not found"); 
         }
     }
-    public void OpenDoor()
+    public void OpenDoor() //for the key when the door is accessible 
     {
         Debug.Log("Opening Door");
     }
 
-    //public void Drop()
-    //{
-    //    InventorySO inventory = Object.FindFirstObjectByType<InventorySO>();
-    //    if(inventory != null)
-    //    {
-    //        inventory.DropItem(this);
-    //    }
-    //    else
-    //    {
-    //        Debug.Log("Warning. Inventory not found");
-    //    }
-    //}
+   
     
     public string Name { get; }
     
 
-    // Start is called before the first frame update
-    void Start()
-    {
-       // ID = Random.Range(0, 999999);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    
 }

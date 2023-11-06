@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
 
-[System.Serializable]
+[System.Serializable] //allows all audio clips to be modifiable 
 public class SOUND
 {
     public AudioClip clip;

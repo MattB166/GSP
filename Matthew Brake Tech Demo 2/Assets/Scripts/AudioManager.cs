@@ -9,7 +9,7 @@ public class AudioManager : MonoBehaviour
    public static AudioManager instance;
 
     [SerializeField]
-    public SOUND[] sounds;
+    public SOUND[] sounds;                //audio manager in use due to various clips in the scene 
 
 
     private void Awake()
