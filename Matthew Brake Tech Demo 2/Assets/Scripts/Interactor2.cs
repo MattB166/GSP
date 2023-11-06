@@ -32,6 +32,7 @@ public class Interactor2 : MonoBehaviour
     void Start()
     {
         ToolTipManager.HideToolTip_Static();
+        
         Keypad.SetActive(false);
         
     }

@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b330754a794d476488380fe4f27b11ec, type: 3}
+  m_Name: 3rdNumber
+  m_EditorClassIdentifier: 
+  displayName: DOCUMENT
+  icon: {fileID: 21300000, guid: db75637f0e6549044b3e0b59a6d05835, type: 3}
+  prefab: {fileID: 0}
+  content: The last number is how many "Famous Ones" there were....
