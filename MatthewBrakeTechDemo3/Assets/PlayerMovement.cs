@@ -9,6 +9,7 @@ public class PlayerMovement : MonoBehaviour
    [SerializeField] private JoyStickScript thumbStick;
     private Vector2 movement; 
     private SpriteRenderer spriteRenderer;
+    public Animator animator;
 
     public Sprite spriteUp;
     public Sprite spriteDown; 
@@ -39,10 +40,13 @@ public class PlayerMovement : MonoBehaviour
 
         if (thumbStick.InputDirection != Vector2.zero)
         {
-            movement = thumbStick.InputDirection; 
-            
+            movement = thumbStick.InputDirection;
+
         }
-       // updateSprite(); 
+      
+        
+        
+       updateSprite(); 
 
     }
 
@@ -55,11 +59,16 @@ public class PlayerMovement : MonoBehaviour
     {
         if(movement != Vector2.zero)
         {
+            animator.SetBool("isWalking", true);
             spriteRenderer.flipX = movement.x < 0; 
 
           spriteRenderer.sprite = (movement.y > 0) ? spriteUp : spriteDown;
+            
 
-
+        }
+        else
+        {
+            animator.SetBool("isWalking", false); 
         }
     }
 }
