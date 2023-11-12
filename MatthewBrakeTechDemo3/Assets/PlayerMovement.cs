@@ -65,11 +65,12 @@ public class PlayerMovement : MonoBehaviour
           //spriteRenderer.sprite = (movement.y > 0) ? spriteUp : spriteDown;
             if(Mathf.Abs(movement.y) > Mathf.Abs(movement.x))
             {
-                animator.SetBool("isWalkingUp", true);
-                animator.SetBool("isWalking", false); 
+                animator.SetBool("isWalkingUp", movement.y > 0);
+                animator.SetBool("isWalking", movement.y <= 0); 
             }
             else
             {
+                animator.SetBool("isWalkingUp", false);
                 animator.SetBool("isWalking", true); 
             }
 
