@@ -62,13 +62,22 @@ public class PlayerMovement : MonoBehaviour
             animator.SetBool("isWalking", true);
             spriteRenderer.flipX = movement.x < 0; 
 
-          spriteRenderer.sprite = (movement.y > 0) ? spriteUp : spriteDown;
-            
+          //spriteRenderer.sprite = (movement.y > 0) ? spriteUp : spriteDown;
+            if(Mathf.Abs(movement.y) > Mathf.Abs(movement.x))
+            {
+                animator.SetBool("isWalkingUp", true);
+                animator.SetBool("isWalking", false); 
+            }
+            else
+            {
+                animator.SetBool("isWalking", true); 
+            }
 
         }
         else
         {
-            animator.SetBool("isWalking", false); 
+            animator.SetBool("isWalking", false);
+            animator.SetBool("isWalkingUp", false);
         }
     }
 }
