@@ -42,7 +42,7 @@ public class PlayerMovement : MonoBehaviour
             movement = thumbStick.InputDirection; 
             
         }
-        updateSprite(); 
+       // updateSprite(); 
 
     }
 
