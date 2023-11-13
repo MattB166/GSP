@@ -31,7 +31,8 @@ public class EnemyController : MonoBehaviour
                 {
                     if(Hit.transform == transform)
                     {
-                        text.GetComponent<TextMeshProUGUI>().text = "Tapped. Target Selected"; 
+                        text.GetComponent<TextMeshProUGUI>().text = "Tapped. Target Selected";
+                        GameManager.instance.SetActiveEnemy(this);
 
                         // change UI to reflect new target
                         // "gameobject is current target or smth like that 
@@ -40,6 +41,7 @@ public class EnemyController : MonoBehaviour
                 else
                 {
                     text.GetComponent<TextMeshProUGUI>().text = "Not tapped. no target selected";
+                    GameManager.instance.SetActiveEnemy(null);
                 }
             }
             else if(Input.GetTouch(0).phase == TouchPhase.Ended || Input.GetTouch(1).phase == TouchPhase.Ended)
