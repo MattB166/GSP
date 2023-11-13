@@ -117,20 +117,8 @@ public class EnemyController : MonoBehaviour
         }
     }
 
-    private void OnMouseUp()
+  void TakeDamage(int damage)
     {
-       // text.GetComponent<TextMeshProUGUI>().text = "Released Tap!";    //testing can tap 
-    }
-    private void OnMouseDown()
-    {
-       //text.GetComponent<TextMeshProUGUI>().text = "Tapped!"; 
-    }
 
-    //bool isTouchInThumbStickArea(Touch touch)
-    //{
-    //    float thumbStickXmax = 2f;
-    //    float thumbStickYMax = 2f;
-
-    //    return touch.position.x <= thumbStickXmax && touch.position.y <= thumbStickYMax; 
-    //}
+    }
 }
