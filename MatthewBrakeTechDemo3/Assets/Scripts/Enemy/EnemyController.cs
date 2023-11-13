@@ -11,6 +11,7 @@ public class EnemyController : MonoBehaviour
 
     public float maxHealth;
     public float currentHealth;
+    EnemyController currentActiveEnemy; 
 
     
     
@@ -36,23 +37,31 @@ public class EnemyController : MonoBehaviour
                     var Hit = Physics2D.OverlapPoint(touchPos);
                     if (Hit)
                     {
+                       EnemyController newTarget = Hit.transform.GetComponent<EnemyController>();
+                    if (newTarget != null)
+                    {
+
                         if (Hit.transform == transform)
                         {
+
+
                             text.GetComponent<TextMeshProUGUI>().text = "Tapped. Target Selected";
-                            GameManager.instance.SetActiveEnemy(this);
+                            GameManager.instance.SetActiveEnemy(newTarget);
+                            currentActiveEnemy = newTarget;
 
                             // change UI to reflect new target
                             // "gameobject is current target or smth like that 
                         }
-                        else
-                        {
-                            GameManager.instance.SetActiveEnemy(null);
-                        }
+                    }
+                    else
+                    {
+                        // GameManager.instance.SetActiveEnemy(null);
+                    }
                     }
                     else
                     {
                         text.GetComponent<TextMeshProUGUI>().text = "Not tapped. no target selected";
-                        GameManager.instance.SetActiveEnemy(null);
+                       // GameManager.instance.SetActiveEnemy(null);
                     }
                 }
                 else if (Input.GetTouch(0).phase == TouchPhase.Ended || Input.GetTouch(1).phase == TouchPhase.Ended)
