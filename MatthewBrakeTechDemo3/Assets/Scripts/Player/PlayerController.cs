@@ -5,6 +5,10 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public PlayerStats playerStats;
+    public FireBall fireBall;
+    public ArcaneMissile ArcaneMissile;
+    public FrostLance frostLance;
+    public MageArmor MageArmor; 
     float maxHealth;
     float currentHealth;
 
