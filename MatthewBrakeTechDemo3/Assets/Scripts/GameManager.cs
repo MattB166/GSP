@@ -41,12 +41,22 @@ public class GameManager : MonoBehaviour
     }
     public void SetActiveEnemy(EnemyController newEnemy)
     {
-        activeEnemy = newEnemy; 
+        if(newEnemy != null)
+        {
+            activeEnemy = newEnemy;
+        }
+        else
+        {
+            activeEnemy = null;
+            enemyIcon.sprite = null;
+            enemyHealthSlider.value = float.MinValue; 
+        }
+        
     }
 
     void updateEnemyUI()
     {
-        enemyUIPanel.SetActive(true);
+       // enemyUIPanel.SetActive(true);
 
         enemyIcon.sprite = activeEnemy.EnemyStats.icon;
         enemyHealthSlider.value = activeEnemy.currentHealth; 

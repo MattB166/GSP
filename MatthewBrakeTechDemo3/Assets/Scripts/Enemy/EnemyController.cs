@@ -23,41 +23,49 @@ public class EnemyController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       if(Input.touchCount==1  || Input.touchCount==2)
+      
+        
+        if(Input.touchCount==1  || Input.touchCount==2)
         {
-            if(Input.GetTouch(0).phase == TouchPhase.Began || Input.GetTouch(1).phase == TouchPhase.Began)
-            {
-                Vector3 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-                Vector2 touchPos = new Vector2(pos.x, pos.y);
-
-                var Hit = Physics2D.OverlapPoint(touchPos); 
-                if(Hit)
+           
+                if (Input.GetTouch(0).phase == TouchPhase.Began || Input.GetTouch(1).phase == TouchPhase.Began)
                 {
-                    if(Hit.transform == transform)
-                    {
-                        text.GetComponent<TextMeshProUGUI>().text = "Tapped. Target Selected";
-                        GameManager.instance.SetActiveEnemy(this);
+                    Vector3 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                    Vector2 touchPos = new Vector2(pos.x, pos.y);
 
-                        // change UI to reflect new target
-                        // "gameobject is current target or smth like that 
+                    var Hit = Physics2D.OverlapPoint(touchPos);
+                    if (Hit)
+                    {
+                        if (Hit.transform == transform)
+                        {
+                            text.GetComponent<TextMeshProUGUI>().text = "Tapped. Target Selected";
+                            GameManager.instance.SetActiveEnemy(this);
+
+                            // change UI to reflect new target
+                            // "gameobject is current target or smth like that 
+                        }
+                        else
+                        {
+                            GameManager.instance.SetActiveEnemy(null);
+                        }
                     }
                     else
                     {
-                        GameManager.instance.SetActiveEnemy(null); 
+                        text.GetComponent<TextMeshProUGUI>().text = "Not tapped. no target selected";
+                        GameManager.instance.SetActiveEnemy(null);
                     }
                 }
-                else
+                else if (Input.GetTouch(0).phase == TouchPhase.Ended || Input.GetTouch(1).phase == TouchPhase.Ended)
                 {
-                    text.GetComponent<TextMeshProUGUI>().text = "Not tapped. no target selected";
-                    GameManager.instance.SetActiveEnemy(null);
+                    text.GetComponent<TextMeshProUGUI>().text = "End of tap";
                 }
-            }
-            else if(Input.GetTouch(0).phase == TouchPhase.Ended || Input.GetTouch(1).phase == TouchPhase.Ended)
-            {
-                text.GetComponent<TextMeshProUGUI>().text = "End of tap";
-            }
+            
+
         }
         
+            
+
+
         
         CheckforPlayerInRange(); 
     }
@@ -108,4 +116,12 @@ public class EnemyController : MonoBehaviour
     {
        //text.GetComponent<TextMeshProUGUI>().text = "Tapped!"; 
     }
+
+    //bool isTouchInThumbStickArea(Touch touch)
+    //{
+    //    float thumbStickXmax = 2f;
+    //    float thumbStickYMax = 2f;
+
+    //    return touch.position.x <= thumbStickXmax && touch.position.y <= thumbStickYMax; 
+    //}
 }

@@ -1180,7 +1180,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 7
 --- !u!114 &465414794
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1195,6 +1195,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EnemyStats: {fileID: 11400000, guid: ac39de3f194cd5f4494b33473c580670, type: 2}
   text: {fileID: 38154243}
+  maxHealth: 0
+  currentHealth: 0
 --- !u!61 &465414795
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2117,7 +2119,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!95 &835751262
 Animator:
   serializedVersion: 7
