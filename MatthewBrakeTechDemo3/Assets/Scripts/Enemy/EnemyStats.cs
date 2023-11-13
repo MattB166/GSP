@@ -10,6 +10,7 @@ public class EnemyStats : ScriptableObject
     public float currentHealth;
     public float baseDamage;
     public float defenceMultiplier;
-    public float rangedAttackSpeed; 
+    public float rangedAttackSpeed;
+    public float detectionRadius; 
     
 }

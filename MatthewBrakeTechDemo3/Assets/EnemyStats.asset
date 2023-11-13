@@ -17,3 +17,4 @@ MonoBehaviour:
   baseDamage: 25
   defenceMultiplier: 0.8
   rangedAttackSpeed: 3
+  detectionRadius: 5
