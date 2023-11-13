@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Player Stats
   m_EditorClassIdentifier: 
   maxHealth: 500
-  currentHealth: 0
+  currentHealth: 500
   maxMana: 960
-  currentMana: 0
+  currentMana: 960
   meleeAttackSpeed: 2
   baseDamage: 18
   defenceMultiplier: 0.9

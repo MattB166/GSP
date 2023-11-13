@@ -49,7 +49,7 @@ public class GameManager : MonoBehaviour
         enemyUIPanel.SetActive(true);
 
         enemyIcon.sprite = activeEnemy.EnemyStats.icon;
-        enemyHealthSlider.value = activeEnemy.EnemyStats.currentHealth; 
+        enemyHealthSlider.value = activeEnemy.currentHealth; 
         
     }
 }

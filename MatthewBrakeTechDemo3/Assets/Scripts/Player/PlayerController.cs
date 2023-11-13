@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public PlayerStats playerStats; 
-    
+    public PlayerStats playerStats;
+    float maxHealth;
+    float currentHealth;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -22,8 +24,8 @@ public class PlayerController : MonoBehaviour
     void initialisePlayer()
     {
         Debug.Log("Player Has " + (playerStats.maxHealth) + " Health");
-        float maxHealth = playerStats.maxHealth;
-        float currentHealth = playerStats.maxHealth; 
+        maxHealth = playerStats.maxHealth;
+       currentHealth = playerStats.maxHealth; 
         
     }
 

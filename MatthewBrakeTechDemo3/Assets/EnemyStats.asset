@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: EnemyStats
   m_EditorClassIdentifier: 
   maxHealth: 250
-  currentHealth: 0
+  currentHealth: 250
   baseDamage: 25
   defenceMultiplier: 0.8
   rangedAttackSpeed: 3

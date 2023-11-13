@@ -7,7 +7,11 @@ public class EnemyController : MonoBehaviour
 {
    public EnemyStats EnemyStats;
    public TextMeshProUGUI text; //for testing 
-   ////need reference to UI so can change current target  
+                                ////need reference to UI so can change current target  
+
+    public float maxHealth;
+    public float currentHealth;
+
     
     
     // Start is called before the first frame update
@@ -37,6 +41,10 @@ public class EnemyController : MonoBehaviour
                         // change UI to reflect new target
                         // "gameobject is current target or smth like that 
                     }
+                    else
+                    {
+                        GameManager.instance.SetActiveEnemy(null); 
+                    }
                 }
                 else
                 {
@@ -56,7 +64,8 @@ public class EnemyController : MonoBehaviour
     void initialiseEnemy()
     {
         Debug.Log("Enemy has " + (EnemyStats.maxHealth) + " Health");
-        float maxHealth = EnemyStats.maxHealth;
+         maxHealth = EnemyStats.maxHealth;
+         currentHealth = EnemyStats.currentHealth;
     }
 
     private void OnDrawGizmos()
