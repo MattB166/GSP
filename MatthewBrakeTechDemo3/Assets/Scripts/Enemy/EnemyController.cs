@@ -16,7 +16,7 @@ public class EnemyController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        CheckforPlayerInRange(); 
     }
     void initialiseEnemy()
     {
@@ -48,11 +48,11 @@ public class EnemyController : MonoBehaviour
         }
         if (PlayerInRange)
         {
-            Debug.Log("Enemy in range");
+            Debug.Log("Player in range. Attack Player");
         }
         else
         {
-            Debug.Log("Enemy Out of range");
+            Debug.Log("Player Out of range");
         }
     }
 }

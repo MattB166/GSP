@@ -50,11 +50,11 @@ public class PlayerController : MonoBehaviour
         }
         if(enemyInRange)
         {
-            Debug.Log("Enemy in range");
+            //Debug.Log("Enemy in range");
         }
         else
         {
-            Debug.Log("Enemy Out of range");
+           //Debug.Log("Enemy Out of range");
         }
     }
 
