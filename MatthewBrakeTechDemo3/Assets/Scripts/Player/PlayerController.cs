@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -8,9 +10,13 @@ public class PlayerController : MonoBehaviour
     public FireBall fireBall;
     public ArcaneMissile ArcaneMissile;
     public FrostLance frostLance;
-    public MageArmor MageArmor; 
+    public MageArmor MageArmor;
+    public Button AutoAttack;
+    private float nextAttackTime = 0f; 
     float maxHealth;
     float currentHealth;
+    float maxMana;
+    float currentMana;
 
     // Start is called before the first frame update
     void Start()
@@ -30,6 +36,9 @@ public class PlayerController : MonoBehaviour
         Debug.Log("Player Has " + (playerStats.maxHealth) + " Health");
         maxHealth = playerStats.maxHealth;
        currentHealth = playerStats.maxHealth; 
+        maxMana = playerStats.maxMana;
+        currentMana = playerStats.maxMana; 
+        
         
     }
 
@@ -54,15 +63,28 @@ public class PlayerController : MonoBehaviour
                 break;
             }
         }
-        if(enemyInRange)
+        if(enemyInRange && AutoAttack.interactable && Time.time >= nextAttackTime)
         {
-            //Debug.Log("Enemy in range");
+           // Debug.Log("ATTACKING");
+            MeleeAttack();
+            nextAttackTime = Time.time + 1f / playerStats.meleeAttackSpeed; 
+           //need a way to un set the auto attack button 
         }
-        else
+        else if(AutoAttack.interactable == false)
         {
-           //Debug.Log("Enemy Out of range");
+           Debug.Log("Not attacking");
         }
     }
 
-  
+
+    
+    void MeleeAttack()
+    {
+        //play animation
+        //give base damage to enemy  
+        Debug.Log("Melee Attack! with damage of: " + playerStats.baseDamage); 
+    }
+
+    
+
 }

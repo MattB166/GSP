@@ -6,6 +6,8 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Ability", menuName = "Abilities/FireBall")]
 public class FireBall : ScriptableObject
 {
+   
+    
     public float manaCost = 120;
     public float castingTime = 3f;
     public float basePower = 35;

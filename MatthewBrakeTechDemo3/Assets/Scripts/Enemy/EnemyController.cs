@@ -80,7 +80,7 @@ public class EnemyController : MonoBehaviour
     }
     void initialiseEnemy()
     {
-        Debug.Log("Enemy has " + (EnemyStats.maxHealth) + " Health");
+       // Debug.Log("Enemy has " + (EnemyStats.maxHealth) + " Health");
          maxHealth = EnemyStats.maxHealth;
          currentHealth = EnemyStats.currentHealth;
     }
@@ -109,16 +109,17 @@ public class EnemyController : MonoBehaviour
         }
         if (PlayerInRange)
         {
-            Debug.Log("Player in range. Attack Player");
+           // Debug.Log("Player in range. Attack Player");
+            //aggro triggered, lock onto player 
         }
         else
         {
-            Debug.Log("Player Out of range");
+            //Debug.Log("Player Out of range");
         }
     }
 
   void TakeDamage(int damage)
-    {
+  {
 
-    }
+  }
 }
