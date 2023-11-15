@@ -26,10 +26,10 @@ public class EnemyController : MonoBehaviour
     {
       
         
-        if(Input.touchCount==1  || Input.touchCount==2)
+        if(Input.touchCount >= 0)
         {
            
-                if (Input.GetTouch(0).phase == TouchPhase.Began || Input.GetTouch(1).phase == TouchPhase.Began)
+                if (Input.GetTouch(0).phase == TouchPhase.Began)
                 {
                     Vector3 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                     Vector2 touchPos = new Vector2(pos.x, pos.y);
@@ -64,7 +64,7 @@ public class EnemyController : MonoBehaviour
                        // GameManager.instance.SetActiveEnemy(null);
                     }
                 }
-                else if (Input.GetTouch(0).phase == TouchPhase.Ended || Input.GetTouch(1).phase == TouchPhase.Ended)
+                else if (Input.GetTouch(0).phase == TouchPhase.Ended)
                 {
                     text.GetComponent<TextMeshProUGUI>().text = "End of tap";
                 }

@@ -14,13 +14,14 @@ public class PlayerController : MonoBehaviour
     public MageArmor MageArmor;
     public Button AutoAttack;
     public Image AutoAttackButtonImage;
-    private bool AutoAttackEnabled; 
+    private bool AutoAttackEnabled;  
     private float nextAttackTime = 0f;
     private GameObject currentEnemy;
     float maxHealth;
     float currentHealth;
     float maxMana;
     float currentMana;
+    float meleeAttackSpeed;
 
     // Start is called before the first frame update
     void Start()
@@ -43,7 +44,7 @@ public class PlayerController : MonoBehaviour
        currentHealth = playerStats.maxHealth; 
         maxMana = playerStats.maxMana;
         currentMana = playerStats.maxMana; 
-        
+        meleeAttackSpeed = playerStats.meleeAttackSpeed;
         
     }
 
@@ -71,15 +72,15 @@ public class PlayerController : MonoBehaviour
                 break;
             }
         }
-        if(enemyInRange && AutoAttack.interactable && Time.time >= nextAttackTime)
+        nextAttackTime += Time.deltaTime;
+        if(enemyInRange && meleeAttackSpeed <= nextAttackTime)
         {
-           // Debug.Log("ATTACKING");
             MeleeAttack();
-            nextAttackTime = Time.time + 1f / playerStats.meleeAttackSpeed;
+            nextAttackTime = 0;
             //AutoAttack.interactable = true; 
            //need a way to un set the auto attack button 
         }
-        else if(!enemyInRange || AutoAttack.interactable == false)
+        else if(!enemyInRange)
         {
            Debug.Log("Not attacking");
             animator.SetBool("IsAutoAttacking",false);
