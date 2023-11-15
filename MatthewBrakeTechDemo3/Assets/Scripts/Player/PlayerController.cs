@@ -7,12 +7,16 @@ using UnityEngine.UI;
 public class PlayerController : MonoBehaviour
 {
     public PlayerStats playerStats;
+    public Animator animator;
     public FireBall fireBall;
     public ArcaneMissile ArcaneMissile;
     public FrostLance frostLance;
     public MageArmor MageArmor;
     public Button AutoAttack;
-    private float nextAttackTime = 0f; 
+    public Image AutoAttackButtonImage;
+    private bool AutoAttackEnabled = false;
+    private float nextAttackTime = 0f;
+    private GameObject currentEnemy;
     float maxHealth;
     float currentHealth;
     float maxMana;
@@ -29,6 +33,7 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         CheckDetectionRadius(); 
+        updateAutoAttackButton();
     }
 
     void initialisePlayer()
@@ -55,11 +60,14 @@ public class PlayerController : MonoBehaviour
 
         bool enemyInRange = false; 
 
+
         foreach(Collider2D collider in colliders)
         {
             if(collider.CompareTag("Enemy"))
             {
                 enemyInRange = true;
+                currentEnemy = collider.gameObject;
+                AutoAttack.interactable = true;
                 break;
             }
         }
@@ -67,12 +75,44 @@ public class PlayerController : MonoBehaviour
         {
            // Debug.Log("ATTACKING");
             MeleeAttack();
-            nextAttackTime = Time.time + 1f / playerStats.meleeAttackSpeed; 
+            nextAttackTime = Time.time + 1f / playerStats.meleeAttackSpeed;
+            //AutoAttack.interactable = true; 
            //need a way to un set the auto attack button 
         }
-        else if(AutoAttack.interactable == false)
+        else if(!enemyInRange || AutoAttack.interactable == false)
         {
            Debug.Log("Not attacking");
+            AutoAttackButtonImage.color = Color.red;
+            AutoAttack.interactable = false; 
+            currentEnemy = null; 
+        }
+    }
+
+    void updateAutoAttackButton()
+    {
+        if (currentEnemy != null)
+        {
+            AutoAttackButtonImage.color = Color.white;
+        }
+        else
+        {
+            AutoAttackButtonImage.color = Color.red;
+            AutoAttack.interactable = false; 
+        }
+    }
+
+    public void ToggleAutoAttack()
+    {
+        AutoAttackEnabled = !AutoAttackEnabled;
+        if(!AutoAttackEnabled)
+        {
+            AutoAttackButtonImage.color = Color.red;
+            currentEnemy = null; 
+        }
+        else
+        {
+            AutoAttackButtonImage.color = Color.white;
+
         }
     }
 
@@ -82,7 +122,15 @@ public class PlayerController : MonoBehaviour
     {
         //play animation
         //give base damage to enemy  
+        animator.SetBool("IsAutoAttacking", true);
         Debug.Log("Melee Attack! with damage of: " + playerStats.baseDamage); 
+
+        if(currentEnemy != null)
+        {
+
+            ///damage enemy with base damage 
+
+        }
     }
 
     
