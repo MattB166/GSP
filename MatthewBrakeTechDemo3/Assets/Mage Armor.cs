@@ -11,7 +11,7 @@ public class MageArmor : ScriptableObject
     public float coolDown = 120f;
     public float defenceMultiplier = 0.65f;
     public float manaRegenRate = 25f;
-    public float buffDuration = 30f;
+    public float buffDuration = 30f; 
 
    
     public AbilityResult ApplyArmorBuff()
