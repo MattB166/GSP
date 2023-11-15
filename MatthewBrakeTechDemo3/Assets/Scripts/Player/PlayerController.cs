@@ -122,8 +122,7 @@ public class PlayerController : MonoBehaviour
     
     void MeleeAttack()
     {
-        //play animation
-        //give base damage to enemy  
+        
        
 
         if(currentEnemy != null)
