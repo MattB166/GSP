@@ -14,7 +14,7 @@ public class PlayerController : MonoBehaviour
     public MageArmor MageArmor;
     public Button AutoAttack;
     public Image AutoAttackButtonImage;
-    private bool AutoAttackEnabled = false;
+    private bool AutoAttackEnabled; 
     private float nextAttackTime = 0f;
     private GameObject currentEnemy;
     float maxHealth;
@@ -82,6 +82,7 @@ public class PlayerController : MonoBehaviour
         else if(!enemyInRange || AutoAttack.interactable == false)
         {
            Debug.Log("Not attacking");
+            animator.SetBool("IsAutoAttacking",false);
             AutoAttackButtonImage.color = Color.red;
             AutoAttack.interactable = false; 
             currentEnemy = null; 
@@ -122,12 +123,12 @@ public class PlayerController : MonoBehaviour
     {
         //play animation
         //give base damage to enemy  
-        animator.SetBool("IsAutoAttacking", true);
-        Debug.Log("Melee Attack! with damage of: " + playerStats.baseDamage); 
+       
 
         if(currentEnemy != null)
         {
-
+            animator.SetBool("IsAutoAttacking", true);
+            Debug.Log("Melee Attack! with damage of: " + playerStats.baseDamage);
             ///damage enemy with base damage 
 
         }

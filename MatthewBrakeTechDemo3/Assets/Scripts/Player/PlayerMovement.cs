@@ -81,4 +81,9 @@ public class PlayerMovement : MonoBehaviour
             animator.SetBool("isWalkingUp", false);
         }
     }
+
+    void FaceTarget()
+    {
+        
+    }
 }

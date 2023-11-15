@@ -2364,6 +2364,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerStats: {fileID: 11400000, guid: a6e894ef5f3c58a4d8633d65261b8430, type: 2}
+  animator: {fileID: 835751262}
   fireBall: {fileID: 0}
   ArcaneMissile: {fileID: 0}
   frostLance: {fileID: 0}
