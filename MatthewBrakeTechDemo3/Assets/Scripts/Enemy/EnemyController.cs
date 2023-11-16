@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem.EnhancedTouch;
 
 public class EnemyController : MonoBehaviour
 {
@@ -11,9 +12,8 @@ public class EnemyController : MonoBehaviour
 
     public float maxHealth;
     public float currentHealth;
-    EnemyController currentActiveEnemy; 
-
-    
+    EnemyController currentActiveEnemy;
+     
     
     // Start is called before the first frame update
     void Start()
@@ -28,8 +28,7 @@ public class EnemyController : MonoBehaviour
         
         if(Input.touchCount >= 0)
         {
-           
-                if (Input.GetTouch(0).phase == TouchPhase.Began)
+            if (Input.GetTouch(0).phase == TouchPhase.Began)
                 {
                     Vector3 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                     Vector2 touchPos = new Vector2(pos.x, pos.y);
@@ -48,14 +47,16 @@ public class EnemyController : MonoBehaviour
                             text.GetComponent<TextMeshProUGUI>().text = "Tapped. Target Selected";
                             GameManager.instance.SetActiveEnemy(newTarget);
                             currentActiveEnemy = newTarget;
+                            
 
                             // change UI to reflect new target
                             // "gameobject is current target or smth like that 
                         }
+
                     }
                     else
                     {
-                        // GameManager.instance.SetActiveEnemy(null);
+                         //GameManager.instance.SetActiveEnemy(null);
                     }
                     }
                     else

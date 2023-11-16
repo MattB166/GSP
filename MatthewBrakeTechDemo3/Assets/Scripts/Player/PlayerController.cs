@@ -68,12 +68,14 @@ public class PlayerController : MonoBehaviour
             {
                 enemyInRange = true;
                 currentEnemy = collider.gameObject;
+                
                 AutoAttack.interactable = true;
+               
                 break;
             }
         }
         nextAttackTime += Time.deltaTime;
-        if(enemyInRange && meleeAttackSpeed <= nextAttackTime)
+        if (enemyInRange && meleeAttackSpeed <= nextAttackTime)
         {
             MeleeAttack();
             nextAttackTime = 0;
@@ -85,6 +87,7 @@ public class PlayerController : MonoBehaviour
            Debug.Log("Not attacking");
             animator.SetBool("IsAutoAttacking",false);
             AutoAttackButtonImage.color = Color.red;
+            
             AutoAttack.interactable = false; 
             currentEnemy = null; 
         }
@@ -95,11 +98,14 @@ public class PlayerController : MonoBehaviour
         if (currentEnemy != null)
         {
             AutoAttackButtonImage.color = Color.white;
+            AutoAttack.interactable = true;
+            //ToggleAutoAttack();
         }
         else
         {
             AutoAttackButtonImage.color = Color.red;
-            AutoAttack.interactable = false; 
+            AutoAttack.interactable = false;
+            //ToggleAutoAttack();
         }
     }
 
@@ -109,11 +115,13 @@ public class PlayerController : MonoBehaviour
         if(!AutoAttackEnabled)
         {
             AutoAttackButtonImage.color = Color.red;
+            Debug.Log("auto attack disabled");
             currentEnemy = null; 
         }
         else
         {
             AutoAttackButtonImage.color = Color.white;
+            Debug.Log("Auto attack enabled"); 
 
         }
     }

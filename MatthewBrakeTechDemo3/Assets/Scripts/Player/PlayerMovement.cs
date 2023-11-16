@@ -46,13 +46,14 @@ public class PlayerMovement : MonoBehaviour
       
         
         
-       updateSprite(); 
-
+       updateSprite();
+        FaceTarget(); 
     }
 
     private void FixedUpdate()
     {
-        rb.MovePosition(rb.position + movement * speed * Time.fixedDeltaTime); 
+        rb.MovePosition(rb.position + movement * speed * Time.fixedDeltaTime);
+        //FaceTarget();
     }
 
     void updateSprite()
@@ -84,6 +85,28 @@ public class PlayerMovement : MonoBehaviour
 
     void FaceTarget()
     {
-        
+        EnemyController activeEnemy = GameManager.instance.activeEnemy;
+
+        Vector3 targetDirection = activeEnemy.transform.position - transform.position;
+        //float angle = Mathf.Atan2(targetDirection.y, targetDirection.x) * Mathf.Rad2Deg;
+
+        //transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward); 
+
+        if (targetDirection.x > 0)
+        {
+            spriteRenderer.flipX = false;
+        }
+        else
+        {
+            spriteRenderer.flipX = true;
+        }
+        if(targetDirection.y > transform.position.y)
+        {
+            spriteRenderer.sprite = spriteUp; 
+        }
+        else
+        {
+            spriteRenderer.sprite = spriteDown; 
+        }
     }
 }
