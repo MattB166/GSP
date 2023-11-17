@@ -68,7 +68,18 @@ public class PlayerController : MonoBehaviour
             if(collider.CompareTag("Enemy"))
             {
                 enemyInRange = true;
-                currentEnemy = collider.gameObject;
+                if(collider.gameObject == GameManager.instance.activeEnemy.gameObject)
+                {
+                    currentEnemy = collider.gameObject;
+                }
+                else
+                {
+                    break; 
+                }
+                
+                
+                
+                
 
                 AutoAttackButton.interactable = true; AutoAttackButton.enabled = true;
                 
@@ -152,6 +163,10 @@ public class PlayerController : MonoBehaviour
             Debug.Log("Melee Attack! with damage of: " + playerStats.baseDamage);
             ///damage enemy with base damage 
 
+        }
+        else
+        {
+            Debug.Log("Cant attack. No current enemy"); 
         }
     }
 
