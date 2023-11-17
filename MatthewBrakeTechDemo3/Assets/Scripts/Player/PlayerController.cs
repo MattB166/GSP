@@ -12,9 +12,9 @@ public class PlayerController : MonoBehaviour
     public ArcaneMissile ArcaneMissile;
     public FrostLance frostLance;
     public MageArmor MageArmor;
-    public Button AutoAttack;
+    public Button AutoAttackButton;
     public Image AutoAttackButtonImage;
-    private bool AutoAttackEnabled;  
+    private bool BoolAutoAttackEnabled;
     private float nextAttackTime = 0f;
     private GameObject currentEnemy;
     float maxHealth;
@@ -35,6 +35,7 @@ public class PlayerController : MonoBehaviour
     {
         CheckDetectionRadius(); 
         updateAutoAttackButton();
+        
     }
 
     void initialisePlayer()
@@ -68,27 +69,37 @@ public class PlayerController : MonoBehaviour
             {
                 enemyInRange = true;
                 currentEnemy = collider.gameObject;
+
+                AutoAttackButton.interactable = true; AutoAttackButton.enabled = true;
                 
-                AutoAttack.interactable = true;
-               
                 break;
             }
         }
         nextAttackTime += Time.deltaTime;
         if (enemyInRange && meleeAttackSpeed <= nextAttackTime)
-        {
-            MeleeAttack();
-            nextAttackTime = 0;
+        { 
+
+            if(BoolAutoAttackEnabled)
+            {
+              MeleeAttack();
+              nextAttackTime = 0;
+            }
+           else if(!BoolAutoAttackEnabled)
+            {
+
+            }
+           
             //AutoAttack.interactable = true; 
            //need a way to un set the auto attack button 
         }
         else if(!enemyInRange)
         {
-           Debug.Log("Not attacking");
+            //Debug.Log("Not attacking");
             animator.SetBool("IsAutoAttacking",false);
             AutoAttackButtonImage.color = Color.red;
             
-            AutoAttack.interactable = false; 
+            AutoAttackButton.interactable = true; 
+            AutoAttackButton.enabled = true;
             currentEnemy = null; 
         }
     }
@@ -98,21 +109,23 @@ public class PlayerController : MonoBehaviour
         if (currentEnemy != null)
         {
             AutoAttackButtonImage.color = Color.white;
-            AutoAttack.interactable = true;
+            AutoAttackButton.interactable = true;
             //ToggleAutoAttack();
         }
-        else
+        else if(currentEnemy != null) 
         {
             AutoAttackButtonImage.color = Color.red;
-            AutoAttack.interactable = false;
+            AutoAttackButton.interactable = true; 
             //ToggleAutoAttack();
         }
     }
 
     public void ToggleAutoAttack()
     {
-        AutoAttackEnabled = !AutoAttackEnabled;
-        if(!AutoAttackEnabled)
+        Debug.Log("Pressing Toggle Button");
+        
+        BoolAutoAttackEnabled = !BoolAutoAttackEnabled;
+        if(!BoolAutoAttackEnabled)
         {
             AutoAttackButtonImage.color = Color.red;
             Debug.Log("auto attack disabled");
