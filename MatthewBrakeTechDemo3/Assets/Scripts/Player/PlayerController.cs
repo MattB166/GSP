@@ -90,9 +90,10 @@ public class PlayerController : MonoBehaviour
         if (enemyInRange && meleeAttackSpeed <= nextAttackTime)
         { 
 
-            if(BoolAutoAttackEnabled)
+            if(BoolAutoAttackEnabled) ////doesnt stop if auto attack disabled 
             {
-              MeleeAttack();
+                //animator.SetBool("IsAutoAttacking,", true); 
+                MeleeAttack();
               nextAttackTime = 0;
             }
            else if(!BoolAutoAttackEnabled)
