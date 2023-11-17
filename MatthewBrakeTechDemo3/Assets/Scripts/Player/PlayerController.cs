@@ -74,7 +74,7 @@ public class PlayerController : MonoBehaviour
                 }
                 else
                 {
-                    break; 
+                    break; ////check to make sure the in range enemy is my target 
                 }
                 
                 
@@ -83,7 +83,7 @@ public class PlayerController : MonoBehaviour
 
                 AutoAttackButton.interactable = true; AutoAttackButton.enabled = true;
                 
-                break;
+                //break;
             }
         }
         nextAttackTime += Time.deltaTime;
