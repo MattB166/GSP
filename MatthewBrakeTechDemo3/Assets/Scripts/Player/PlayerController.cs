@@ -98,7 +98,7 @@ public class PlayerController : MonoBehaviour
             }
            else if(!BoolAutoAttackEnabled)
             {
-
+                animator.SetBool("IsAutoAttacking", false);
             }
            
             //AutoAttack.interactable = true; 
