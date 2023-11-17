@@ -2371,7 +2371,7 @@ MonoBehaviour:
   frostLance: {fileID: 0}
   MageArmor: {fileID: 0}
   AutoAttackButton: {fileID: 549330004}
-  AutoAttackButtonImage: {fileID: 549330005}
+  AutoAttackButtonImage: {fileID: 245817339}
 --- !u!61 &835751264
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -106,13 +106,13 @@ public class PlayerController : MonoBehaviour
 
     void updateAutoAttackButton()
     {
-        if (currentEnemy != null)
+        if (currentEnemy != null && BoolAutoAttackEnabled)
         {
             AutoAttackButtonImage.color = Color.white;
             AutoAttackButton.interactable = true;
             //ToggleAutoAttack();
         }
-        else if(currentEnemy != null) 
+        else if(currentEnemy != null && !BoolAutoAttackEnabled) 
         {
             AutoAttackButtonImage.color = Color.red;
             AutoAttackButton.interactable = true; 
