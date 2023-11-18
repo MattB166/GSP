@@ -8,6 +8,7 @@ public class FrostLance : Ability
 {
 
     public float basePower = 10f;
+    public float coolDown = 0.5f;
     public int MaxStacks = 5;
     public float slowEffectPerStack = 0.15f;
     public float stackingDuration = 5.0f;

@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
     public Slider castBarSlider; 
 
     public EnemyController activeEnemy;
+    public Ability activeAbility; 
 
     private void Awake()
     {
@@ -64,7 +65,7 @@ public class GameManager : MonoBehaviour
         
     }
 
-    public void SetActiveCast()
+    public void SetActiveCast(Ability activeAbility)
     {
 
     }

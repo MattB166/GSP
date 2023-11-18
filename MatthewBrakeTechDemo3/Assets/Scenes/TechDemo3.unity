@@ -1367,7 +1367,7 @@ Transform:
   m_GameObject: {fileID: 465414789}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.42, y: 0, z: 0}
+  m_LocalPosition: {x: 6.25, y: 0, z: 0}
   m_LocalScale: {x: 2.918, y: 2.918, z: 2.918}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2609,6 +2609,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerStats: {fileID: 11400000, guid: a6e894ef5f3c58a4d8633d65261b8430, type: 2}
+  fireBall: {fileID: 11400000, guid: ca8bf4cd95ea1bc4fbd01336c99ab7a5, type: 2}
+  Armor: {fileID: 11400000, guid: 9e624dbb35280134089341e326719767, type: 2}
+  Missile: {fileID: 11400000, guid: 6f3c291a8f4108e4492d8913a6bf3bed, type: 2}
+  FrostLance: {fileID: 11400000, guid: 6765c2c38f865e14b901dc6cf6047217, type: 2}
   animator: {fileID: 835751262}
   AutoAttackButton: {fileID: 549330004}
   AutoAttackButtonImage: {fileID: 245817339}

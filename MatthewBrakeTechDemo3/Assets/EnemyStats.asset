@@ -17,5 +17,5 @@ MonoBehaviour:
   baseDamage: 25
   defenceMultiplier: 0.8
   rangedAttackSpeed: 3
-  detectionRadius: 5
+  detectionRadius: 3
   icon: {fileID: -6311986064991273897, guid: 1bd2a40ca6056dd4cbaca8c8e5748a6d, type: 3}

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq.Expressions;
 using System.Security.Cryptography;
 using UnityEngine;
 using UnityEngine.UI;
@@ -7,6 +8,10 @@ using UnityEngine.UI;
 public class PlayerController : MonoBehaviour
 {
     public PlayerStats playerStats;
+    public Ability fireBall;
+    public Ability Armor;
+    public Ability Missile;
+    public Ability FrostLance; 
     public Animator animator;
     public Button AutoAttackButton;
     public Image AutoAttackButtonImage;
@@ -25,7 +30,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         initialisePlayer();
-        
+        Debug.Log("Abilities are: " + playerStats.abilities);
     }
 
     // Update is called once per frame
@@ -45,6 +50,10 @@ public class PlayerController : MonoBehaviour
         currentMana = playerStats.maxMana; 
         meleeAttackSpeed = playerStats.meleeAttackSpeed;
         defenceMultiplier = playerStats.defenceMultiplier;
+        playerStats.abilities.Add(Armor);
+        playerStats.abilities.Add(Missile);
+        playerStats.abilities.Add(FrostLance);
+        playerStats.abilities.Add(fireBall);
         
     }
 

@@ -15,8 +15,8 @@ public class PlayerStats : ScriptableObject
     public float defenceMultiplier;
     public float manaRegen;
     public float detectionRadius; 
-    public List<GameObject> abilities;
-    public List<GameObject> activeAbilities; 
+    public List<Ability> abilities;
+    public List<Ability> activeAbilities; 
     
     
     
