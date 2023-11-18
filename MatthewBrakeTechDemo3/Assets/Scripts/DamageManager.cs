@@ -1,18 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.Serialization;
 using TMPro;
 using UnityEngine;
 
 public class DamageManager : MonoBehaviour
 {
-    public static void DealEnemyDamage(GameObject target, float damage)
+    public static void DealEnemyDamage(GameObject target, float baseDamage)
     {
         EnemyController enemy = target.GetComponent<EnemyController>();
 
         if(enemy != null)
         {
-            enemy.TakeDamage(damage);
-            Debug.Log("Enemy Taken damge of: " + damage);
+            float modifiedDamage = enemy.CalculateModifiedDamage(baseDamage);
+            enemy.TakeDamage(modifiedDamage);
+            Debug.Log("Enemy Taken damge of: " + modifiedDamage);
         }
         else
         {
@@ -20,14 +22,15 @@ public class DamageManager : MonoBehaviour
         }
     }
 
-    public static void DealPlayerDamage(GameObject target, float damage)
+    public static void DealPlayerDamage(GameObject target, float baseDamage)
     {
         PlayerController player = target.GetComponent<PlayerController>();
 
         if(player != null)
         {
-            player.TakeDamage(damage);
-            Debug.Log("Player Taken damage of: " + damage); 
+            float modifiedDamage = player.CalculateModifiedDamage(baseDamage);
+            player.TakeDamage(modifiedDamage);
+            Debug.Log("Player Taken damage of: " + modifiedDamage); 
         }
         else
         {

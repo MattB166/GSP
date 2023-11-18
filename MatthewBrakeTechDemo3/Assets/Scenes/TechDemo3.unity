@@ -583,6 +583,7 @@ MonoBehaviour:
   enemyIcon: {fileID: 56263764}
   enemyHealthSlider: {fileID: 2040486169}
   enemyManaSlider: {fileID: 1670591901}
+  castBarSlider: {fileID: 0}
   activeEnemy: {fileID: 0}
 --- !u!4 &152135235
 Transform:
@@ -1191,7 +1192,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -668710475788370483, guid: 4d97d9b08b1e8f043ba7099b3f5e6811, type: 3}
+  m_Sprite: {fileID: -5222157776141272415, guid: aceba10b413908343972cb029cc98e1c, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1617,7 +1618,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -5593059296966965431, guid: 7ebd93035bb7c3b44b57b49a5016f543, type: 3}
+  m_Sprite: {fileID: -2623188754982377409, guid: fac3d2504bd35314495094d1f564c4cc, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2717,7 +2718,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 1524411312157210569, guid: 18f34fb46cab6ef43841ec2b4aa181aa, type: 3}
+  m_Sprite: {fileID: -8638572301295525184, guid: 41b403f3ec7bf0b4d9896905161730fb, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -4487,7 +4488,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -6607481912129624618, guid: 4a7058947f357cd4d8d91857e5523d89, type: 3}
+  m_Sprite: {fileID: 8100298829806652019, guid: 3c2f6f824dfd7844b88e66273e29f8dd, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

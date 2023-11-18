@@ -22,6 +22,7 @@ public class PlayerController : MonoBehaviour
     float maxMana;
     float currentMana;
     float meleeAttackSpeed;
+    float defenceMultiplier;
     public SpriteRenderer playerSpriteColour; 
 
     // Start is called before the first frame update
@@ -47,6 +48,7 @@ public class PlayerController : MonoBehaviour
         maxMana = playerStats.maxMana;
         currentMana = playerStats.maxMana; 
         meleeAttackSpeed = playerStats.meleeAttackSpeed;
+        defenceMultiplier = playerStats.defenceMultiplier;
         
     }
 
@@ -190,7 +192,8 @@ public class PlayerController : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
-        damage -= currentHealth;
+        // damage -= currentHealth;
+        float modifiedDamage = CalculateModifiedDamage(damage);
 
     }
 
@@ -199,7 +202,13 @@ public class PlayerController : MonoBehaviour
         yield return new WaitForSeconds(castTime);
     }
 
-    
+    public float CalculateModifiedDamage(float baseDamage)
+    {
+        float minDamage = baseDamage * 0.75f;
+        float maxDamage = baseDamage * 1.25f;
+        float modifiedDamage = Random.Range(minDamage,maxDamage) * defenceMultiplier;
+        return modifiedDamage;
+    }
 
     
 

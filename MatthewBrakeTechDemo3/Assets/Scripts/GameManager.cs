@@ -10,8 +10,9 @@ public class GameManager : MonoBehaviour
     public GameObject enemyUIPanel;
     public Image enemyIcon;
     public Slider enemyHealthSlider;
-    public Slider enemyManaSlider; 
+    public Slider enemyManaSlider;
 
+    public Slider castBarSlider; 
 
     public EnemyController activeEnemy;
 
@@ -61,5 +62,10 @@ public class GameManager : MonoBehaviour
         enemyIcon.sprite = activeEnemy.EnemyStats.icon;
         enemyHealthSlider.value = activeEnemy.currentHealth; 
         
+    }
+
+    public void SetActiveCast()
+    {
+
     }
 }

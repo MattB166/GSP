@@ -12,8 +12,10 @@ public class EnemyController : MonoBehaviour
    public TextMeshProUGUI text; //for testing 
                                 ////need reference to UI so can change current target  
 
-    public float maxHealth;
+   public float maxHealth;
     public float currentHealth;
+   public float defenceMultiplier;
+    public float baseDamage;
     EnemyController currentActiveEnemy;
     public Vector3 offset = new Vector3(0, 5, 0);
     public GameObject floatingDamage;
@@ -100,6 +102,8 @@ public class EnemyController : MonoBehaviour
        // Debug.Log("Enemy has " + (EnemyStats.maxHealth) + " Health");
          maxHealth = EnemyStats.maxHealth;
          currentHealth = EnemyStats.currentHealth;
+        defenceMultiplier = EnemyStats.defenceMultiplier;
+        baseDamage = EnemyStats.baseDamage;
     }
 
     private void OnDrawGizmos()
@@ -124,7 +128,7 @@ public class EnemyController : MonoBehaviour
                 PlayerInRange = true;
                 playerTransform = collider.transform;
                 
-                DamageManager.DealPlayerDamage(collider.gameObject, EnemyStats.baseDamage); 
+                DamageManager.DealPlayerDamage(collider.gameObject, baseDamage); 
                 break;
             }
         }
@@ -143,18 +147,7 @@ public class EnemyController : MonoBehaviour
 
   public void TakeDamage(float damage)   ///doesnt currently spawn at right position 
   {
-        currentHealth -= damage;
-        Debug.Log("Target Transform is: " + transform.position);
-        DamageManager.ShowFloatingDamage(damage, floatingDamage, transform, offset);
-        Debug.Log("Spawning text at: " + transform + ", " + transform + offset);
-        if(currentHealth <= 0)
-        {
-            ///die 
-        }
-        else
-        {
-
-        }
+        float modifiedDamage = CalculateModifiedDamage(damage);
   }
 
 
@@ -165,4 +158,11 @@ public class EnemyController : MonoBehaviour
     }
 
    
+   public float CalculateModifiedDamage(float baseDamage)
+    {
+        float minDamage = baseDamage * 0.75f;
+        float maxDamage = baseDamage * 1.25f;
+        float modifiedDamage = Random.Range(minDamage, maxDamage) * defenceMultiplier;
+        return modifiedDamage; 
+    }
 }
