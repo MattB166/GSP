@@ -8,10 +8,6 @@ public class PlayerController : MonoBehaviour
 {
     public PlayerStats playerStats;
     public Animator animator;
-    public FireBall fireBall;
-    public ArcaneMissile ArcaneMissile;
-    public FrostLance frostLance;
-    public MageArmor MageArmor;
     public Button AutoAttackButton;
     public Image AutoAttackButtonImage;
     private bool BoolAutoAttackEnabled;

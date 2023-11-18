@@ -3,16 +3,22 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-[CreateAssetMenu(fileName = "New Ability", menuName = "Abilities/FireBall")]
-public class FireBall : ScriptableObject
+[CreateAssetMenu(fileName = "New Ability", menuName = "Abilities/Fire Ball")]
+public class FireBall : Ability
 {
-   
-    
-    public float manaCost = 120;
-    public float castingTime = 3f;
-    public float basePower = 35;
-    public float additionalDamage = 4;
+
+
+    public float basePower = 35f;
+    public float additionalDamage = 4f;
     public float additionalDamageInterval = 3f;
     public float debuffDuration = 15f;
-    public float critMultiplier = 2f; 
+    public float critMultiplier = 2f;
+
+
+
+
+    public override void ExecuteAbility()
+    {
+        //executing Fireball 
+    }
 }
