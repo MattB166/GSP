@@ -71,6 +71,7 @@ public class PlayerController : MonoBehaviour
                 if(collider.gameObject == GameManager.instance.activeEnemy.gameObject)
                 {
                     currentEnemy = collider.gameObject;
+                    
                 }
                 else
                 {
@@ -93,7 +94,8 @@ public class PlayerController : MonoBehaviour
             if(BoolAutoAttackEnabled) ////doesnt stop if auto attack disabled 
             {
                 //animator.SetBool("IsAutoAttacking,", true); 
-                MeleeAttack();
+                //MeleeAttack();
+                DamageManager.DealMeleeDamage(currentEnemy, playerStats.baseDamage);
               nextAttackTime = 0;
             }
            else if(!BoolAutoAttackEnabled)
@@ -130,6 +132,17 @@ public class PlayerController : MonoBehaviour
             AutoAttackButton.interactable = true; 
             //ToggleAutoAttack();
         }
+        if(currentEnemy == null && !BoolAutoAttackEnabled)
+        {
+            
+            AutoAttackButtonImage.color = Color.red;
+            AutoAttackButton.interactable = true;
+        }
+        else if (currentEnemy == null && BoolAutoAttackEnabled)
+        {
+            AutoAttackButtonImage.color = Color.white;
+            AutoAttackButton.interactable = true;
+        }
     }
 
     public void ToggleAutoAttack()
@@ -153,22 +166,28 @@ public class PlayerController : MonoBehaviour
 
 
     
-    void MeleeAttack()
-    {
+    //void MeleeAttack()
+    //{
         
        
 
-        if(currentEnemy != null)
-        {
-            animator.SetBool("IsAutoAttacking", true);
-            Debug.Log("Melee Attack! with damage of: " + playerStats.baseDamage);
-            ///damage enemy with base damage 
+    //    if(currentEnemy != null)
+    //    {
+    //        animator.SetBool("IsAutoAttacking", true);
+    //        Debug.Log("Melee Attack! with damage of: " + playerStats.baseDamage);
+    //        ///damage enemy with base damage 
+            
+    //    }
+    //    else
+    //    {
+    //        Debug.Log("Cant attack. No current enemy"); 
+    //    }
+    //}
 
-        }
-        else
-        {
-            Debug.Log("Cant attack. No current enemy"); 
-        }
+   public void TakeDamage(float damage)
+    {
+        damage -= currentHealth;
+
     }
 
     

@@ -118,6 +118,7 @@ public class EnemyController : MonoBehaviour
             if (collider.CompareTag("Player"))
             {
                 PlayerInRange = true;
+                DamageManager.DealPlayerMeleeDamage(collider.gameObject, EnemyStats.baseDamage); 
                 break;
             }
         }
@@ -125,6 +126,7 @@ public class EnemyController : MonoBehaviour
         {
            // Debug.Log("Player in range. Attack Player");
             //aggro triggered, lock onto player 
+           
         }
         else
         {
@@ -132,8 +134,16 @@ public class EnemyController : MonoBehaviour
         }
     }
 
-  void TakeDamage(int damage)
+  public void TakeDamage(float damage)
   {
+        currentHealth -= damage; 
+        if(currentHealth <= 0)
+        {
+            ///die 
+        }
+        else
+        {
 
+        }
   }
 }
