@@ -184,7 +184,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DestroyTime: 3
-  offset: {x: 0, y: 6}
+  offset: {x: 0, y: 0}
   RandomiseIntensity: {x: 1, y: 1}
 --- !u!1 &9034999328111912135
 GameObject:

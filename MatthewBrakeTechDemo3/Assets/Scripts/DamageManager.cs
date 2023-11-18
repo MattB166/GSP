@@ -37,6 +37,7 @@ public class DamageManager : MonoBehaviour
 
     public static void ShowFloatingDamage(float damage, GameObject floatingDamage, Transform Targettransform, Vector3 offset)
     {
+        
         Vector3 spawnPos = Targettransform.position + offset;
 
         var go = Instantiate(floatingDamage, spawnPos, Quaternion.identity, Targettransform);

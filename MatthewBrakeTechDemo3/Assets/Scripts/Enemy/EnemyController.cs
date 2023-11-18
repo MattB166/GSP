@@ -18,6 +18,7 @@ public class EnemyController : MonoBehaviour
     public Vector3 offset = new Vector3(0, 5, 0);
     public GameObject floatingDamage;
      
+     
     
     // Start is called before the first frame update
     void Start()
@@ -140,10 +141,12 @@ public class EnemyController : MonoBehaviour
         }
     }
 
-  public void TakeDamage(float damage)
+  public void TakeDamage(float damage)   ///doesnt currently spawn at right position 
   {
         currentHealth -= damage;
+        Debug.Log("Target Transform is: " + transform.position);
         DamageManager.ShowFloatingDamage(damage, floatingDamage, transform, offset);
+        Debug.Log("Spawning text at: " + transform + ", " + transform + offset);
         if(currentHealth <= 0)
         {
             ///die 
