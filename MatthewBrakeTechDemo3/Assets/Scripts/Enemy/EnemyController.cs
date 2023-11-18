@@ -15,6 +15,8 @@ public class EnemyController : MonoBehaviour
     public float maxHealth;
     public float currentHealth;
     EnemyController currentActiveEnemy;
+    public Vector3 offset = new Vector3(0, 5, 0);
+    public GameObject floatingDamage;
      
     
     // Start is called before the first frame update
@@ -112,21 +114,25 @@ public class EnemyController : MonoBehaviour
         Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, EnemyStats.detectionRadius);
 
         bool PlayerInRange = false;
+        Transform playerTransform = null;
 
         foreach (Collider2D collider in colliders)
         {
             if (collider.CompareTag("Player"))
             {
                 PlayerInRange = true;
-                DamageManager.DealPlayerMeleeDamage(collider.gameObject, EnemyStats.baseDamage); 
+                playerTransform = collider.transform;
+                
+                DamageManager.DealPlayerDamage(collider.gameObject, EnemyStats.baseDamage); 
                 break;
             }
         }
         if (PlayerInRange)
         {
-           // Debug.Log("Player in range. Attack Player");
+            //MoveTowardsPlayer(playerTransform.position);   ////setting aggro 
+            // Debug.Log("Player in range. Attack Player");
             //aggro triggered, lock onto player 
-           
+
         }
         else
         {
@@ -136,7 +142,8 @@ public class EnemyController : MonoBehaviour
 
   public void TakeDamage(float damage)
   {
-        currentHealth -= damage; 
+        currentHealth -= damage;
+        DamageManager.ShowFloatingDamage(damage, floatingDamage, transform, offset);
         if(currentHealth <= 0)
         {
             ///die 
@@ -146,4 +153,13 @@ public class EnemyController : MonoBehaviour
 
         }
   }
+
+
+    public void MoveTowardsPlayer(Vector3 playerPos)
+    {
+        Vector3 direction = (playerPos - transform.position).normalized;    
+        transform.Translate(direction * 1f * Time.deltaTime);
+    }
+
+   
 }

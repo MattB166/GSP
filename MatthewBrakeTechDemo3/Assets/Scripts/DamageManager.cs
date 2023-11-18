@@ -1,10 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class DamageManager : MonoBehaviour
 {
-    public static void DealMeleeDamage(GameObject target, float damage)
+    public static void DealEnemyDamage(GameObject target, float damage)
     {
         EnemyController enemy = target.GetComponent<EnemyController>();
 
@@ -19,7 +20,7 @@ public class DamageManager : MonoBehaviour
         }
     }
 
-    public static void DealPlayerMeleeDamage(GameObject target, float damage)
+    public static void DealPlayerDamage(GameObject target, float damage)
     {
         PlayerController player = target.GetComponent<PlayerController>();
 
@@ -34,5 +35,13 @@ public class DamageManager : MonoBehaviour
         }
     }
 
-   
+    public static void ShowFloatingDamage(float damage, GameObject floatingDamage, Transform Targettransform, Vector3 offset)
+    {
+        Vector3 spawnPos = Targettransform.position + offset;
+
+        var go = Instantiate(floatingDamage, spawnPos, Quaternion.identity, Targettransform);
+        go.GetComponentInChildren<TextMeshProUGUI>().text = damage.ToString();
+    }
+
+
 }

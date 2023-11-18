@@ -22,6 +22,7 @@ public class PlayerController : MonoBehaviour
     float maxMana;
     float currentMana;
     float meleeAttackSpeed;
+    public SpriteRenderer playerSpriteColour; 
 
     // Start is called before the first frame update
     void Start()
@@ -94,8 +95,10 @@ public class PlayerController : MonoBehaviour
             if(BoolAutoAttackEnabled) ////doesnt stop if auto attack disabled 
             {
                 //animator.SetBool("IsAutoAttacking,", true); 
-                //MeleeAttack();
-                DamageManager.DealMeleeDamage(currentEnemy, playerStats.baseDamage);
+                MeleeAttack();
+                //animator.SetBool("IsAutoAttacking", true);
+                DamageManager.DealEnemyDamage(currentEnemy, playerStats.baseDamage);
+                
               nextAttackTime = 0;
             }
            else if(!BoolAutoAttackEnabled)
@@ -110,6 +113,7 @@ public class PlayerController : MonoBehaviour
         {
             //Debug.Log("Not attacking");
             animator.SetBool("IsAutoAttacking",false);
+            
             AutoAttackButtonImage.color = Color.red;
             
             AutoAttackButton.interactable = true; 
@@ -165,30 +169,37 @@ public class PlayerController : MonoBehaviour
     }
 
 
-    
-    //void MeleeAttack()
-    //{
-        
-       
 
-    //    if(currentEnemy != null)
-    //    {
-    //        animator.SetBool("IsAutoAttacking", true);
-    //        Debug.Log("Melee Attack! with damage of: " + playerStats.baseDamage);
-    //        ///damage enemy with base damage 
-            
-    //    }
-    //    else
-    //    {
-    //        Debug.Log("Cant attack. No current enemy"); 
-    //    }
-    //}
+    void MeleeAttack()
+    {
 
-   public void TakeDamage(float damage)
+
+
+        if (currentEnemy != null)
+        {
+            animator.SetBool("IsAutoAttacking", true);
+            Debug.Log("Melee Attack! with damage of: " + playerStats.baseDamage);
+            ///damage enemy with base damage 
+
+        }
+        else
+        {
+            Debug.Log("Cant attack. No current enemy");
+        }
+    }
+
+    public void TakeDamage(float damage)
     {
         damage -= currentHealth;
 
     }
+
+    private IEnumerator isCasting(float castTime)
+    {
+        yield return new WaitForSeconds(castTime);
+    }
+
+    
 
     
 
