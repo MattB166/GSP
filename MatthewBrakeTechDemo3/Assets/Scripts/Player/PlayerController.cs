@@ -185,7 +185,7 @@ public class PlayerController : MonoBehaviour
         if (currentEnemy != null)
         {
             animator.SetBool("IsAutoAttacking", true);
-            Debug.Log("Melee Attack! with damage of: " + playerStats.baseDamage);
+            //Debug.Log("Melee Attack! with damage of: " + playerStats.baseDamage);
             ///damage enemy with base damage 
 
         }

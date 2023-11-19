@@ -27,7 +27,7 @@ public class DamageManager : MonoBehaviour
                 {
                     float modifiedDamage = enemy.CalculateModifiedDamage(baseDamage);
                     enemy.TakeDamage(modifiedDamage);
-                    Debug.Log("Enemy Taken damge of: " + modifiedDamage);
+                   // Debug.Log("Enemy Taken damage of: " + modifiedDamage);
                 }
                
             }
@@ -52,7 +52,7 @@ public class DamageManager : MonoBehaviour
         {
             float modifiedDamage = player.CalculateModifiedDamage(baseDamage);
             player.TakeDamage(modifiedDamage);
-            Debug.Log("Player Taken damage of: " + modifiedDamage); 
+            //Debug.Log("Player Taken damage of: " + modifiedDamage); 
         }
         else
         {
