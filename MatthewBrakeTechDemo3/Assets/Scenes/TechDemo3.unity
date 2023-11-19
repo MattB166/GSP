@@ -585,6 +585,7 @@ MonoBehaviour:
   enemyManaSlider: {fileID: 1670591901}
   castBarSlider: {fileID: 0}
   activeEnemy: {fileID: 0}
+  activeAbility: {fileID: 0}
 --- !u!4 &152135235
 Transform:
   m_ObjectHideFlags: 0

@@ -45,7 +45,7 @@ public class DamageManager : MonoBehaviour
 
         var go = Instantiate(floatingDamage, spawnPos, Quaternion.identity, Targettransform);
         go.GetComponentInChildren<TextMeshProUGUI>().text = damage.ToString();
-    }
+    } 
 
 
 }
