@@ -101,9 +101,9 @@ public class PlayerController : MonoBehaviour
 
             if(BoolAutoAttackEnabled) ////doesnt stop if auto attack disabled 
             {
-                //animator.SetBool("IsAutoAttacking,", true); 
+                
                 MeleeAttack();
-                //animator.SetBool("IsAutoAttacking", true);
+               
                 DamageManager.DealEnemyDamage(currentEnemy, playerStats.baseDamage);
                 
               nextAttackTime = 0;
@@ -213,6 +213,11 @@ public class PlayerController : MonoBehaviour
         float maxDamage = baseDamage * 1.25f;
         float modifiedDamage = Random.Range(minDamage,maxDamage) * defenceMultiplier;
         return modifiedDamage;
+    }
+
+    public void FireBall()
+    {
+        
     }
 
     

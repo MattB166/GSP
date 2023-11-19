@@ -6,24 +6,46 @@ using UnityEngine;
 
 public class DamageManager : MonoBehaviour
 {
+    public static float hitChance = 80;
+   
+    
     public static void DealEnemyDamage(GameObject target, float baseDamage)
     {
-        EnemyController enemy = target.GetComponent<EnemyController>();
-
-        if(enemy != null)
+        if (IsHit(hitChance))
         {
-            float modifiedDamage = enemy.CalculateModifiedDamage(baseDamage);
-            enemy.TakeDamage(modifiedDamage);
-            Debug.Log("Enemy Taken damge of: " + modifiedDamage);
+            bool isCritical = IsCriticalHit();
+            EnemyController enemy = target.GetComponent<EnemyController>();
+
+            if (enemy != null)
+            {
+                if(isCritical)
+                {
+                    baseDamage *= 2;
+                    Debug.Log("critical hit taken. damage of: " + baseDamage);
+                }
+                else
+                {
+                    float modifiedDamage = enemy.CalculateModifiedDamage(baseDamage);
+                    enemy.TakeDamage(modifiedDamage);
+                    Debug.Log("Enemy Taken damge of: " + modifiedDamage);
+                }
+               
+            }
+            else
+            {
+                Debug.LogError("Target Missing Enemy controller component");
+            }
+
         }
         else
         {
-            Debug.LogError("Target Missing Enemy controller component"); 
+            Debug.Log("Attack Missed");
         }
     }
 
     public static void DealPlayerDamage(GameObject target, float baseDamage)
     {
+       
         PlayerController player = target.GetComponent<PlayerController>();
 
         if(player != null)
@@ -46,6 +68,20 @@ public class DamageManager : MonoBehaviour
         var go = Instantiate(floatingDamage, spawnPos, Quaternion.identity, Targettransform);
         go.GetComponentInChildren<TextMeshProUGUI>().text = damage.ToString();
     } 
+
+    public static bool IsHit(float hitChance)
+    {
+        float randomValue = Random.value * 100;
+
+        return randomValue <= hitChance; 
+    }
+    private static bool IsCriticalHit()
+    {
+        float criticalChance = 20;
+        float randomCritical = Random.value * 100;
+
+        return randomCritical <= criticalChance;
+    }
 
 
 }

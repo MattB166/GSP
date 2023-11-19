@@ -142,6 +142,8 @@ public class EnemyController : MonoBehaviour
         else
         {
             //Debug.Log("Player Out of range");
+            //playerTransform = null;
+            //PlayerInRange = false; 
         }
     }
 

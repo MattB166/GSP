@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
 
     public EnemyController activeEnemy;
     public Ability activeAbility; 
+    //public List<Ability> activeAbilityList;
 
     private void Awake()
     {
@@ -65,8 +66,10 @@ public class GameManager : MonoBehaviour
         
     }
 
-    public void SetActiveCast(Ability activeAbility)
+    public void SetActiveCast(Ability ability)
     {
-
+        activeAbility = ability;
+        
+        //activeAbilityList.Add(activeAbility); ////smth like this? 
     }
 }
