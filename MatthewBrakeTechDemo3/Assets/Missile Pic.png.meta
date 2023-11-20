@@ -152,7 +152,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Missile Pic_0: -5222157776141272415
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

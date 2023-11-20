@@ -152,7 +152,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Frost Lance Pic_0: -2623188754982377409
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

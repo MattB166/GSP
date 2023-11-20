@@ -66,7 +66,7 @@ public class GameManager : MonoBehaviour
 
         if(activeEnemy != null)
         {
-            Debug.Log("Updating UI for active enemy: " + activeEnemy.name);
+           // Debug.Log("Updating UI for active enemy: " + activeEnemy.name);
             enemyIcon.sprite = activeEnemy.EnemyStats.icon;
             enemyHealthSlider.value = activeEnemy.currentHealth;
         }

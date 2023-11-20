@@ -104,7 +104,8 @@ public class PlayerController : MonoBehaviour
                 
                 MeleeAttack();
                
-                DamageManager.DealEnemyDamage(currentEnemy, playerStats.baseDamage);
+               
+               
                 
               nextAttackTime = 0;
             }
@@ -185,8 +186,7 @@ public class PlayerController : MonoBehaviour
         if (currentEnemy != null)
         {
             animator.SetBool("IsAutoAttacking", true);
-            //Debug.Log("Melee Attack! with damage of: " + playerStats.baseDamage);
-            ///damage enemy with base damage 
+            DamageManager.DealEnemyDamage(currentEnemy, playerStats.baseDamage);
 
         }
         else

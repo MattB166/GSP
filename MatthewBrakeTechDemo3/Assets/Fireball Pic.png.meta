@@ -152,7 +152,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Fireball Pic_0: 8100298829806652019
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -61,9 +61,13 @@ public class DamageManager : MonoBehaviour
         }
     }
 
-    public static void ShowDamage(int damage, GameObject floatingDamage, Transform pos)
+    public static void ShowDamage(int damage, GameObject damagePrefab, Transform transform)
     {
-       
+        Vector3 offset = new Vector3(0, 2, 0); 
+        var go = Instantiate(damagePrefab, transform.position + offset, Quaternion.identity);
+        Debug.Log("Instantiating Damage prefab: " + " pos: " + transform.position + offset);
+        go.GetComponent<TextMesh>().text = damage.ToString();
+        Destroy(go, 1f); 
     }
 
     public static bool IsHit(float hitChance)

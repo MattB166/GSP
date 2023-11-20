@@ -1442,7 +1442,7 @@ MonoBehaviour:
   defenceMultiplier: 0
   baseDamage: 0
   offset: {x: 0, y: 5, z: 0}
-  floatingDamage: {fileID: 3144044576336324553, guid: 37a92f075f2307f41a21caa176e61b49, type: 3}
+  floatingDamage: {fileID: 3025089940272494458, guid: 9f0017a0e5c6b764caa0004bc9d1a0f3, type: 3}
 --- !u!61 &465414795
 BoxCollider2D:
   m_ObjectHideFlags: 0
