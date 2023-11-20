@@ -46,19 +46,32 @@ public class DamageManager : MonoBehaviour
 
     public static void DealPlayerDamage(GameObject target, float baseDamage)
     {
-       
-        PlayerController player = target.GetComponent<PlayerController>();
+       if(IsHit(hitChance))
+        {
+            bool isCritical = IsCriticalHit();
+            PlayerController player = target.GetComponent<PlayerController>();
+            if (player != null)
+            {
+                if(isCritical)
+                {
+                    baseDamage *= 2;
+                }
+                else
+                {
+                    float modifiedDamage = player.CalculateModifiedDamage(baseDamage);
+                    player.TakeDamage(modifiedDamage);
+                    //Debug.Log("Player Taken damage of: " + modifiedDamage); 
+                }
 
-        if(player != null)
-        {
-            float modifiedDamage = player.CalculateModifiedDamage(baseDamage);
-            player.TakeDamage(modifiedDamage);
-            //Debug.Log("Player Taken damage of: " + modifiedDamage); 
+            }
+            else
+            {
+                Debug.LogError("Target Missing Player component");
+            }
         }
-        else
-        {
-            Debug.LogError("Target Missing Player component"); 
-        }
+        
+
+        
     }
 
     public static void ShowDamage(int damage, GameObject damagePrefab, Transform transform)

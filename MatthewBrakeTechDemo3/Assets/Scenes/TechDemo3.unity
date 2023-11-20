@@ -1943,7 +1943,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -3181725115456306731, guid: 90bf57ed4f0cfe441a2d8571dd29c1d0, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 90bf57ed4f0cfe441a2d8571dd29c1d0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2618,6 +2618,7 @@ MonoBehaviour:
   AutoAttackButton: {fileID: 549330004}
   AutoAttackButtonImage: {fileID: 245817339}
   playerSpriteColour: {fileID: 0}
+  playerDamagePrefab: {fileID: 2749201941308335401, guid: b90eda939e2e52342b0720999e9250fc, type: 3}
 --- !u!61 &835751264
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3498,7 +3499,7 @@ MonoBehaviour:
   defenceMultiplier: 0
   baseDamage: 0
   offset: {x: 0, y: 5, z: 0}
-  floatingDamage: {fileID: 3144044576336324553, guid: 37a92f075f2307f41a21caa176e61b49, type: 3}
+  floatingDamage: {fileID: 3025089940272494458, guid: 9f0017a0e5c6b764caa0004bc9d1a0f3, type: 3}
 --- !u!50 &1372530307
 Rigidbody2D:
   serializedVersion: 4

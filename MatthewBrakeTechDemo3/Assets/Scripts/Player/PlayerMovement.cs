@@ -6,7 +6,7 @@ public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] float speed;
     private Rigidbody2D rb;
-   [SerializeField] private JoyStickScript thumbStick;
+    [SerializeField] private JoyStickScript thumbStick;
     private Vector2 movement; 
     private SpriteRenderer spriteRenderer;
     public Animator animator;

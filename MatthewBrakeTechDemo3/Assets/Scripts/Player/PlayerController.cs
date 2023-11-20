@@ -24,7 +24,8 @@ public class PlayerController : MonoBehaviour
     float currentMana;
     float meleeAttackSpeed;
     float defenceMultiplier;
-    public SpriteRenderer playerSpriteColour; 
+    public SpriteRenderer playerSpriteColour;
+    public GameObject playerDamagePrefab;
 
     // Start is called before the first frame update
     void Start()
@@ -50,10 +51,7 @@ public class PlayerController : MonoBehaviour
         currentMana = playerStats.maxMana; 
         meleeAttackSpeed = playerStats.meleeAttackSpeed;
         defenceMultiplier = playerStats.defenceMultiplier;
-        playerStats.abilities.Add(Armor);
-        playerStats.abilities.Add(Missile);
-        playerStats.abilities.Add(FrostLance);
-        playerStats.abilities.Add(fireBall);
+       
         
     }
 
@@ -199,7 +197,8 @@ public class PlayerController : MonoBehaviour
     {
         // damage -= currentHealth;
         float modifiedDamage = CalculateModifiedDamage(damage);
-
+        currentHealth -= modifiedDamage;
+        DamageManager.ShowDamage((int)modifiedDamage, playerDamagePrefab, transform);
     }
 
     private IEnumerator isCasting(float castTime)

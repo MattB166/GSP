@@ -11,14 +11,16 @@ public class EnemyController : MonoBehaviour
    public EnemyStats EnemyStats;
    public TextMeshProUGUI text; //for testing 
                                 ////need reference to UI so can change current target  
-
-   public float maxHealth;
+    [Header("Stats")]
+    public float maxHealth;
     public float currentHealth;
-   public float defenceMultiplier;
+    public float defenceMultiplier;
     public float baseDamage;
+    
+    
     EnemyController currentActiveEnemy;
-    public Vector3 offset = new Vector3(0, 5, 0);
     public GameObject floatingDamage;
+    public Vector3 offset = new Vector3(0, 5, 0);
      
      
     
@@ -117,6 +119,7 @@ public class EnemyController : MonoBehaviour
 
         bool PlayerInRange = false;
         Transform playerTransform = null;
+       
 
         foreach (Collider2D collider in colliders)
         {
@@ -124,14 +127,14 @@ public class EnemyController : MonoBehaviour
             {
                 PlayerInRange = true;
                 playerTransform = collider.transform;
-                
+               
                 DamageManager.DealPlayerDamage(collider.gameObject, baseDamage); 
                 break;
             }
         }
         if (PlayerInRange)
         {
-            //MoveTowardsPlayer(playerTransform.position);   ////setting aggro 
+           // MoveTowardsPlayer(playerTransform.position);   ////setting aggro 
             // Debug.Log("Player in range. Attack Player");
             //aggro triggered, lock onto player 
 
@@ -167,4 +170,8 @@ public class EnemyController : MonoBehaviour
         float modifiedDamage = Random.Range(minDamage, maxDamage) * defenceMultiplier;
         return modifiedDamage; 
     }
+
+    
+
+
 }

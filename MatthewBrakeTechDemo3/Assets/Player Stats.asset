@@ -20,6 +20,6 @@ MonoBehaviour:
   baseDamage: 18
   defenceMultiplier: 0.9
   manaRegen: 12
-  detectionRadius: 3
+  detectionRadius: 2
   abilities: []
   activeAbilities: []
