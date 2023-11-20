@@ -149,6 +149,7 @@ public class EnemyController : MonoBehaviour
         float modifiedDamage = CalculateModifiedDamage(damage);
         currentHealth -= modifiedDamage;
         Debug.Log(currentHealth); 
+        
   }
 
 
