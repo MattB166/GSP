@@ -44,25 +44,34 @@ public class GameManager : MonoBehaviour
     }
     public void SetActiveEnemy(EnemyController newEnemy)
     {
-        if(newEnemy != null)
+        if (newEnemy != null)
         {
+            Debug.Log("Setting active enemy: " + newEnemy.name);
             activeEnemy = newEnemy;
         }
         else
         {
             activeEnemy = null;
             enemyIcon.sprite = null;
-            enemyHealthSlider.value = float.MinValue; 
+            enemyHealthSlider.value = float.MinValue;
         }
-        
+
+
+
     }
 
     void updateEnemyUI()
     {
        // enemyUIPanel.SetActive(true);
 
-        enemyIcon.sprite = activeEnemy.EnemyStats.icon;
-        enemyHealthSlider.value = activeEnemy.currentHealth; 
+        if(activeEnemy != null)
+        {
+            Debug.Log("Updating UI for active enemy: " + activeEnemy.name);
+            enemyIcon.sprite = activeEnemy.EnemyStats.icon;
+            enemyHealthSlider.value = activeEnemy.currentHealth;
+        }
+
+       
         
     }
 

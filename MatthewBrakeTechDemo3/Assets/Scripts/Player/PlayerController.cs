@@ -68,8 +68,8 @@ public class PlayerController : MonoBehaviour
     {
         Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, playerStats.detectionRadius);
 
-        bool enemyInRange = false; 
-
+        bool enemyInRange = false;
+        
 
         foreach(Collider2D collider in colliders)
         {
@@ -99,7 +99,7 @@ public class PlayerController : MonoBehaviour
         if (enemyInRange && meleeAttackSpeed <= nextAttackTime)
         { 
 
-            if(BoolAutoAttackEnabled) ////doesnt stop if auto attack disabled 
+            if(BoolAutoAttackEnabled) //// same damage every time? 
             {
                 
                 MeleeAttack();

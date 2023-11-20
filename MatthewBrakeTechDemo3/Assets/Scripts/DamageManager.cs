@@ -21,10 +21,11 @@ public class DamageManager : MonoBehaviour
                 if(isCritical)
                 {
                     baseDamage *= 2;
-                    Debug.Log("critical hit taken. damage of: " + baseDamage);
+                    //Debug.Log("critical hit taken. damage of: " + baseDamage);
                 }
                 else
                 {
+                   // Debug.Log("Not critical damage");
                     float modifiedDamage = enemy.CalculateModifiedDamage(baseDamage);
                     enemy.TakeDamage(modifiedDamage);
                    // Debug.Log("Enemy Taken damage of: " + modifiedDamage);
@@ -60,14 +61,14 @@ public class DamageManager : MonoBehaviour
         }
     }
 
-    public static void ShowFloatingDamage(float damage, GameObject floatingDamage, Transform Targettransform, Vector3 offset)
-    {
+    //public static void ShowFloatingDamage(float damage, GameObject floatingDamage, Transform Targettransform, Vector3 offset)
+    //{
         
-        Vector3 spawnPos = Targettransform.position + offset;
+    //    Vector3 spawnPos = Targettransform.position + offset;
 
-        var go = Instantiate(floatingDamage, spawnPos, Quaternion.identity, Targettransform);
-        go.GetComponentInChildren<TextMeshProUGUI>().text = damage.ToString();
-    } 
+    //    var go = Instantiate(floatingDamage, spawnPos, Quaternion.identity, Targettransform);
+    //    go.GetComponentInChildren<TextMeshProUGUI>().text = damage.ToString();
+    //} 
 
     public static bool IsHit(float hitChance)
     {
@@ -79,8 +80,18 @@ public class DamageManager : MonoBehaviour
     {
         float criticalChance = 20;
         float randomCritical = Random.value * 100;
+        //Debug.Log("Random Critical Value: " + randomCritical);
 
-        return randomCritical <= criticalChance;
+       if(randomCritical <= criticalChance)
+        {
+            return true;
+        }
+        else
+        {
+            return false; 
+        }
+         
+            
     }
 
 

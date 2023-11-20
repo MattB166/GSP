@@ -68,10 +68,7 @@ public class EnemyController : MonoBehaviour
                         GameManager.instance.SetActiveEnemy(null);
                         currentActiveEnemy = null; 
                     }
-                   else
-                    {
-                        //GameManager.instance.SetActiveEnemy(null);
-                    }
+                   
                 }
                 else
                 {
@@ -150,6 +147,8 @@ public class EnemyController : MonoBehaviour
   public void TakeDamage(float damage)   ///doesnt currently spawn at right position 
   {
         float modifiedDamage = CalculateModifiedDamage(damage);
+        currentHealth -= modifiedDamage;
+        Debug.Log(currentHealth); 
   }
 
 
