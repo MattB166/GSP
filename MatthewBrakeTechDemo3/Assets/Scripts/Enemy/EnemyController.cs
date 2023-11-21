@@ -35,7 +35,7 @@ public class EnemyController : MonoBehaviour
     {
       
         
-        if(Input.touchCount > 0)
+        if(Input.touchCount > 0) ///swap to input.get mouse button 
         {
             if (Input.GetTouch(0).phase == TouchPhase.Began)
             { 

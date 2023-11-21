@@ -101,7 +101,7 @@ public class PlayerController : MonoBehaviour
             {
                 
                 MeleeAttack();
-               
+                
                
                
                 
@@ -204,6 +204,7 @@ public class PlayerController : MonoBehaviour
     private IEnumerator isCasting(float castTime) ///for particle effects? if poss. might not work as only produces a delay 
     {
         yield return new WaitForSeconds(castTime);
+        StartCoroutine(GameManager.instance.LoadCastBar(castTime));  ///either here or in function of ability 
         ///cast particles?  maybe make this a bool and send it to game manager instead 
     }
 
@@ -215,17 +216,25 @@ public class PlayerController : MonoBehaviour
         return modifiedDamage;
     }
 
-    public void FireBall(Transform target)  //spawn fireball from trans.pos. vector is distance between player and enemy 
+    public void FireBall(Transform target)  //spawn fireball from trans.pos. vector is distance between player and enemy  
     {
-        StartCoroutine(isCasting(fireBall.castingTime));
-        StartCoroutine(GameManager.instance.LoadCastBar(fireBall.castingTime));
-        Vector3 distance = new Vector3(transform.position.x - target.position.x, transform.position.y - target.position.y); ///calculate vector between players 
-        ///spawn fireball prefab at player transform and have it transform towards enemy until hits its collider 
-        /// var go = Instantiate(FireBallPrefab, transform.position, quaternion.rotation); 
-        /// go.rb.addVelocity("towards current enemy transform. 
-        
-        Debug.Log("FireBall Produced");
-       
+        if(currentMana >= fireBall.manaCost)
+        {
+            StartCoroutine(isCasting(fireBall.castingTime));
+            //StartCoroutine(GameManager.instance.LoadCastBar(fireBall.castingTime));  //either here or in the iscasting function
+            Vector3 distance = new Vector3(transform.position.x - target.position.x, transform.position.y - target.position.y); ///calculate vector between players 
+           ///spawn fireball prefab at player transform and have it transform towards enemy until hits its collider 
+           /// var go = Instantiate(FireBallPrefab, transform.position, quaternion.rotation); 
+           /// go.rb.addVelocity("towards current enemy transform. 
+
+            Debug.Log("FireBall Produced");
+
+        }
+        else
+        {
+            Debug.Log("Not enough mana to perform FireBall");
+        }
+      
     
           
     
