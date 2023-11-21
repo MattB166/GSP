@@ -201,9 +201,10 @@ public class PlayerController : MonoBehaviour
         DamageManager.ShowDamage((int)modifiedDamage, playerDamagePrefab, transform);
     }
 
-    private IEnumerator isCasting(float castTime) ///for particle effects? if poss 
+    private IEnumerator isCasting(float castTime) ///for particle effects? if poss. might not work as only produces a delay 
     {
         yield return new WaitForSeconds(castTime);
+        ///cast particles?  maybe make this a bool and send it to game manager instead 
     }
 
     public float CalculateModifiedDamage(float baseDamage)
@@ -214,9 +215,20 @@ public class PlayerController : MonoBehaviour
         return modifiedDamage;
     }
 
-    public void FireBall(Transform enemy)  //spawn fireball from trans.pos. vector is distance between player and enemy 
+    public void FireBall(Transform target)  //spawn fireball from trans.pos. vector is distance between player and enemy 
     {
-        Vector3 distance = new Vector3(transform.position.x - enemy.position.x, transform.position.y - enemy.position.y); ///calculate vector between players 
+        StartCoroutine(isCasting(fireBall.castingTime));
+        StartCoroutine(GameManager.instance.LoadCastBar(fireBall.castingTime));
+        Vector3 distance = new Vector3(transform.position.x - target.position.x, transform.position.y - target.position.y); ///calculate vector between players 
+        ///spawn fireball prefab at player transform and have it transform towards enemy until hits its collider 
+        /// var go = Instantiate(FireBallPrefab, transform.position, quaternion.rotation); 
+        /// go.rb.addVelocity("towards current enemy transform. 
+        
+        Debug.Log("FireBall Produced");
+       
+    
+          
+    
     }
 
     

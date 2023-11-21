@@ -13,6 +13,7 @@ public class FireBall : Ability
     public float additionalDamageInterval = 3f;
     public float debuffDuration = 15f;
     public float critMultiplier = 2f;
+    
 
 
 

@@ -19,3 +19,4 @@ MonoBehaviour:
   additionalDamageInterval: 3
   debuffDuration: 15
   critMultiplier: 2
+  Image: {fileID: 21300000, guid: 4a7058947f357cd4d8d91857e5523d89, type: 3}
