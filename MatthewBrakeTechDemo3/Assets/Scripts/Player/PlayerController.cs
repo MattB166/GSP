@@ -201,7 +201,7 @@ public class PlayerController : MonoBehaviour
         DamageManager.ShowDamage((int)modifiedDamage, playerDamagePrefab, transform);
     }
 
-    private IEnumerator isCasting(float castTime)
+    private IEnumerator isCasting(float castTime) ///for particle effects? if poss 
     {
         yield return new WaitForSeconds(castTime);
     }
@@ -214,9 +214,9 @@ public class PlayerController : MonoBehaviour
         return modifiedDamage;
     }
 
-    public void FireBall()
+    public void FireBall(Transform enemy)  //spawn fireball from trans.pos. vector is distance between player and enemy 
     {
-        
+        Vector3 distance = new Vector3(transform.position.x - enemy.position.x, transform.position.y - enemy.position.y); ///calculate vector between players 
     }
 
     
