@@ -58,28 +58,33 @@ public class PlayerMovement : MonoBehaviour
 
     void updateSprite()
     {
-        if(movement != Vector2.zero)
+        if (movement != Vector2.zero)
         {
             animator.SetBool("isWalking", true);
-            spriteRenderer.flipX = movement.x < 0; 
+            animator.SetFloat("Speed", movement.magnitude);
+            animator.SetFloat("Vertical", movement.y);
+            
+            
+            spriteRenderer.flipX = movement.x < 0;
 
-          //spriteRenderer.sprite = (movement.y > 0) ? spriteUp : spriteDown;
-            if(Mathf.Abs(movement.y) > Mathf.Abs(movement.x))
-            {
-                animator.SetBool("isWalkingUp", movement.y > 0);
-                animator.SetBool("isWalking", movement.y <= 0); 
-            }
-            else
-            {
-                animator.SetBool("isWalkingUp", false);
-                animator.SetBool("isWalking", true); 
-            }
+            //  //spriteRenderer.sprite = (movement.y > 0) ? spriteUp : spriteDown;
+            //    if(Mathf.Abs(movement.y) > Mathf.Abs(movement.x))
+            //    {
+            //        animator.SetBool("isWalkingUp", movement.y > 0);
+            //        animator.SetBool("isWalking", movement.y <= 0); 
+            //    }
+            //    else
+            //    {
+            //        animator.SetBool("isWalkingUp", false);
+            //        animator.SetBool("isWalking", true); 
+            //    }
 
-        }
-        else
-        {
-            animator.SetBool("isWalking", false);
-            animator.SetBool("isWalkingUp", false);
+            //}
+            //else
+            //{
+            //    animator.SetBool("isWalking", false);
+            //    animator.SetBool("isWalkingUp", false);
+            //}
         }
     }
 
