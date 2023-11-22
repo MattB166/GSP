@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -11,16 +12,33 @@ public class EnemyController : MonoBehaviour
    public EnemyStats EnemyStats;
    public TextMeshProUGUI text; //for testing 
                                 ////need reference to UI so can change current target  
+                                ///
+    
+    public enum EnemyState
+    {
+        Idle, 
+        Chase,
+        Attack
+    }
+    public EnemyState enemyState = EnemyState.Idle;
+    
+
     [Header("Stats")]
     public float maxHealth;
     public float currentHealth;
     public float defenceMultiplier;
     public float baseDamage;
+    public float aggroSpeed;
+    private float AttackTimer = 0f;
+    private float timeBetweenAttacks = 3f;
     
     
     EnemyController currentActiveEnemy;
     public GameObject floatingDamage;
+    private Rigidbody2D rb;
     public Vector3 offset = new Vector3(0, 5, 0);
+
+    private Transform playerTransform = null; 
      
      
     
@@ -33,7 +51,18 @@ public class EnemyController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-      
+        switch(enemyState)
+        {
+            case EnemyState.Idle:
+                break;
+            case EnemyState.Chase:
+                ChasePlayer();
+                break;
+            case EnemyState.Attack:
+                AttackPlayer();
+                break; 
+
+        }
         
         if(Input.touchCount > 0) ///swap to input.get mouse button 
         {
@@ -96,6 +125,7 @@ public class EnemyController : MonoBehaviour
         
         CheckforPlayerInRange(); 
     }
+
     void initialiseEnemy()
     {
        // Debug.Log("Enemy has " + (EnemyStats.maxHealth) + " Health");
@@ -103,6 +133,9 @@ public class EnemyController : MonoBehaviour
          currentHealth = EnemyStats.currentHealth;
         defenceMultiplier = EnemyStats.defenceMultiplier;
         baseDamage = EnemyStats.baseDamage;
+        aggroSpeed = EnemyStats.aggroSpeed;
+        rb = GetComponent<Rigidbody2D>(); 
+
     }
 
     private void OnDrawGizmos()
@@ -118,8 +151,9 @@ public class EnemyController : MonoBehaviour
         Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, EnemyStats.detectionRadius);
 
         bool PlayerInRange = false;
-        Transform playerTransform = null;
-       
+        //Transform playerTransform = null;
+        
+        
 
         foreach (Collider2D collider in colliders)
         {
@@ -127,20 +161,23 @@ public class EnemyController : MonoBehaviour
             {
                 PlayerInRange = true;
                 playerTransform = collider.transform;
-               
-                DamageManager.DealPlayerDamage(collider.gameObject, baseDamage); 
-                break;
+                enemyState = EnemyState.Chase; 
+                    //DamageManager.DealPlayerDamage(collider.gameObject, baseDamage);
+                    
+             break;
             }
         }
         if (PlayerInRange)
         {
-           // MoveTowardsPlayer(playerTransform.position);   ////setting aggro 
+           
+             //MoveTowardsPlayer(playerTransform.position);   ////setting aggro 
             // Debug.Log("Player in range. Attack Player");
             //aggro triggered, lock onto player 
 
         }
         else
         {
+           
             //Debug.Log("Player Out of range");
             //playerTransform = null;
             //PlayerInRange = false; 
@@ -158,8 +195,10 @@ public class EnemyController : MonoBehaviour
 
     public void MoveTowardsPlayer(Vector3 playerPos)
     {
-        Vector3 direction = (playerPos - transform.position).normalized;    
-        transform.Translate(direction * 1f * Time.deltaTime);
+        Vector3 direction = (playerPos - transform.position).normalized;
+        transform.Translate(direction * aggroSpeed * Time.deltaTime);
+        //rb.velocity = new Vector2(direction.x * aggroSpeed, rb.velocity.y);
+        
     }
 
    
@@ -171,6 +210,28 @@ public class EnemyController : MonoBehaviour
         return modifiedDamage; 
     }
 
+    private void ChasePlayer()
+    {
+        if(playerTransform != null)
+        {
+            MoveTowardsPlayer(playerTransform.position);
+            
+            AttackTimer += Time.deltaTime;
+            if(AttackTimer >= timeBetweenAttacks)
+            {
+                enemyState = EnemyState.Attack;
+                AttackTimer = 0f; 
+            }
+        }
+    }
+    private void AttackPlayer()
+    {
+        if(playerTransform != null)
+        {
+            DamageManager.DealPlayerDamage(playerTransform.gameObject, baseDamage);
+            enemyState = EnemyState.Chase;
+        }
+    }
     
 
 

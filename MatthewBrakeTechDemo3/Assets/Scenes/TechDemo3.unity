@@ -1442,10 +1442,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EnemyStats: {fileID: 11400000, guid: ac39de3f194cd5f4494b33473c580670, type: 2}
   text: {fileID: 38154243}
+  enemyState: 0
   maxHealth: 0
   currentHealth: 0
   defenceMultiplier: 0
   baseDamage: 0
+  aggroSpeed: 0
   floatingDamage: {fileID: 3025089940272494458, guid: 9f0017a0e5c6b764caa0004bc9d1a0f3, type: 3}
   offset: {x: 0, y: 5, z: 0}
 --- !u!61 &465414795
@@ -2549,8 +2551,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 4
-  thumbStick: {fileID: 7994729575470223289}
   animator: {fileID: 835751262}
+  thumbStick: {fileID: 7994729575470223289}
 --- !u!50 &835751261
 Rigidbody2D:
   serializedVersion: 4
@@ -2620,6 +2622,12 @@ MonoBehaviour:
   animator: {fileID: 835751262}
   AutoAttackButton: {fileID: 549330004}
   AutoAttackButtonImage: {fileID: 245817339}
+  maxHealth: 0
+  currentHealth: 0
+  maxMana: 0
+  currentMana: 0
+  meleeAttackSpeed: 0
+  defenceMultiplier: 0
   playerSpriteColour: {fileID: 0}
   playerDamagePrefab: {fileID: 2749201941308335401, guid: b90eda939e2e52342b0720999e9250fc, type: 3}
 --- !u!61 &835751264
@@ -3497,10 +3505,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EnemyStats: {fileID: 11400000, guid: 4a4e9084119e21a4a98be3ad00a14f73, type: 2}
   text: {fileID: 38154243}
+  enemyState: 0
   maxHealth: 0
   currentHealth: 0
   defenceMultiplier: 0
   baseDamage: 0
+  aggroSpeed: 0
   floatingDamage: {fileID: 3025089940272494458, guid: 9f0017a0e5c6b764caa0004bc9d1a0f3, type: 3}
   offset: {x: 0, y: 5, z: 0}
 --- !u!50 &1372530307

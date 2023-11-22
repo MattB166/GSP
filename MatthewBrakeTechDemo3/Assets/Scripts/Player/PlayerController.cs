@@ -70,6 +70,7 @@ public class PlayerController : MonoBehaviour
         Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, playerStats.detectionRadius);
 
         bool enemyInRange = false;
+
         
 
         foreach(Collider2D collider in colliders)

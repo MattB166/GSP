@@ -13,6 +13,7 @@ public class EnemyStats : ScriptableObject
     public float defenceMultiplier;
     public float rangedAttackSpeed;
     public float detectionRadius;
+    public float aggroSpeed; 
     public Sprite icon; 
     
 }
