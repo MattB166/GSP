@@ -583,8 +583,11 @@ MonoBehaviour:
   enemyIcon: {fileID: 56263764}
   enemyHealthSlider: {fileID: 2040486169}
   enemyManaSlider: {fileID: 1670591901}
-  castBarSlider: {fileID: 0}
   activeEnemy: {fileID: 0}
+  castBarSlider: {fileID: 209796466}
+  playerUIPanel: {fileID: 1698544023}
+  playerHealthSlider: {fileID: 1950099836}
+  playerManaSlider: {fileID: 1527788553}
   activeAbility: {fileID: 0}
   UIAbilities: []
 --- !u!4 &152135235
@@ -787,7 +790,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -2, y: -97}
+  m_AnchoredPosition: {x: -2, y: -75}
   m_SizeDelta: {x: 265.3176, y: 42.141}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &209796466
@@ -2547,8 +2550,6 @@ MonoBehaviour:
   speed: 4
   thumbStick: {fileID: 7994729575470223289}
   animator: {fileID: 835751262}
-  spriteUp: {fileID: -3985835990242302937, guid: eaa7c5a0ecfb83c4ca628e7684f0727d, type: 3}
-  spriteDown: {fileID: 21300000, guid: 85facbee8ab90054b85c16f093b4f73e, type: 3}
 --- !u!50 &835751261
 Rigidbody2D:
   serializedVersion: 4

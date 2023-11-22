@@ -78,7 +78,7 @@ public class DamageManager : MonoBehaviour
     {
         Vector3 offset = new Vector3(0, 2, 0); 
         var go = Instantiate(damagePrefab, transform.position + offset, Quaternion.identity, transform);
-        Debug.Log("Instantiating Damage prefab: " + " pos: " + transform.position + offset);
+       // Debug.Log("Instantiating Damage prefab: " + " pos: " + transform.position + offset);
         go.GetComponent<TextMesh>().text = damage.ToString();
         Destroy(go, 1f); 
     }

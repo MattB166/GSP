@@ -26,10 +26,12 @@ public class PlayerController : MonoBehaviour
     float defenceMultiplier;
     public SpriteRenderer playerSpriteColour;
     public GameObject playerDamagePrefab;
+    private PlayerMovement PlayerMovement;
 
     // Start is called before the first frame update
     void Start()
     {
+        PlayerMovement = FindFirstObjectByType<PlayerMovement>();
         initialisePlayer();
         Debug.Log("Abilities are: " + playerStats.abilities);
     }
@@ -101,7 +103,7 @@ public class PlayerController : MonoBehaviour
             {
                 
                 MeleeAttack();
-                
+                //animator.SetBool("isAutoAttacking", true);
                
                
                 
@@ -109,7 +111,7 @@ public class PlayerController : MonoBehaviour
             }
            else if(!BoolAutoAttackEnabled)
             {
-                animator.SetBool("IsAutoAttacking", false);
+                animator.SetBool("isAutoAttacking", false);
             }
            
             //AutoAttack.interactable = true; 
@@ -118,7 +120,7 @@ public class PlayerController : MonoBehaviour
         else if(!enemyInRange)
         {
             //Debug.Log("Not attacking");
-            animator.SetBool("IsAutoAttacking",false);
+            animator.SetBool("isAutoAttacking",false);
             
             AutoAttackButtonImage.color = Color.red;
             
@@ -163,13 +165,13 @@ public class PlayerController : MonoBehaviour
         if(!BoolAutoAttackEnabled)
         {
             AutoAttackButtonImage.color = Color.red;
-            Debug.Log("auto attack disabled");
+           // Debug.Log("auto attack disabled");
             currentEnemy = null; 
         }
         else
         {
             AutoAttackButtonImage.color = Color.white;
-            Debug.Log("Auto attack enabled"); 
+           // Debug.Log("Auto attack enabled"); 
 
         }
     }
@@ -183,7 +185,8 @@ public class PlayerController : MonoBehaviour
 
         if (currentEnemy != null)
         {
-            animator.SetBool("IsAutoAttacking", true);
+            animator.SetBool("isAutoAttacking", true);
+            Debug.Log("Attacking");
             DamageManager.DealEnemyDamage(currentEnemy, playerStats.baseDamage);
 
         }
@@ -199,6 +202,12 @@ public class PlayerController : MonoBehaviour
         float modifiedDamage = CalculateModifiedDamage(damage);
         currentHealth -= modifiedDamage;
         DamageManager.ShowDamage((int)modifiedDamage, playerDamagePrefab, transform);
+        if(currentHealth <= 0)
+        {
+            animator.SetBool("isDead", true);
+            PlayerMovement.enabled = false; 
+            
+        }
     }
 
     private IEnumerator isCasting(float castTime) ///for particle effects? if poss. might not work as only produces a delay 

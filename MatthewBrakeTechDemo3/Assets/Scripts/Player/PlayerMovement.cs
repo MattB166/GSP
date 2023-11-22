@@ -11,8 +11,8 @@ public class PlayerMovement : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     public Animator animator;
 
-    public Sprite spriteUp;
-    public Sprite spriteDown; 
+    ///public Sprite spriteUp;
+    //public Sprite spriteDown; 
     
     
     // Start is called before the first frame update
@@ -25,6 +25,8 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
+        
         float horizontalInput = Input.GetAxis("Horizontal");
         float verticalInput = Input.GetAxis("Vertical");
 
@@ -58,11 +60,13 @@ public class PlayerMovement : MonoBehaviour
 
     void updateSprite()
     {
+        animator.SetBool("isWalking", true);
+        animator.SetFloat("Speed", movement.magnitude);
+        
+
         if (movement != Vector2.zero)
         {
-            animator.SetBool("isWalking", true);
-            animator.SetFloat("Speed", movement.magnitude);
-            animator.SetFloat("Vertical", movement.y);
+            
             
             
             spriteRenderer.flipX = movement.x < 0;
@@ -92,6 +96,18 @@ public class PlayerMovement : MonoBehaviour
     {
         EnemyController activeEnemy = GameManager.instance.activeEnemy;
 
+        if (activeEnemy != null)
+        {
+            animator.SetBool("isTargeting", true);
+            animator.SetFloat("Vertical", activeEnemy.transform.position.y - transform.position.y);
+
+        }
+        else
+        {
+            animator.SetFloat("Vertical", movement.y);
+            animator.SetBool("isTargeting", false);
+        }
+
         Vector3 targetDirection = activeEnemy.transform.position - transform.position;
         //float angle = Mathf.Atan2(targetDirection.y, targetDirection.x) * Mathf.Rad2Deg;
 
@@ -107,11 +123,11 @@ public class PlayerMovement : MonoBehaviour
         }
         if(targetDirection.y > transform.position.y)
         {
-            spriteRenderer.sprite = spriteUp; 
+           // spriteRenderer.sprite = spriteUp; 
         }
         else
         {
-            spriteRenderer.sprite = spriteDown; 
+           // spriteRenderer.sprite = spriteDown; 
         }
     }
 }

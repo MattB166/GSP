@@ -8,16 +8,24 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
 
+    [Header("Enemy References")]
     public GameObject enemyUIPanel;
     public Image enemyIcon;
     public Slider enemyHealthSlider;
     public Slider enemyManaSlider;
+    public EnemyController activeEnemy;
 
+    [Header("General References")]
     public Slider castBarSlider;
 
-    public EnemyController activeEnemy;
+    [Header("Player References")]
+    public GameObject playerUIPanel;
+    public Slider playerHealthSlider;
+    public Slider playerManaSlider;
     public Ability activeAbility;
     public List<Ability> UIAbilities;
+    
+    
 
     private void Awake()
     {
@@ -75,6 +83,10 @@ public class GameManager : MonoBehaviour
         ///add and remove abilities from player and enemy icons 
         ///for(all abilities in active abilities, add to sprite in abilities panel) 
 
+
+    }
+    void UpdatePlayerUI()
+    {
 
     }
 
