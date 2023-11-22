@@ -22,6 +22,7 @@ public class GameManager : MonoBehaviour
     public GameObject playerUIPanel;
     public Slider playerHealthSlider;
     public Slider playerManaSlider;
+    public PlayerController player;
     public Ability activeAbility;
     public List<Ability> UIAbilities;
     
@@ -50,6 +51,31 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         updateEnemyUI();
+        UpdatePlayerUI();
+        CheckPlayerHealth();
+    }
+
+    public void Respawn()
+    {
+        /// reset player and enemy values here 
+        Debug.Log("Player has respawned");  ///happens on every frame somehow so continuously respawns 
+    }
+    public void CheckPlayerHealth()
+    {
+        bool isRespawning = player.IsPlayerDead();
+        if (isRespawning)
+        {
+            ///respawn after 3 seconds at full health 
+            isRespawning = false;
+            Debug.Log("Respawning!");
+            Respawn();
+            
+        }
+        else
+        {
+            
+        }
+        
     }
     public void SetActiveEnemy(EnemyController newEnemy)
     {
@@ -87,7 +113,8 @@ public class GameManager : MonoBehaviour
     }
     void UpdatePlayerUI()
     {
-
+        playerHealthSlider.value = player.currentHealth; 
+        playerManaSlider.value = player.currentMana;    
     }
 
     public void SetActiveCast(Ability ability)

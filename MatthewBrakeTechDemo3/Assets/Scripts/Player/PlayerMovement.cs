@@ -4,13 +4,15 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    [Header("Player Info")]
     [SerializeField] float speed;
     private Rigidbody2D rb;
-    [SerializeField] private JoyStickScript thumbStick;
     private Vector2 movement; 
     private SpriteRenderer spriteRenderer;
     public Animator animator;
+     
 
+    [SerializeField] private JoyStickScript thumbStick;
     ///public Sprite spriteUp;
     //public Sprite spriteDown; 
     

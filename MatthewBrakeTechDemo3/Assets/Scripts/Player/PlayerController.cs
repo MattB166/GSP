@@ -18,15 +18,16 @@ public class PlayerController : MonoBehaviour
     private bool BoolAutoAttackEnabled;
     private float nextAttackTime = 0f;
     private GameObject currentEnemy;
-    float maxHealth;
-    float currentHealth;
-    float maxMana;
-    float currentMana;
-    float meleeAttackSpeed;
-    float defenceMultiplier;
+    public float maxHealth;
+    public float currentHealth;
+    public float maxMana;
+    public float currentMana;
+    public float meleeAttackSpeed;
+    public float defenceMultiplier;
     public SpriteRenderer playerSpriteColour;
     public GameObject playerDamagePrefab;
     private PlayerMovement PlayerMovement;
+    bool isPlayerDead;
 
     // Start is called before the first frame update
     void Start()
@@ -205,7 +206,8 @@ public class PlayerController : MonoBehaviour
         if(currentHealth <= 0)
         {
             animator.SetBool("isDead", true);
-            PlayerMovement.enabled = false; 
+            isPlayerDead = true; 
+            //PlayerMovement.enabled = false; 
             
         }
     }
@@ -247,6 +249,18 @@ public class PlayerController : MonoBehaviour
     
           
     
+    }
+
+    public bool IsPlayerDead()
+    {
+        if(isPlayerDead)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 
     

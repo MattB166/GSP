@@ -588,6 +588,7 @@ MonoBehaviour:
   playerUIPanel: {fileID: 1698544023}
   playerHealthSlider: {fileID: 1950099836}
   playerManaSlider: {fileID: 1527788553}
+  player: {fileID: 835751263}
   activeAbility: {fileID: 0}
   UIAbilities: []
 --- !u!4 &152135235
