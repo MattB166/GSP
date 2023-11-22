@@ -27,6 +27,7 @@ public class PlayerController : MonoBehaviour
     public SpriteRenderer playerSpriteColour;
     public GameObject playerDamagePrefab;
     private PlayerMovement PlayerMovement;
+    public Vector3 startingPos; 
     bool isPlayerDead;
 
     // Start is called before the first frame update
@@ -54,7 +55,8 @@ public class PlayerController : MonoBehaviour
         currentMana = playerStats.maxMana; 
         meleeAttackSpeed = playerStats.meleeAttackSpeed;
         defenceMultiplier = playerStats.defenceMultiplier;
-       
+        startingPos = new Vector3(transform.position.x, transform.position.y, transform.position.z);
+        animator.SetBool("isDead", false);
         
     }
 
@@ -207,7 +209,9 @@ public class PlayerController : MonoBehaviour
         if(currentHealth <= 0)
         {
             animator.SetBool("isDead", true);
-            isPlayerDead = true; 
+            isPlayerDead = true;
+            StartCoroutine(DeathDelay()); 
+            
             //PlayerMovement.enabled = false; 
             
         }
@@ -262,6 +266,13 @@ public class PlayerController : MonoBehaviour
         {
             return false;
         }
+    }
+    private IEnumerator DeathDelay()
+    {
+        yield return new WaitForSeconds(3f);
+        animator.SetBool("isDead", false); 
+        transform.position = startingPos;
+        isPlayerDead = false; 
     }
 
     

@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
 
     [Header("General References")]
     public Slider castBarSlider;
+    public GameObject autoAttack;
 
     [Header("Player References")]
     public GameObject playerUIPanel;
@@ -44,7 +45,8 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        enemyUIPanel.SetActive(false);
+        autoAttack.SetActive(false);
     }
 
     // Update is called once per frame
@@ -102,8 +104,15 @@ public class GameManager : MonoBehaviour
         if (activeEnemy != null)
         {
             // Debug.Log("Updating UI for active enemy: " + activeEnemy.name);
+            enemyUIPanel.SetActive(true);
             enemyIcon.sprite = activeEnemy.EnemyStats.icon;
             enemyHealthSlider.value = activeEnemy.currentHealth;
+            autoAttack.SetActive(true);
+        }
+        else
+        {
+            enemyUIPanel.SetActive(false);
+            autoAttack.SetActive(false); 
         }
 
         ///add and remove abilities from player and enemy icons 

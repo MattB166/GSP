@@ -30,13 +30,14 @@ public class EnemyController : MonoBehaviour
     public float baseDamage;
     public float aggroSpeed;
     private float AttackTimer = 0f;
-    private float timeBetweenAttacks = 3f;
+    private float timeBetweenAttacks;
     
     
     EnemyController currentActiveEnemy;
     public GameObject floatingDamage;
     private Rigidbody2D rb;
     public Vector3 offset = new Vector3(0, 5, 0);
+    private Vector3 startingPos;
 
     private Transform playerTransform = null; 
      
@@ -134,7 +135,9 @@ public class EnemyController : MonoBehaviour
         defenceMultiplier = EnemyStats.defenceMultiplier;
         baseDamage = EnemyStats.baseDamage;
         aggroSpeed = EnemyStats.aggroSpeed;
+        timeBetweenAttacks = EnemyStats.rangedAttackSpeed; 
         rb = GetComponent<Rigidbody2D>(); 
+        startingPos = new Vector3(transform.position.x, transform.position.y, transform.position.z);
 
     }
 
@@ -193,11 +196,19 @@ public class EnemyController : MonoBehaviour
   }
 
 
-    public void MoveTowardsPlayer(Vector3 playerPos)
+    public void MoveTowardsPlayer(Vector3 playerPos)  ////need enemy movement animation 
     {
         Vector3 direction = (playerPos - transform.position).normalized;
-        transform.Translate(direction * aggroSpeed * Time.deltaTime);
-        //rb.velocity = new Vector2(direction.x * aggroSpeed, rb.velocity.y);
+
+        if(Vector3.Distance(playerPos, transform.position) > 1.0f)
+        {
+            transform.Translate(direction * aggroSpeed * Time.deltaTime);
+           
+        }
+        
+        
+       
+        //rb.velocity = new Vector3(direction.x * aggroSpeed, rb.velocity.y);
         
     }
 

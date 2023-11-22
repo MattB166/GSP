@@ -585,6 +585,7 @@ MonoBehaviour:
   enemyManaSlider: {fileID: 1670591901}
   activeEnemy: {fileID: 0}
   castBarSlider: {fileID: 209796466}
+  autoAttack: {fileID: 549330002}
   playerUIPanel: {fileID: 1698544023}
   playerHealthSlider: {fileID: 1950099836}
   playerManaSlider: {fileID: 1527788553}
@@ -1413,7 +1414,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 0.0001
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0
@@ -2630,6 +2631,7 @@ MonoBehaviour:
   defenceMultiplier: 0
   playerSpriteColour: {fileID: 0}
   playerDamagePrefab: {fileID: 2749201941308335401, guid: b90eda939e2e52342b0720999e9250fc, type: 3}
+  startingPos: {x: 0, y: 0, z: 0}
 --- !u!61 &835751264
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3525,7 +3527,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 0.0001
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0
