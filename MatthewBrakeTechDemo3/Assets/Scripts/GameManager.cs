@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
     public Slider enemyHealthSlider;
     public Slider enemyManaSlider;
     public EnemyController activeEnemy;
+    public List<EnemyController> enemies;
 
     [Header("General References")]
     public Slider castBarSlider;
@@ -26,6 +27,7 @@ public class GameManager : MonoBehaviour
     public PlayerController player;
     public Ability activeAbility;
     public List<Ability> UIAbilities;
+    private bool isPlayerDead; 
     
     
 
@@ -47,6 +49,7 @@ public class GameManager : MonoBehaviour
     {
         enemyUIPanel.SetActive(false);
         autoAttack.SetActive(false);
+        isPlayerDead= false;
     }
 
     // Update is called once per frame
@@ -55,6 +58,7 @@ public class GameManager : MonoBehaviour
         updateEnemyUI();
         UpdatePlayerUI();
         CheckPlayerHealth();
+        
     }
 
     public void Respawn()
@@ -114,10 +118,17 @@ public class GameManager : MonoBehaviour
             enemyUIPanel.SetActive(false);
             autoAttack.SetActive(false); 
         }
+        if(activeEnemy.isEnemyDead)
+        {
+            activeEnemy = null;
+            enemyUIPanel.SetActive(false);
+            autoAttack.SetActive(false);
+
+        }
 
         ///add and remove abilities from player and enemy icons 
         ///for(all abilities in active abilities, add to sprite in abilities panel) 
-
+        
 
     }
     void UpdatePlayerUI()
@@ -148,6 +159,38 @@ public class GameManager : MonoBehaviour
             yield return new WaitForSeconds(castTime);
         }
         //////might work, might not, need to patch to cast bar fill and might just be a delay 
+    }
+
+    public bool isDead()
+    {
+        if(player.IsPlayerDead())
+        {
+            return true;
+            
+        }
+        else
+        {
+            return false;
+        }
+
+    }
+
+    public void UpdateGame() //resetting enemy pos and health when player dies 
+    {
+        if(isDead())
+        {
+           foreach(var enemy in enemies)
+            {
+                if(enemy.currentHealth > 0)
+                {
+                    enemy.initialiseEnemy();
+                }
+                else
+                {
+
+                }
+            }
+        }
     }
    
 }

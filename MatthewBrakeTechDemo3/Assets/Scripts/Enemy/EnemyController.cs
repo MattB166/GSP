@@ -18,7 +18,8 @@ public class EnemyController : MonoBehaviour
     {
         Idle, 
         Chase,
-        Attack
+        Attack,
+        Dead
     }
     public EnemyState enemyState = EnemyState.Idle;
     
@@ -40,6 +41,7 @@ public class EnemyController : MonoBehaviour
     public Vector3 offset = new Vector3(0, 5, 0);
     private Vector3 startingPos;
     private SpriteRenderer sprite;
+    public bool isEnemyDead; 
 
     private Transform playerTransform = null; 
      
@@ -64,7 +66,10 @@ public class EnemyController : MonoBehaviour
                 break;
             case EnemyState.Attack:
                 AttackPlayer();
-                break; 
+                break;
+            case EnemyState.Dead:
+                Die();
+                break;
 
         }
         
@@ -131,7 +136,7 @@ public class EnemyController : MonoBehaviour
         CheckforPlayerInRange(); 
     }
 
-    void initialiseEnemy()
+   public  void initialiseEnemy()   ///initialises local values of the enemy 
     {
        // Debug.Log("Enemy has " + (EnemyStats.maxHealth) + " Health");
          maxHealth = EnemyStats.maxHealth;
@@ -143,6 +148,8 @@ public class EnemyController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>(); 
         startingPos = new Vector3(transform.position.x, transform.position.y, transform.position.z);
         sprite = GetComponent<SpriteRenderer>();
+        enemyState = EnemyState.Idle;
+        GameManager.instance.enemies.Add(this);
 
     }
 
@@ -154,7 +161,7 @@ public class EnemyController : MonoBehaviour
     }
 
 
-    void CheckforPlayerInRange()
+    void CheckforPlayerInRange()   ///constant check for if player is in range 
     {
         Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, EnemyStats.detectionRadius);
 
@@ -169,7 +176,11 @@ public class EnemyController : MonoBehaviour
             {
                 PlayerInRange = true;
                 playerTransform = collider.transform;
-                enemyState = EnemyState.Chase; 
+                if(enemyState != EnemyState.Dead)
+                {
+                    enemyState = EnemyState.Chase;
+                }
+                
                     //DamageManager.DealPlayerDamage(collider.gameObject, baseDamage);
                     
              break;
@@ -192,42 +203,54 @@ public class EnemyController : MonoBehaviour
         }
     }
 
-  public void TakeDamage(float damage)   ///doesnt currently spawn at right position 
+  public void TakeDamage(float damage)  ///damage function, carries over to damage class where damage calcs take place 
   {
+        
         float modifiedDamage = CalculateModifiedDamage(damage);
         currentHealth -= modifiedDamage;
         //Debug.Log(currentHealth);
-        DamageManager.ShowDamage((int)modifiedDamage, floatingDamage, transform);        
+        DamageManager.ShowDamage((int)modifiedDamage, floatingDamage, transform);  
+        if(currentHealth <= 0)
+        {
+            ///die animation and freeze. unable to respawn 
+            isEnemyDead = true;
+            enemyState = EnemyState.Dead; 
+        }
   }
 
 
-    public void MoveTowardsPlayer(Vector3 playerPos)  ////need enemy movement animation 
+    public void MoveTowardsPlayer(Vector3 playerPos)  /// moves towards player during chase state 
     {
-        Vector3 direction = (playerPos - transform.position).normalized;
-        enemyAnim.SetFloat("Vertical", playerPos.y - transform.position.y);
-
-        if(Vector3.Distance(playerPos, transform.position) > 2.0f)
+        if(enemyState == EnemyState.Chase)
         {
-            if(playerPos.x > transform.position.x)
+            Vector3 direction = (playerPos - transform.position).normalized;
+            enemyAnim.SetFloat("Vertical", playerPos.y - transform.position.y);
+
+            if (Vector3.Distance(playerPos, transform.position) > 2.0f)
             {
-                sprite.flipX= true;
+                if (playerPos.x > transform.position.x)
+                {
+                    sprite.flipX = true;
+                }
+                else
+                {
+                    sprite.flipX = false;
+                }
+                transform.Translate(direction * aggroSpeed * Time.deltaTime);
+
             }
-            else
-            {
-                sprite.flipX= false;
-            }
-            transform.Translate(direction * aggroSpeed * Time.deltaTime);
-           
+
         }
-        
-        
-       
+
+
+
+
         //rb.velocity = new Vector3(direction.x * aggroSpeed, rb.velocity.y);
-        
+
     }
 
    
-   public float CalculateModifiedDamage(float baseDamage)
+   public float CalculateModifiedDamage(float baseDamage) ///the local function for taking damage, used in damage class to work out the damage 
     {
         float minDamage = baseDamage * 0.75f;
         float maxDamage = baseDamage * 1.25f;
@@ -235,9 +258,9 @@ public class EnemyController : MonoBehaviour
         return modifiedDamage; 
     }
 
-    private void ChasePlayer()
+    private void ChasePlayer()  ///the chase state. moves to attack state when time condition is met 
     {
-        if(playerTransform != null)
+        if(playerTransform != null && enemyState != EnemyState.Dead)
         {
             enemyAnim.SetBool("isChasing", true);
             MoveTowardsPlayer(playerTransform.position);
@@ -252,7 +275,7 @@ public class EnemyController : MonoBehaviour
             }
         }
     }
-    private void AttackPlayer()
+    private void AttackPlayer()  //attacks player once then moves back to chase state 
     {
         if(playerTransform != null)
         {
@@ -265,6 +288,14 @@ public class EnemyController : MonoBehaviour
         {
             Debug.Log("Cant attack player"); 
         }
+    }
+
+    private void Die()
+    {
+        ///freeze death animation on last frame 
+        enemyAnim.SetBool("isChasing", false);
+        enemyAnim.SetBool("isDead", true); 
+        ///set dead animation to true 
     }
     
 

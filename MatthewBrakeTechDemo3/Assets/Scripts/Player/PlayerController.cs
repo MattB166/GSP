@@ -46,7 +46,7 @@ public class PlayerController : MonoBehaviour
         
     }
 
-    void initialisePlayer()
+    public void initialisePlayer()  ///initialises all player variables locally 
     {
         Debug.Log("Player Has " + (playerStats.maxHealth) + " Health");
         maxHealth = playerStats.maxHealth;
@@ -67,7 +67,7 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    void CheckDetectionRadius()
+    void CheckDetectionRadius() ///checks for enemy in range 
     {
         Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, playerStats.detectionRadius);
 
@@ -134,7 +134,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    void updateAutoAttackButton()
+    void updateAutoAttackButton()   ///performs functionality of auto attack button for various circumstances 
     {
         if (currentEnemy != null && BoolAutoAttackEnabled)
         {
@@ -161,7 +161,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public void ToggleAutoAttack()
+    public void ToggleAutoAttack()  //simply turning auto attack on and off 
     {
         Debug.Log("Pressing Toggle Button");
         
@@ -182,7 +182,7 @@ public class PlayerController : MonoBehaviour
 
 
 
-    void MeleeAttack()
+    void MeleeAttack() /// normal attack function 
     {
 
 
@@ -200,7 +200,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public void TakeDamage(float damage)
+    public void TakeDamage(float damage)   
     {
         // damage -= currentHealth;
         float modifiedDamage = CalculateModifiedDamage(damage);
@@ -224,7 +224,7 @@ public class PlayerController : MonoBehaviour
         ///cast particles?  maybe make this a bool and send it to game manager instead 
     }
 
-    public float CalculateModifiedDamage(float baseDamage)
+    public float CalculateModifiedDamage(float baseDamage) //local take damage function. used in damage class to work out damage values
     {
         float minDamage = baseDamage * 0.75f;
         float maxDamage = baseDamage * 1.25f;
@@ -256,7 +256,7 @@ public class PlayerController : MonoBehaviour
     
     }
 
-    public bool IsPlayerDead()
+    public bool IsPlayerDead() ///boolean to determine if the player is dead 
     {
         if(isPlayerDead)
         {
@@ -267,7 +267,7 @@ public class PlayerController : MonoBehaviour
             return false;
         }
     }
-    private IEnumerator DeathDelay()
+    private IEnumerator DeathDelay() /// the 3 second delay to respawn the player 
     {
         yield return new WaitForSeconds(3f);
         //animator.SetBool("isDead", false); 
