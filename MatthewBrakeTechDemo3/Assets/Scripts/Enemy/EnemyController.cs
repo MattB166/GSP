@@ -31,8 +31,9 @@ public class EnemyController : MonoBehaviour
     public float aggroSpeed;
     private float AttackTimer = 0f;
     private float timeBetweenAttacks;
-    
-    
+
+    [Header("Enemy References")]
+    public Animator enemyAnim; 
     EnemyController currentActiveEnemy;
     public GameObject floatingDamage;
     private Rigidbody2D rb;
@@ -199,9 +200,11 @@ public class EnemyController : MonoBehaviour
     public void MoveTowardsPlayer(Vector3 playerPos)  ////need enemy movement animation 
     {
         Vector3 direction = (playerPos - transform.position).normalized;
+        enemyAnim.SetFloat("Vertical", playerPos.y - transform.position.y);
 
         if(Vector3.Distance(playerPos, transform.position) > 1.0f)
         {
+            
             transform.Translate(direction * aggroSpeed * Time.deltaTime);
            
         }
@@ -225,6 +228,7 @@ public class EnemyController : MonoBehaviour
     {
         if(playerTransform != null)
         {
+            enemyAnim.SetBool("isChasing", true);
             MoveTowardsPlayer(playerTransform.position);
             
             AttackTimer += Time.deltaTime;
