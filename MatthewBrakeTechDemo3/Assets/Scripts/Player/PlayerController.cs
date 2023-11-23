@@ -233,6 +233,7 @@ public class PlayerController : MonoBehaviour
     }
 
 
+
     public float CalculateModifiedDamage(float baseDamage) //local take damage function. used in damage class to work out damage values
     {
         float minDamage = baseDamage * 0.75f;

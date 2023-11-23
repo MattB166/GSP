@@ -29,7 +29,7 @@ public class GameManager : MonoBehaviour
     public Ability activeAbility;
     public List<Ability> UIAbilities;
     private bool isPlayerDead;
-    bool CastBarFull; 
+    public bool CastBarFull; 
     
     
 
@@ -158,6 +158,7 @@ public class GameManager : MonoBehaviour
     }
     IEnumerator FillCastBar(float castTime)
     {
+        CastBarFull = false;
         float elapsedTime = 0;
         castBarSlider.maxValue = castTime; 
         while (elapsedTime < castTime)
@@ -169,6 +170,7 @@ public class GameManager : MonoBehaviour
             
             
         }
+        
         castBarSlider.value = 0;
     }
 
