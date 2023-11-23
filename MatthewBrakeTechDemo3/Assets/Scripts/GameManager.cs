@@ -55,8 +55,8 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        updateEnemyUI();
         UpdatePlayerUI();
+        updateEnemyUI();
         CheckPlayerHealth();
         
     }
@@ -75,6 +75,7 @@ public class GameManager : MonoBehaviour
             isRespawning = false;
             Debug.Log("Respawning!");
             Respawn();
+           
             
         }
         else

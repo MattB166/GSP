@@ -226,7 +226,7 @@ public class EnemyController : MonoBehaviour
             Vector3 direction = (playerPos - transform.position).normalized;
             enemyAnim.SetFloat("Vertical", playerPos.y - transform.position.y);
 
-            if (Vector3.Distance(playerPos, transform.position) > 2.0f)
+            if (Vector3.Distance(playerPos, transform.position) > 4.0f)
             {
                 if (playerPos.x > transform.position.x)
                 {
@@ -262,17 +262,19 @@ public class EnemyController : MonoBehaviour
     {
         if(playerTransform != null && enemyState != EnemyState.Dead)
         {
+            AttackTimer += Time.deltaTime;
+            //Debug.Log(AttackTimer);
+            if (AttackTimer >= timeBetweenAttacks)
+            {
+                enemyState = EnemyState.Attack;
+                // Debug.Log("Timer Reset and moving to attack phase");
+                AttackTimer = 0f;
+            }
+
             enemyAnim.SetBool("isChasing", true);
             MoveTowardsPlayer(playerTransform.position);
             
-            AttackTimer += Time.deltaTime;
-            //Debug.Log(AttackTimer);
-            if(AttackTimer >= timeBetweenAttacks)
-            {
-                enemyState = EnemyState.Attack;
-               // Debug.Log("Timer Reset and moving to attack phase");
-                AttackTimer = 0f;
-            }
+            
         }
     }
     private void AttackPlayer()  //attacks player once then moves back to chase state 

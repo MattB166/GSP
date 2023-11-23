@@ -57,6 +57,7 @@ public class PlayerController : MonoBehaviour
         defenceMultiplier = playerStats.defenceMultiplier;
         startingPos = new Vector3(transform.position.x, transform.position.y, transform.position.z);
         animator.SetBool("isDead", false);
+        isPlayerDead = false; 
         
     }
 
