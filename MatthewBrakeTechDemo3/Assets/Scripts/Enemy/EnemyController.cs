@@ -39,6 +39,7 @@ public class EnemyController : MonoBehaviour
     private Rigidbody2D rb;
     public Vector3 offset = new Vector3(0, 5, 0);
     private Vector3 startingPos;
+    private SpriteRenderer sprite;
 
     private Transform playerTransform = null; 
      
@@ -139,6 +140,7 @@ public class EnemyController : MonoBehaviour
         timeBetweenAttacks = EnemyStats.rangedAttackSpeed; 
         rb = GetComponent<Rigidbody2D>(); 
         startingPos = new Vector3(transform.position.x, transform.position.y, transform.position.z);
+        sprite = GetComponent<SpriteRenderer>();
 
     }
 
@@ -204,7 +206,14 @@ public class EnemyController : MonoBehaviour
 
         if(Vector3.Distance(playerPos, transform.position) > 1.0f)
         {
-            
+            if(playerPos.x > transform.position.x)
+            {
+                sprite.flipX= true;
+            }
+            else
+            {
+                sprite.flipX= false;
+            }
             transform.Translate(direction * aggroSpeed * Time.deltaTime);
            
         }
