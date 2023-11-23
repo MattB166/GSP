@@ -19,6 +19,7 @@ public class GameManager : MonoBehaviour
     [Header("General References")]
     public Slider castBarSlider;
     public GameObject autoAttack;
+    public Image FireballButtonImage; 
 
     [Header("Player References")]
     public GameObject playerUIPanel;
@@ -27,7 +28,8 @@ public class GameManager : MonoBehaviour
     public PlayerController player;
     public Ability activeAbility;
     public List<Ability> UIAbilities;
-    private bool isPlayerDead; 
+    private bool isPlayerDead;
+    bool CastBarFull; 
     
     
 
@@ -148,18 +150,26 @@ public class GameManager : MonoBehaviour
     }
 
     ///function to load cast bar and start particle effects HERE. needs to take casting time as parameter and return to ability function when done 
-   public IEnumerator LoadCastBar(float castTime)
+   public void LoadCastBar(float castTime)
     {
-        float startTime = 0;
-        startTime += Time.deltaTime;
-        castBarSlider.value = startTime;
-        castBarSlider.maxValue = castTime;
-        while(castBarSlider.value< castTime)
+        Debug.Log("Loading Cast Bar");
+        castBarSlider.value = 0;
+        StartCoroutine(FillCastBar(castTime));
+    }
+    IEnumerator FillCastBar(float castTime)
+    {
+        float elapsedTime = 0;
+        castBarSlider.maxValue = castTime; 
+        while (elapsedTime < castTime)
         {
-            Debug.Log(castBarSlider.value); 
-            yield return new WaitForSeconds(castTime);
+            castBarSlider.value += elapsedTime / castTime;
+            yield return null; 
+
+            elapsedTime+= Time.deltaTime;
+            
+            
         }
-        //////might work, might not, need to patch to cast bar fill and might just be a delay 
+        castBarSlider.value = 0;
     }
 
     public bool isDead()

@@ -7,28 +7,37 @@ using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
-    public PlayerStats playerStats;
+    [Header("Ability References")]
     public Ability fireBall;
     public Ability Armor;
     public Ability Missile;
-    public Ability FrostLance; 
-    public Animator animator;
-    public Button AutoAttackButton;
-    public Image AutoAttackButtonImage;
-    private bool BoolAutoAttackEnabled;
-    private float nextAttackTime = 0f;
-    private GameObject currentEnemy;
+    public Ability FrostLance;
+    public GameObject FireBallPrefab;
+    public GameObject MissilePrefab;
+    public GameObject FrostLancePrefab;
+    public GameObject ArmorPrefab; 
+   
+    [Header("Player References")]
+    public PlayerStats playerStats;
     public float maxHealth;
     public float currentHealth;
     public float maxMana;
     public float currentMana;
     public float meleeAttackSpeed;
+    private float nextAttackTime = 0f;
     public float defenceMultiplier;
-    public SpriteRenderer playerSpriteColour;
-    public GameObject playerDamagePrefab;
-    private PlayerMovement PlayerMovement;
-    public Vector3 startingPos;
     bool isPlayerDead;
+    private GameObject currentEnemy;
+    public SpriteRenderer playerSpriteColour;
+    public Animator animator;
+    public Vector3 startingPos;
+    private PlayerMovement PlayerMovement;
+   
+    [Header("HUD References")]
+    public Button AutoAttackButton;
+    public Image AutoAttackButtonImage;
+    private bool BoolAutoAttackEnabled;
+    public GameObject playerDamagePrefab;
 
     // Start is called before the first frame update
     void Start()
@@ -59,6 +68,10 @@ public class PlayerController : MonoBehaviour
         transform.position = startingPos; 
         animator.SetBool("isDead", false);
         isPlayerDead = false; 
+        
+    }
+    public void ManaRegen()
+    {
         
     }
 
@@ -219,12 +232,6 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private IEnumerator isCasting(float castTime) ///for particle effects? if poss. might not work as only produces a delay 
-    {
-        yield return new WaitForSeconds(castTime);
-        StartCoroutine(GameManager.instance.LoadCastBar(castTime));  ///either here or in function of ability 
-        ///cast particles?  maybe make this a bool and send it to game manager instead 
-    }
 
     public float CalculateModifiedDamage(float baseDamage) //local take damage function. used in damage class to work out damage values
     {
@@ -234,18 +241,23 @@ public class PlayerController : MonoBehaviour
         return modifiedDamage;
     }
 
-    public void FireBall(Transform target)  //spawn fireball from trans.pos. vector is distance between player and enemy  
+    public void FireBall()  ////broken when call the game manager load bar function 
     {
         if(currentMana >= fireBall.manaCost)
         {
-            StartCoroutine(isCasting(fireBall.castingTime));
-            //StartCoroutine(GameManager.instance.LoadCastBar(fireBall.castingTime));  //either here or in the iscasting function
-            Vector3 distance = new Vector3(transform.position.x - target.position.x, transform.position.y - target.position.y); ///calculate vector between players 
-           ///spawn fireball prefab at player transform and have it transform towards enemy until hits its collider 
-           /// var go = Instantiate(FireBallPrefab, transform.position, quaternion.rotation); 
-           /// go.rb.addVelocity("towards current enemy transform. 
-
+           currentMana -= fireBall.manaCost;    
+           GameManager.instance.LoadCastBar(fireBall.castingTime);
+           
             Debug.Log("FireBall Produced");
+           
+            Vector3 distance = new Vector3(transform.position.x - currentEnemy.transform.position.x, transform.position.y - currentEnemy.transform.position.y); ///calculate vector between players 
+                                                                                                                                                                                                                                                                                  
+           Debug.Log("Distance vector is: " + distance.magnitude);
+            
+            
+            
+
+          
 
         }
         else
