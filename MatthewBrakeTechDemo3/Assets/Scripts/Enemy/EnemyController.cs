@@ -39,7 +39,7 @@ public class EnemyController : MonoBehaviour
     public GameObject floatingDamage;
     private Rigidbody2D rb;
     public Vector3 offset = new Vector3(0, 5, 0);
-    private Vector3 startingPos;
+    private Vector3 EnemyStartingPos; 
     private SpriteRenderer sprite;
     public bool isEnemyDead; 
 
@@ -50,7 +50,8 @@ public class EnemyController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        initialiseEnemy(); 
+        EnemyStartingPos = transform.position; 
+        initialiseEnemy();
     }
 
 
@@ -144,12 +145,13 @@ public class EnemyController : MonoBehaviour
         defenceMultiplier = EnemyStats.defenceMultiplier;
         baseDamage = EnemyStats.baseDamage;
         aggroSpeed = EnemyStats.aggroSpeed;
-        timeBetweenAttacks = EnemyStats.rangedAttackSpeed; 
-        rb = GetComponent<Rigidbody2D>(); 
-        startingPos = new Vector3(transform.position.x, transform.position.y, transform.position.z);
+        timeBetweenAttacks = EnemyStats.rangedAttackSpeed;
+        //rb = GetComponent<Rigidbody2D>(); 
+        transform.position = EnemyStartingPos; 
         sprite = GetComponent<SpriteRenderer>();
         enemyState = EnemyState.Idle;
         GameManager.instance.enemies.Add(this);
+        transform.position = EnemyStartingPos; 
 
     }
 

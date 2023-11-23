@@ -27,13 +27,14 @@ public class PlayerController : MonoBehaviour
     public SpriteRenderer playerSpriteColour;
     public GameObject playerDamagePrefab;
     private PlayerMovement PlayerMovement;
-    public Vector3 startingPos; 
+    public Vector3 startingPos;
     bool isPlayerDead;
 
     // Start is called before the first frame update
     void Start()
     {
         PlayerMovement = FindFirstObjectByType<PlayerMovement>();
+        startingPos = transform.position;
         initialisePlayer();
         Debug.Log("Abilities are: " + playerStats.abilities);
     }
@@ -55,7 +56,7 @@ public class PlayerController : MonoBehaviour
         currentMana = playerStats.maxMana; 
         meleeAttackSpeed = playerStats.meleeAttackSpeed;
         defenceMultiplier = playerStats.defenceMultiplier;
-        startingPos = new Vector3(transform.position.x, transform.position.y, transform.position.z);
+        transform.position = startingPos; 
         animator.SetBool("isDead", false);
         isPlayerDead = false; 
         

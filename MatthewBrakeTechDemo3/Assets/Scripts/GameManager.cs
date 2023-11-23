@@ -57,7 +57,7 @@ public class GameManager : MonoBehaviour
     {
         UpdatePlayerUI();
         updateEnemyUI();
-        CheckPlayerHealth();
+        UpdateGame(); 
         
     }
 
@@ -66,24 +66,24 @@ public class GameManager : MonoBehaviour
         /// reset player and enemy values here 
         Debug.Log("Player has respawned");  ///happens on every frame somehow so continuously respawns 
     }
-    public void CheckPlayerHealth()
-    {
-        bool isRespawning = player.IsPlayerDead();
-        if (isRespawning)
-        {
-            ///respawn after 3 seconds at full health 
-            isRespawning = false;
-            Debug.Log("Respawning!");
-            Respawn();
+    //public void CheckPlayerHealth()
+    //{
+    //    bool isRespawning = player.IsPlayerDead();
+    //    if (isRespawning)
+    //    {
+    //        ///respawn after 3 seconds at full health 
+    //        isRespawning = false;
+    //        Debug.Log("Respawning!");
+    //        Respawn();
            
             
-        }
-        else
-        {
+    //    }
+    //    else
+    //    {
             
-        }
+    //    }
         
-    }
+    //}
     public void SetActiveEnemy(EnemyController newEnemy)
     {
         if (newEnemy != null)
@@ -186,7 +186,7 @@ public class GameManager : MonoBehaviour
                 {
                     enemy.initialiseEnemy();
                 }
-                else
+                else if(enemy.currentHealth <= 0)
                 {
 
                 }
