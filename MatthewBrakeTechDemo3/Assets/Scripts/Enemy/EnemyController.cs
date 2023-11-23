@@ -51,6 +51,7 @@ public class EnemyController : MonoBehaviour
         initialiseEnemy(); 
     }
 
+
     // Update is called once per frame
     void Update()
     {
@@ -66,6 +67,7 @@ public class EnemyController : MonoBehaviour
                 break; 
 
         }
+        
         
         if(Input.touchCount > 0) ///swap to input.get mouse button 
         {
@@ -204,7 +206,7 @@ public class EnemyController : MonoBehaviour
         Vector3 direction = (playerPos - transform.position).normalized;
         enemyAnim.SetFloat("Vertical", playerPos.y - transform.position.y);
 
-        if(Vector3.Distance(playerPos, transform.position) > 1.0f)
+        if(Vector3.Distance(playerPos, transform.position) > 2.0f)
         {
             if(playerPos.x > transform.position.x)
             {
@@ -241,10 +243,12 @@ public class EnemyController : MonoBehaviour
             MoveTowardsPlayer(playerTransform.position);
             
             AttackTimer += Time.deltaTime;
+            //Debug.Log(AttackTimer);
             if(AttackTimer >= timeBetweenAttacks)
             {
                 enemyState = EnemyState.Attack;
-                AttackTimer = 0f; 
+               // Debug.Log("Timer Reset and moving to attack phase");
+                AttackTimer = 0f;
             }
         }
     }
@@ -253,7 +257,13 @@ public class EnemyController : MonoBehaviour
         if(playerTransform != null)
         {
             DamageManager.DealPlayerDamage(playerTransform.gameObject, baseDamage);
+            //Debug.Log("Attemped Attack on Player");
             enemyState = EnemyState.Chase;
+            //Debug.Log("Moved back to chase phase"); 
+        }
+        else
+        {
+            Debug.Log("Cant attack player"); 
         }
     }
     

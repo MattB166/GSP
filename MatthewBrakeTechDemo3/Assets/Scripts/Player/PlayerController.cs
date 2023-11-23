@@ -270,9 +270,10 @@ public class PlayerController : MonoBehaviour
     private IEnumerator DeathDelay()
     {
         yield return new WaitForSeconds(3f);
-        animator.SetBool("isDead", false); 
-        transform.position = startingPos;
-        isPlayerDead = false; 
+        //animator.SetBool("isDead", false); 
+        //transform.position = startingPos;
+        //isPlayerDead = false; 
+        initialisePlayer(); 
     }
 
     
