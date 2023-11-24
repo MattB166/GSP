@@ -9,7 +9,7 @@ public class DamageManager : MonoBehaviour
     public static float hitChance = 80;
    
     
-    public static void DealEnemyDamage(EnemyController target, float baseDamage)
+    public static void DealEnemyDamage(EnemyController target, float baseDamage, bool applyDOT)
     {
         if (IsHit(hitChance))
         {
@@ -21,14 +21,18 @@ public class DamageManager : MonoBehaviour
                 if(isCritical)
                 {
                     baseDamage *= 2;
-                    //Debug.Log("critical hit taken. damage of: " + baseDamage);
+                    
                 }
                 else
                 {
-                   // Debug.Log("Not critical damage");
+                  
                     float modifiedDamage = enemy.CalculateModifiedDamage(baseDamage);
                     enemy.TakeDamage(modifiedDamage);
-                   // Debug.Log("Enemy Taken damage of: " + modifiedDamage);
+                    if(applyDOT)
+                    {
+                        //apply DOT. and if critical, the additional damage is doubled. need a DOT function below 
+                    }
+                   
                 }
                
             }

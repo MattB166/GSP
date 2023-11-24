@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Security.Cryptography;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -34,6 +35,7 @@ public class PlayerController : MonoBehaviour
     public Animator animator;
     public Vector3 startingPos;
     private PlayerMovement PlayerMovement;
+    private PlayerController player;
    
     [Header("HUD References")]
     public Button AutoAttackButton;
@@ -47,6 +49,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         PlayerMovement = FindFirstObjectByType<PlayerMovement>();
+        player = FindFirstObjectByType<PlayerController>(); 
         startingPos = transform.position;
         initialisePlayer();
         Debug.Log("Abilities are: " + playerStats.abilities);
@@ -215,7 +218,7 @@ public class PlayerController : MonoBehaviour
         {
             animator.SetBool("isAutoAttacking", true);
             Debug.Log("Attacking");
-            DamageManager.DealEnemyDamage(currentEnemy, playerStats.baseDamage);
+            DamageManager.DealEnemyDamage(currentEnemy, playerStats.baseDamage, false);
 
         }
         else
@@ -259,11 +262,11 @@ public class PlayerController : MonoBehaviour
         {
 
             currentMana -= fireBall.manaCost;
-            GameManager.instance.LoadCastBar(fireBall.castingTime);
+            //GameManager.instance.LoadCastBar(fireBall.castingTime);
             
             if(AbilitiesManager.instance != null)
             { 
-                    AbilitiesManager.instance.UseFireball(transform.position, currentEnemy, FireBallPrefab, 5f);
+                  StartCoroutine(AbilitiesManager.instance.UseFireball(player, currentEnemy, FireBallPrefab, 7f, fireBall.castingTime));
             }
             else
             {
@@ -279,10 +282,11 @@ public class PlayerController : MonoBehaviour
             Debug.Log("Not enough mana to perform FireBall/ Current Enemy Null");
         }
       
-    
+        
           
     
     }
+    
    
 
     public bool IsPlayerDead() ///boolean to determine if the player is dead 

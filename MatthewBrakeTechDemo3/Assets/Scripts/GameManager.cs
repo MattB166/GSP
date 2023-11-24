@@ -166,10 +166,10 @@ public class GameManager : MonoBehaviour
         castBarSlider.maxValue = castTime; 
         while (elapsedTime < castTime)
         {
-            castBarSlider.value += elapsedTime / castTime;
+            elapsedTime+= Time.deltaTime;
+            castBarSlider.value = elapsedTime;
             yield return null; 
 
-            elapsedTime+= Time.deltaTime;
             
             
         }

@@ -25,8 +25,11 @@ public class AbilitiesManager : MonoBehaviour
     {
          
     }
-    public void UseFireball(Vector3 spawnPos, EnemyController targetPos, GameObject fireBallPrefab, float speed)
+    public IEnumerator UseFireball(PlayerController player, EnemyController targetPos, GameObject fireBallPrefab, float speed, float CastTime)
     {
+       yield return StartCoroutine(CastingDelay(CastTime));
+        Vector3 spawnPos = player.transform.position; 
+       
         Debug.Log("FireBall made from abilities manager");
         activeFireBall = Instantiate(fireBallPrefab, spawnPos, Quaternion.identity);
 
@@ -36,13 +39,20 @@ public class AbilitiesManager : MonoBehaviour
     }
 
 
-    public void UseMissile()
+    public IEnumerator UseMissile()
     {
-
+        yield return new WaitForSeconds(3f);
     }
 
-    public void UseFrostLance()
+    public IEnumerator UseFrostLance()
     {
+        yield return new WaitForSeconds(3f);
+    }
 
+    public IEnumerator CastingDelay(float castTime)
+    {
+        GameManager.instance.LoadCastBar(castTime);
+        yield return new WaitForSeconds(castTime);
+        Debug.Log("Causing delay whilst casting spell");
     }
 }
