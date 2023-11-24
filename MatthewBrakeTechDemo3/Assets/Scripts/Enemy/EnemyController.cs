@@ -35,7 +35,7 @@ public class EnemyController : MonoBehaviour
 
     [Header("Enemy References")]
     public Animator enemyAnim; 
-    EnemyController currentActiveEnemy;
+    public EnemyController currentActiveEnemy;
     public GameObject floatingDamage;
     private Rigidbody2D rb;
     public Vector3 offset = new Vector3(0, 5, 0);

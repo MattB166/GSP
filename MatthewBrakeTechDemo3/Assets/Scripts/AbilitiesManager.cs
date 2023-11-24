@@ -25,12 +25,12 @@ public class AbilitiesManager : MonoBehaviour
     {
          
     }
-    public void UseFireball(Vector3 spawnPos, Vector3 targetPos, GameObject fireBallPrefab, float speed)
+    public void UseFireball(Vector3 spawnPos, EnemyController targetPos, GameObject fireBallPrefab, float speed)
     {
         Debug.Log("FireBall made from abilities manager");
         activeFireBall = Instantiate(fireBallPrefab, spawnPos, Quaternion.identity);
 
-        Vector3 direction = (targetPos - spawnPos).normalized;
+        Vector3 direction = (targetPos.transform.position - spawnPos).normalized;
 
         activeFireBall.GetComponent<Rigidbody2D>().velocity = direction * speed;
     }

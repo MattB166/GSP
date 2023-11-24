@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
     public Slider enemyHealthSlider;
     public Slider enemyManaSlider;
     public EnemyController activeEnemy;
+   
     public List<EnemyController> enemies;
 
     [Header("General References")]
@@ -93,6 +94,7 @@ public class GameManager : MonoBehaviour
         {
             Debug.Log("Setting active enemy: " + newEnemy.name);
             activeEnemy = newEnemy;
+            
         }
         else
         {

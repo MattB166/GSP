@@ -9,7 +9,7 @@ public class DamageManager : MonoBehaviour
     public static float hitChance = 80;
    
     
-    public static void DealEnemyDamage(GameObject target, float baseDamage)
+    public static void DealEnemyDamage(EnemyController target, float baseDamage)
     {
         if (IsHit(hitChance))
         {

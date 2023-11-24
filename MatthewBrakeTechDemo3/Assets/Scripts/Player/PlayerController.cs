@@ -28,7 +28,8 @@ public class PlayerController : MonoBehaviour
     private float nextAttackTime = 0f;
     public float defenceMultiplier;
     bool isPlayerDead;
-    private GameObject currentEnemy;
+    //private GameObject currentEnemy;
+    private EnemyController currentEnemy;
     public SpriteRenderer playerSpriteColour;
     public Animator animator;
     public Vector3 startingPos;
@@ -39,6 +40,8 @@ public class PlayerController : MonoBehaviour
     public Image AutoAttackButtonImage;
     private bool BoolAutoAttackEnabled;
     public GameObject playerDamagePrefab;
+
+    
 
     // Start is called before the first frame update
     void Start()
@@ -103,7 +106,7 @@ public class PlayerController : MonoBehaviour
                 enemyInRange = true;
                 if(collider.gameObject == GameManager.instance.activeEnemy.gameObject)
                 {
-                    currentEnemy = collider.gameObject;
+                    currentEnemy = collider.gameObject.GetComponent<EnemyController>();
                     
                 }
                 else
@@ -250,6 +253,8 @@ public class PlayerController : MonoBehaviour
 
     public void FireBall()  ////broken when call the game manager load bar function 
     {
+
+        currentEnemy = GameManager.instance.activeEnemy;
         if(currentMana >= fireBall.manaCost && currentEnemy != null)
         {
 
@@ -258,14 +263,10 @@ public class PlayerController : MonoBehaviour
             GameManager.instance.LoadCastBar(fireBall.castingTime);
             if(AbilitiesManager.instance != null)
             {
-               if(currentEnemy != null)
-                {
-                    AbilitiesManager.instance.UseFireball(transform.position, currentEnemy.transform.position, FireBallPrefab, 5f);
-                }
-                else
-                {
-                    Debug.Log("Current enemy is null"); 
-                }
+              
+                
+                    AbilitiesManager.instance.UseFireball(transform.position, currentEnemy, FireBallPrefab, 5f);
+                
                
             }
             else
@@ -279,7 +280,7 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            Debug.Log("Not enough mana to perform FireBall");
+            Debug.Log("Not enough mana to perform FireBall/ Current Enemy Null");
         }
       
     
