@@ -606,6 +606,7 @@ MonoBehaviour:
   player: {fileID: 835751263}
   activeAbility: {fileID: 0}
   UIAbilities: []
+  CastBarFull: 0
 --- !u!4 &152135235
 Transform:
   m_ObjectHideFlags: 0
@@ -2686,7 +2687,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.046731576, y: -0.022146434}
+  m_Offset: {x: 0.00068348646, y: -0.06484845}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -2696,7 +2697,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.79145503, y: 0.86736757}
+  m_Size: {x: 0.5110841, y: 0.5484348}
   m_EdgeRadius: 0
 --- !u!1 &901239146
 GameObject:

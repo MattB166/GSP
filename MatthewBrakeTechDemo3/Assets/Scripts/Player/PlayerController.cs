@@ -15,7 +15,8 @@ public class PlayerController : MonoBehaviour
     public GameObject FireBallPrefab;
     public GameObject MissilePrefab;
     public GameObject FrostLancePrefab;
-    public GameObject ArmorPrefab; 
+    public GameObject ArmorPrefab;
+    
    
     [Header("Player References")]
     public PlayerStats playerStats;
@@ -53,7 +54,12 @@ public class PlayerController : MonoBehaviour
     {
         CheckDetectionRadius(); 
         updateAutoAttackButton();
-        
+       
+
+    }
+    private void FixedUpdate()
+    {
+      
     }
 
     public void initialisePlayer()  ///initialises all player variables locally 
@@ -246,19 +252,13 @@ public class PlayerController : MonoBehaviour
     {
         if(currentMana >= fireBall.manaCost)
         {
-           currentMana -= fireBall.manaCost;    
-           GameManager.instance.LoadCastBar(fireBall.castingTime);
+            
+            
+            currentMana -= fireBall.manaCost;
+            GameManager.instance.LoadCastBar(fireBall.castingTime);
+            
+            
            
-            Debug.Log("FireBall Produced");
-           
-            Vector3 distance = new Vector3(transform.position.x - currentEnemy.transform.position.x, transform.position.y - currentEnemy.transform.position.y); ///calculate vector between players 
-                                                                                                                                                                                                                                                                                  
-           Debug.Log("Distance vector is: " + distance.magnitude);
-            
-            
-            
-
-          
 
         }
         else
@@ -270,6 +270,7 @@ public class PlayerController : MonoBehaviour
           
     
     }
+   
 
     public bool IsPlayerDead() ///boolean to determine if the player is dead 
     {
