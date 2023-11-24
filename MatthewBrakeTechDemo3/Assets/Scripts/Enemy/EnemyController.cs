@@ -39,7 +39,8 @@ public class EnemyController : MonoBehaviour
     public GameObject floatingDamage;
     private Rigidbody2D rb;
     public Vector3 offset = new Vector3(0, 5, 0);
-    private Vector3 EnemyStartingPos; 
+    private Vector3 EnemyStartingPos;
+    private Quaternion EnemyStartingRot;
     private SpriteRenderer sprite;
     public bool isEnemyDead; 
 
@@ -51,6 +52,7 @@ public class EnemyController : MonoBehaviour
     void Start()
     {
         EnemyStartingPos = transform.position; 
+        EnemyStartingRot = transform.rotation;
         initialiseEnemy();
     }
 
@@ -146,12 +148,16 @@ public class EnemyController : MonoBehaviour
         baseDamage = EnemyStats.baseDamage;
         aggroSpeed = EnemyStats.aggroSpeed;
         timeBetweenAttacks = EnemyStats.rangedAttackSpeed;
-        //rb = GetComponent<Rigidbody2D>(); 
-        transform.position = EnemyStartingPos; 
+        rb = GetComponent<Rigidbody2D>(); 
+        if(transform.position != EnemyStartingPos)
+        {
+            transform.position = EnemyStartingPos;
+        }
+       
+        transform.rotation = EnemyStartingRot; 
         sprite = GetComponent<SpriteRenderer>();
         enemyState = EnemyState.Idle;
         GameManager.instance.enemies.Add(this);
-        transform.position = EnemyStartingPos; 
 
     }
 
@@ -298,7 +304,8 @@ public class EnemyController : MonoBehaviour
     {
         ///freeze death animation on last frame 
         enemyAnim.SetBool("isChasing", false);
-        enemyAnim.SetBool("isDead", true); 
+        enemyAnim.SetBool("isDead", true);
+        GameManager.instance.enemies.Remove(this);
         ///set dead animation to true 
     }
     

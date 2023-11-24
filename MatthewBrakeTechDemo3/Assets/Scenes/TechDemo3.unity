@@ -1465,6 +1465,7 @@ MonoBehaviour:
   baseDamage: 0
   aggroSpeed: 0
   enemyAnim: {fileID: 465414792}
+  currentActiveEnemy: {fileID: 0}
   floatingDamage: {fileID: 3025089940272494458, guid: 9f0017a0e5c6b764caa0004bc9d1a0f3, type: 3}
   offset: {x: 0, y: 5, z: 0}
   isEnemyDead: 0
@@ -2015,7 +2016,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2d16eb2d85f94a4e9246306e37522c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fireBallPrefab: {fileID: 3559088757689278234, guid: d460ea2819b6c6847903f4343330f25d, type: 3}
 --- !u!4 &699205170
 Transform:
   m_ObjectHideFlags: 0
@@ -3580,6 +3580,7 @@ MonoBehaviour:
   baseDamage: 0
   aggroSpeed: 0
   enemyAnim: {fileID: 1372530308}
+  currentActiveEnemy: {fileID: 0}
   floatingDamage: {fileID: 3025089940272494458, guid: 9f0017a0e5c6b764caa0004bc9d1a0f3, type: 3}
   offset: {x: 0, y: 5, z: 0}
   isEnemyDead: 0

@@ -195,16 +195,14 @@ public class GameManager : MonoBehaviour
     {
         if(isDead())
         {
-           foreach(var enemy in enemies)
+           foreach(EnemyController enemy in enemies)
             {
-                if(enemy.currentHealth > 0)
-                {
+                
+                
                     enemy.initialiseEnemy();
-                }
-                else if(enemy.currentHealth <= 0)
-                {
-
-                }
+                
+                
+               
             }
         }
     }

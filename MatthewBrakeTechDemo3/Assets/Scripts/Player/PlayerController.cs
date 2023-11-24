@@ -258,16 +258,12 @@ public class PlayerController : MonoBehaviour
         if(currentMana >= fireBall.manaCost && currentEnemy != null)
         {
 
-            
             currentMana -= fireBall.manaCost;
             GameManager.instance.LoadCastBar(fireBall.castingTime);
+            
             if(AbilitiesManager.instance != null)
-            {
-              
-                
+            { 
                     AbilitiesManager.instance.UseFireball(transform.position, currentEnemy, FireBallPrefab, 5f);
-                
-               
             }
             else
             {
