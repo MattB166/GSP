@@ -6,6 +6,7 @@ public class AbilitiesManager : MonoBehaviour
 {
   
     public static AbilitiesManager instance;
+    private FireBall fireBall; 
     
     private GameObject activeFireBall;
     private GameObject activeMissile;
@@ -36,6 +37,7 @@ public class AbilitiesManager : MonoBehaviour
         Vector3 direction = (targetPos.transform.position - spawnPos).normalized;
 
         activeFireBall.GetComponent<Rigidbody2D>().velocity = direction * speed;
+        //DamageManager.DealEnemyAbilityDamage(targetPos, fireBall);
     }
 
 

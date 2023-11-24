@@ -137,14 +137,16 @@ public class DamageManager : MonoBehaviour
         target.TakeDamage(fireBall.basePower);
 
         //now for DOT 
-        float DOT = 0;
-        DOT += calculateDamageOverTime(fireBall.additionalDamage, fireBall.additionalDamageInterval, fireBall.debuffDuration);
+        
+       float DOT = calculateDamageOverTime(fireBall.additionalDamage, fireBall.additionalDamageInterval, fireBall.debuffDuration);
         if(isCrit)
         {
             DOT *= 2; 
         }
 
-        target.TakeDamage(DOT);
+        int numSecs = Mathf.CeilToInt(fireBall.debuffDuration / fireBall.additionalDamageInterval);
+
+        DamageManager.ApplyDamageOverTime(target,DOT,fireBall.additionalDamageInterval,numSecs);
     }
     private static void DealArcaneMissileDamage(EnemyController target, ArcaneMissile arcaneMissile, bool isCrit)
     {
@@ -154,6 +156,15 @@ public class DamageManager : MonoBehaviour
     private static float calculateDamageOverTime(float additionalDamage, float additionalDamageInterval, float duration)
     {
         return (duration / additionalDamageInterval) * additionalDamage;
+    }
+
+    private static IEnumerator ApplyDamageOverTime(EnemyController target, float damage, float interval, int secs)
+    {
+        for(int i = 0; i < secs; i++)
+        {
+            yield return new WaitForSeconds(interval);
+            target.TakeDamage(damage);
+        }
     }
    
 
