@@ -250,12 +250,28 @@ public class PlayerController : MonoBehaviour
 
     public void FireBall()  ////broken when call the game manager load bar function 
     {
-        if(currentMana >= fireBall.manaCost)
+        if(currentMana >= fireBall.manaCost && currentEnemy != null)
         {
-            
+
             
             currentMana -= fireBall.manaCost;
             GameManager.instance.LoadCastBar(fireBall.castingTime);
+            if(AbilitiesManager.instance != null)
+            {
+               if(currentEnemy != null)
+                {
+                    AbilitiesManager.instance.UseFireball(transform.position, currentEnemy.transform.position, FireBallPrefab, 5f);
+                }
+                else
+                {
+                    Debug.Log("Current enemy is null"); 
+                }
+               
+            }
+            else
+            {
+                Debug.Log("Abilities manager is null");
+            }
             
             
            
