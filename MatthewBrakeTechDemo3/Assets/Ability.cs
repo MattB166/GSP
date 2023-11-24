@@ -5,6 +5,7 @@ using UnityEngine;
 
 public abstract class Ability : ScriptableObject
 {
+    public string type;
     public float manaCost;
     public float castingTime;
     public Sprite Image;

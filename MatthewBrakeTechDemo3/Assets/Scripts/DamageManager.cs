@@ -9,7 +9,7 @@ public class DamageManager : MonoBehaviour
     public static float hitChance = 80;
    
     
-    public static void DealEnemyDamage(EnemyController target, float baseDamage, bool applyDOT)
+    public static void DealEnemyDamage(EnemyController target, float baseDamage, bool applyDOT) ///this bool might not be best idea as multiple abilities need incoporating 
     {
         if (IsHit(hitChance))
         {
@@ -109,6 +109,51 @@ public class DamageManager : MonoBehaviour
         }
          
             
+    }
+
+
+    public static void DealEnemyAbilityDamage(EnemyController target, Ability ability)
+    {
+        if (IsHit(hitChance))
+        {
+            bool isCrit = IsCriticalHit();
+
+
+            switch(ability)
+            {
+                case FireBall fireBall:
+                    DealFireBallDamage(target, fireBall, isCrit);
+                    break;
+                case ArcaneMissile arcaneMissile:
+                    DealArcaneMissileDamage(target,arcaneMissile,isCrit);
+                    break;
+
+            }
+        }
+    }
+
+    private static void DealFireBallDamage(EnemyController target, FireBall fireBall, bool isCrit)
+    {
+        target.TakeDamage(fireBall.basePower);
+
+        //now for DOT 
+        float DOT = 0;
+        DOT += calculateDamageOverTime(fireBall.additionalDamage, fireBall.additionalDamageInterval, fireBall.debuffDuration);
+        if(isCrit)
+        {
+            DOT *= 2; 
+        }
+
+        target.TakeDamage(DOT);
+    }
+    private static void DealArcaneMissileDamage(EnemyController target, ArcaneMissile arcaneMissile, bool isCrit)
+    {
+
+    }
+
+    private static float calculateDamageOverTime(float additionalDamage, float additionalDamageInterval, float duration)
+    {
+        return (duration / additionalDamageInterval) * additionalDamage;
     }
    
 

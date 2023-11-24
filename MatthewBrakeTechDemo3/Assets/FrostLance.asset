@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93c6ef8a2eba12c4285dec54b592c439, type: 3}
   m_Name: FrostLance
   m_EditorClassIdentifier: 
+  type: FrostLance
   manaCost: 45
   castingTime: 0
   Image: {fileID: 21300000, guid: 7ebd93035bb7c3b44b57b49a5016f543, type: 3}
