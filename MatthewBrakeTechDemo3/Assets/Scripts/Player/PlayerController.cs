@@ -9,7 +9,7 @@ using UnityEngine.UI;
 public class PlayerController : MonoBehaviour
 {
     [Header("Ability References")]
-    public Ability fireBall;
+    public FireBall fireBall;
     public Ability Armor;
     public Ability Missile;
     public Ability FrostLance;
@@ -265,8 +265,12 @@ public class PlayerController : MonoBehaviour
             //GameManager.instance.LoadCastBar(fireBall.castingTime);
             
             if(AbilitiesManager.instance != null)
-            { 
-                  StartCoroutine(AbilitiesManager.instance.UseFireball(player, currentEnemy, FireBallPrefab, 7f, fireBall.castingTime));
+            {
+                //FireBallCollision fireBallCollision = FireBallPrefab.GetComponent<FireBallCollision>();
+                //fireBallCollision.setFireBall(fireBall);
+                
+                StartCoroutine(AbilitiesManager.instance.UseFireball(player, currentEnemy, FireBallPrefab, 7f, fireBall.castingTime));
+                
             }
             else
             {
