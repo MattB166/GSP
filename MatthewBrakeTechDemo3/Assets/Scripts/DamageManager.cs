@@ -133,6 +133,10 @@ public class DamageManager : MonoBehaviour
 
             }
         }
+        else
+        {
+            Debug.Log("Missed enemy with ability");
+        }
     }
 
     private static void DealFireBallDamage(EnemyController target, FireBall fireBall, bool isCrit)
