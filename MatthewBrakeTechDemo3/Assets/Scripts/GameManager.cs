@@ -30,7 +30,9 @@ public class GameManager : MonoBehaviour
     private FrostLance FrostLance;
     private MageArmor armor;
     public Image mageBuffImage;
-    public TextMeshProUGUI armorBuffText;
+    private float TimeLeft;
+    public TextMeshProUGUI armorBuffText; 
+
     //public Image FireBallEnabled;
 
     [Header("Player References")]
@@ -154,8 +156,9 @@ public class GameManager : MonoBehaviour
     {
         playerHealthSlider.value = player.currentHealth; 
         playerManaSlider.value = player.currentMana;
+        DisplayArmorBuffText(TimeLeft);
 
-      
+
     }
 
     public void SetActiveCast(Ability ability)
@@ -231,7 +234,11 @@ public class GameManager : MonoBehaviour
         mageBuffImage.enabled = false; 
     }
 
-   
+   public void DisplayArmorBuffText(float remainingTime)
+    {
+        float TimeLeft = remainingTime;
+        armorBuffText.text = TimeLeft.ToString(); 
+    }
    
    
 }

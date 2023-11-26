@@ -86,6 +86,7 @@ public class PlayerController : MonoBehaviour
         meleeAttackSpeed = playerStats.meleeAttackSpeed;
         defenceMultiplier = playerStats.defenceMultiplier;
         ManaRegenAmount = playerStats.manaRegen;
+        
         transform.position = startingPos; 
         animator.SetBool("isDead", false);
         isPlayerDead = false; 
@@ -345,8 +346,7 @@ public class PlayerController : MonoBehaviour
         float originalLastTime = lastMageArmorTime;
         GameManager.instance.ActivateMageBuff();
         Debug.Log("Buff applied");
-        yield return new WaitForSeconds(Armor.buffDuration);
-        
+        yield return new WaitForSeconds(Armor.buffDuration);  
 
         Debug.Log("Buff ended");
         GameManager.instance.DisableMageBuff();
@@ -358,9 +358,10 @@ public class PlayerController : MonoBehaviour
     }
     private void UpdateBuffDurationText(float remainingText)
     {
-        mageArmorBuffText.text = "Mathf.Ceil(remainingText))s"; 
+        mageArmorBuffText.text = Mathf.CeilToInt(remainingText).ToString();
+        GameManager.instance.DisplayArmorBuffText(remainingText);
     }
-        
+
     private IEnumerator MageArmorCoolDown()
     {
         Debug.Log("Starting Cool down");
