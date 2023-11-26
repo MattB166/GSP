@@ -10,13 +10,13 @@ public class PlayerController : MonoBehaviour
 {
     [Header("Ability References")]
     public FireBall fireBall;
-    public Ability Armor;
+    public MageArmor Armor;
     public Ability Missile;
     public Ability FrostLance;
     public GameObject FireBallPrefab;
     public GameObject MissilePrefab;
     public GameObject FrostLancePrefab;
-    public GameObject ArmorPrefab;
+    
     
    
     [Header("Player References")]
@@ -29,6 +29,7 @@ public class PlayerController : MonoBehaviour
     public float meleeAttackSpeed;
     private float nextAttackTime = 0f;
     public float defenceMultiplier;
+    public float lastMageArmorTime;
     bool isPlayerDead;
     //private GameObject currentEnemy;
     private EnemyController currentEnemy;
@@ -52,9 +53,11 @@ public class PlayerController : MonoBehaviour
         PlayerMovement = FindFirstObjectByType<PlayerMovement>();
         player = FindFirstObjectByType<PlayerController>(); 
         startingPos = transform.position;
+        lastMageArmorTime = -Mathf.Infinity;
         initialisePlayer();
         StartCoroutine(ManaRegen());
         Debug.Log("Abilities are: " + playerStats.abilities);
+        Debug.Log("Player mana regen rate is: " + player.ManaRegenAmount + " Player defence is: " + player.defenceMultiplier); 
     }
 
     // Update is called once per frame
@@ -315,13 +318,45 @@ public class PlayerController : MonoBehaviour
     }
     public void MageArmor()
     {
-        currentMana -= Armor.manaCost;
-        StartCoroutine(AbilitiesManager.instance.UseMageArmor());
-
-    }
-           
         
+        if (currentMana >= Armor.manaCost && Time.time - lastMageArmorTime >= Armor.coolDown)
+        {
+            currentMana -= Armor.manaCost;
+            lastMageArmorTime = Time.time;
+            //Debug.Log("Mage armor started");
+            StartCoroutine(ActivateMageArmor());
+           
+            
+        }
+        else
+        {
+            Debug.Log("Too soon!"); 
+        }
+       // Debug.Log("Exiting Mage Armor"); 
+    }
     
+    private IEnumerator ActivateMageArmor()
+    {
+        player.defenceMultiplier = 0.65f;
+        player.ManaRegenAmount = 25f;
+        float originalLastTime = lastMageArmorTime;
+        Debug.Log("Buff applied");
+        Debug.Log("Defence is: " + player.defenceMultiplier + " Mana regen rate is: " + player.ManaRegenAmount);
+        yield return new WaitForSeconds(Armor.buffDuration);
+        Debug.Log("Buff ended"); 
+
+        player.defenceMultiplier = 1f;
+        player.ManaRegenAmount = 12f;
+        lastMageArmorTime = Time.time;
+        StartCoroutine(MageArmorCoolDown());
+    }
+        
+    private IEnumerator MageArmorCoolDown()
+    {
+        Debug.Log("Starting Cool down");
+        yield return new WaitForSeconds(Armor.coolDown);
+        Debug.Log("cool down");
+    }
     
    
 

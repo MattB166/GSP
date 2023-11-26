@@ -62,16 +62,28 @@ public class AbilitiesManager : MonoBehaviour
         yield return new WaitForSeconds(3f);
     }
 
-    public IEnumerator UseMageArmor()
-    {
-        player.defenceMultiplier = 0.65f;
-        player.ManaRegenAmount = 25f;
-        yield return new WaitForSeconds(mageArmor.buffDuration);
+    //public IEnumerator UseMageArmor()
+    //{
+    //    player.defenceMultiplier = 0.65f;
+    //    player.ManaRegenAmount = 25f;
+    //    float originalLastTime = player.lastMageArmorTime;
+       
+    //    yield return new WaitForSeconds(mageArmor.buffDuration);
+       
+    //    player.defenceMultiplier = 1f;
+    //    player.ManaRegenAmount = 12f;  
+    //    player.lastMageArmorTime = originalLastTime;
+    //    StartCoroutine(MageArmorCoolDown());
+       
+    //}
 
-        player.defenceMultiplier = 1f;
-        player.ManaRegenAmount = 12f; 
+    //private IEnumerator MageArmorCoolDown()
+    //{
+    //    //lastMageArmorTime = Time.time;
+    //    yield return new WaitForSeconds(mageArmor.coolDown);
+    //    Debug.Log("Cool down!");
+    //}
 
-    }
 
     public IEnumerator CastingDelay(float castTime)
     {
