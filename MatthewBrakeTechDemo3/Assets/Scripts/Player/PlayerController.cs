@@ -218,7 +218,7 @@ public class PlayerController : MonoBehaviour
         {
             animator.SetBool("isAutoAttacking", true);
             Debug.Log("Attacking");
-            DamageManager.DealEnemyDamage(currentEnemy, playerStats.baseDamage, false);
+            DamageManager.DealEnemyDamage(currentEnemy, playerStats.baseDamage);
 
         }
         else

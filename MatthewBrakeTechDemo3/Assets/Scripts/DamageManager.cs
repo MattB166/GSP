@@ -6,10 +6,25 @@ using UnityEngine;
 
 public class DamageManager : MonoBehaviour
 {
-    public static float hitChance = 80;
-   
+    public static DamageManager instance;
     
-    public static void DealEnemyDamage(EnemyController target, float baseDamage, bool applyDOT) ///this bool might not be best idea as multiple abilities need incoporating 
+    public static float hitChance = 80;
+
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            {
+                instance = this;
+            }
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    public static void DealEnemyDamage(EnemyController target, float baseDamage) ///this bool might not be best idea as multiple abilities need incoporating 
     {
         if (IsHit(hitChance))
         {
@@ -28,10 +43,7 @@ public class DamageManager : MonoBehaviour
                   
                     float modifiedDamage = enemy.CalculateModifiedDamage(baseDamage);
                     enemy.TakeDamage(modifiedDamage);
-                    if(applyDOT)
-                    {
-                        //apply DOT. and if critical, the additional damage is doubled. need a DOT function below 
-                    }
+                    
                    
                 }
                
@@ -117,6 +129,7 @@ public class DamageManager : MonoBehaviour
         //Debug.Log("Entered ability damage function");
         if (IsHit(hitChance))
         {
+            Debug.Log("Ability has hit");
             bool isCrit = IsCriticalHit();
 
 
@@ -142,18 +155,23 @@ public class DamageManager : MonoBehaviour
     private static void DealFireBallDamage(EnemyController target, FireBall fireBall, bool isCrit)
     {
         target.TakeDamage(fireBall.basePower);
+        //Debug.Log("Dealt initial Damage of Fireball"); 
 
         //now for DOT 
+        float additionalDamage = fireBall.additionalDamage;
+        float interval = fireBall.additionalDamageInterval;
         
-       float DOT = calculateDamageOverTime(fireBall.additionalDamage, fireBall.additionalDamageInterval, fireBall.debuffDuration);
-        if(isCrit)
+        
+       //float DOT = calculateDamageOverTime(fireBall.additionalDamage, fireBall.additionalDamageInterval, fireBall.debuffDuration);
+        if(isCrit == true)
         {
-            DOT *= 2; 
+            Debug.Log("Critical. DOT doubled"); 
+            additionalDamage *= 2; 
         }
 
         int numSecs = Mathf.CeilToInt(fireBall.debuffDuration / fireBall.additionalDamageInterval);
 
-        DamageManager.ApplyDamageOverTime(target,DOT,fireBall.additionalDamageInterval,numSecs);
+      instance.StartCoroutine(ApplyDamageOverTime(target,additionalDamage,interval, numSecs));
     }
     private static void DealArcaneMissileDamage(EnemyController target, ArcaneMissile arcaneMissile, bool isCrit)
     {
@@ -167,11 +185,12 @@ public class DamageManager : MonoBehaviour
 
     private static IEnumerator ApplyDamageOverTime(EnemyController target, float damage, float interval, int secs)
     {
-        
-        for(int i = 0; i < secs; i++)
+        Debug.Log("Dealing Damage Over time");
+        for (int i = 0; i < secs; i++)
         {
             yield return new WaitForSeconds(interval);
             target.TakeDamage(damage);
+            
         }
     }
    

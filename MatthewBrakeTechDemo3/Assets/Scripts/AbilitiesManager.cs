@@ -31,13 +31,13 @@ public class AbilitiesManager : MonoBehaviour
        yield return StartCoroutine(CastingDelay(CastTime));
         Vector3 spawnPos = player.transform.position; 
        
-        Debug.Log("FireBall made from abilities manager");
+        //Debug.Log("FireBall made from abilities manager");
         activeFireBall = Instantiate(fireBallPrefab, spawnPos, Quaternion.identity);
 
         Vector3 direction = (targetPos.transform.position - spawnPos).normalized;
-        Debug.Log("Direction: " + direction);
+        //Debug.Log("Direction: " + direction);
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-        Debug.Log("Angle: " + angle);
+        //Debug.Log("Angle: " + angle);
         activeFireBall.transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
 
         activeFireBall.GetComponent<Rigidbody2D>().velocity = direction * speed; 

@@ -21,7 +21,7 @@ public class FireBallCollision : MonoBehaviour
             if (enemy != null)
             {
                 DamageManager.DealEnemyAbilityDamage(enemy, fireBall);
-                Debug.Log("Damage done to enemy through fireball");
+                //Debug.Log("Damage done to enemy through fireball");
             }
             else
             {
