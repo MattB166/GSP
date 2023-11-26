@@ -31,6 +31,7 @@ public class GameManager : MonoBehaviour
     private MageArmor armor;
     public Image mageBuffImage;
     public TextMeshProUGUI armorBuffText;
+    public Image armorButtonImage; 
     public TextMeshProUGUI armorCoolDownText; 
     
 
@@ -68,7 +69,7 @@ public class GameManager : MonoBehaviour
         autoAttack.SetActive(false);
         isPlayerDead= false;
         mageBuffImage.enabled=false;
-        
+        armorButtonImage.enabled=false;
     }
 
     // Update is called once per frame
@@ -229,10 +230,14 @@ public class GameManager : MonoBehaviour
     public void ActivateMageBuff()
     {
         mageBuffImage.enabled = true;
+        armorButtonImage.enabled = false;
+        Debug.Log("Enabling MI");
     }
     public void DisableMageBuff()
     {
-        mageBuffImage.enabled = false; 
+        mageBuffImage.enabled = false;
+        armorButtonImage.enabled = true;
+        Debug.Log("Disabling MI"); 
     }
 
    public void DisplayArmorBuffText(float remainingTime)
