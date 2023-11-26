@@ -344,10 +344,17 @@ public class PlayerController : MonoBehaviour
         player.ManaRegenAmount = 25f;
         float remainingBuffDuration = Armor.buffDuration;
         float originalLastTime = lastMageArmorTime;
+        float remainingCooldown = Armor.coolDown;
         GameManager.instance.ActivateMageBuff();
         Debug.Log("Buff applied");
-        yield return new WaitForSeconds(Armor.buffDuration);  
-
+        while(remainingBuffDuration > -1)
+        {
+            GameManager.instance.DisplayArmorBuffText(remainingBuffDuration);
+            yield return new WaitForSeconds(1f);
+            remainingBuffDuration -= 1;
+        }
+        
+        //yield return new WaitForSeconds(Armor.buffDuration);
         Debug.Log("Buff ended");
         GameManager.instance.DisableMageBuff();
        
@@ -355,6 +362,14 @@ public class PlayerController : MonoBehaviour
         player.ManaRegenAmount = 12f;
         lastMageArmorTime = Time.time;
         StartCoroutine(MageArmorCoolDown());
+        while (remainingCooldown > -1)
+        {
+            GameManager.instance.DisplayMageArmorCoolDown(remainingCooldown);
+            yield return new WaitForSeconds(1f);
+            remainingCooldown -= 1;
+        }
+        
+       
     }
     private void UpdateBuffDurationText(float remainingText)
     {
@@ -366,7 +381,7 @@ public class PlayerController : MonoBehaviour
     {
         Debug.Log("Starting Cool down");
         yield return new WaitForSeconds(Armor.coolDown);
-        Debug.Log("cool down");
+        //Debug.Log("cool down");
     }
     
    

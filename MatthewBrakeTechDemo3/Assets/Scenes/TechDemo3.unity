@@ -798,6 +798,7 @@ MonoBehaviour:
   fireBallButtonImage: {fileID: 6310311}
   mageBuffImage: {fileID: 1065186279}
   armorBuffText: {fileID: 1461864034}
+  armorCoolDownText: {fileID: 1945891139}
   playerUIPanel: {fileID: 1698544023}
   playerHealthSlider: {fileID: 1950099836}
   playerManaSlider: {fileID: 1527788553}
