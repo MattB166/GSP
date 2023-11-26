@@ -796,6 +796,7 @@ MonoBehaviour:
   castBarSlider: {fileID: 209796466}
   autoAttack: {fileID: 549330002}
   fireBallButtonImage: {fileID: 6310311}
+  mageBuffImage: {fileID: 1065186279}
   playerUIPanel: {fileID: 1698544023}
   playerHealthSlider: {fileID: 1950099836}
   playerManaSlider: {fileID: 1527788553}
@@ -2196,7 +2197,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 36.2, y: 11.6}
-  m_SizeDelta: {x: 68.9164, y: 59.0748}
+  m_SizeDelta: {x: 39.9024, y: 39.387}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &669189780
 GameObject:
@@ -3181,7 +3182,7 @@ MonoBehaviour:
   FireBallPrefab: {fileID: 3559088757689278234, guid: d460ea2819b6c6847903f4343330f25d, type: 3}
   MissilePrefab: {fileID: 3821205949062756429, guid: 8b56bbbac51c84c4b9b6ad2adfffe339, type: 3}
   FrostLancePrefab: {fileID: 0}
-  ArmorPrefab: {fileID: 0}
+  mageArmorBuffText: {fileID: 1461864034}
   playerStats: {fileID: 11400000, guid: a6e894ef5f3c58a4d8633d65261b8430, type: 2}
   maxHealth: 0
   currentHealth: 0
@@ -3190,6 +3191,7 @@ MonoBehaviour:
   ManaRegenAmount: 0
   meleeAttackSpeed: 0
   defenceMultiplier: 0
+  lastMageArmorTime: 0
   playerSpriteColour: {fileID: 0}
   animator: {fileID: 835751262}
   startingPos: {x: 0, y: 0, z: 0}
@@ -3932,7 +3934,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: -8638572301295525184, guid: 41b403f3ec7bf0b4d9896905161730fb, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -4960,7 +4962,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 20s
+  m_text: 00
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -4987,10 +4989,10 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 22.4
-  m_fontSizeBase: 36
+  m_fontSize: 20
+  m_fontSizeBase: 20
   m_fontWeight: 400
-  m_enableAutoSizing: 1
+  m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 1
@@ -6133,8 +6135,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -38.7, y: 11.6}
-  m_SizeDelta: {x: 68.9164, y: 59.0748}
+  m_AnchoredPosition: {x: -12.8, y: 11.6}
+  m_SizeDelta: {x: 36.7936, y: 39.3867}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1908539908
 GameObject:

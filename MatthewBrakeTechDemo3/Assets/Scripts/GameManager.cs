@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.InteropServices.WindowsRuntime;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
@@ -28,6 +29,8 @@ public class GameManager : MonoBehaviour
     private ArcaneMissile arcaneMissile;
     private FrostLance FrostLance;
     private MageArmor armor;
+    public Image mageBuffImage;
+    public TextMeshProUGUI armorBuffText;
     //public Image FireBallEnabled;
 
     [Header("Player References")]
@@ -61,6 +64,7 @@ public class GameManager : MonoBehaviour
         enemyUIPanel.SetActive(false);
         autoAttack.SetActive(false);
         isPlayerDead= false;
+        mageBuffImage.enabled=false;
         
     }
 
@@ -216,6 +220,15 @@ public class GameManager : MonoBehaviour
                
             }
         }
+    }
+
+    public void ActivateMageBuff()
+    {
+        mageBuffImage.enabled = true;
+    }
+    public void DisableMageBuff()
+    {
+        mageBuffImage.enabled = false; 
     }
 
    

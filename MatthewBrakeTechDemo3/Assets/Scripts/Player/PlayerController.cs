@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Security.Cryptography;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
@@ -16,7 +17,8 @@ public class PlayerController : MonoBehaviour
     public GameObject FireBallPrefab;
     public GameObject MissilePrefab;
     public GameObject FrostLancePrefab;
-    
+    //public Image mageArmorImage;
+    public TextMeshProUGUI mageArmorBuffText; 
     
    
     [Header("Player References")]
@@ -339,16 +341,24 @@ public class PlayerController : MonoBehaviour
     {
         player.defenceMultiplier = 0.65f;
         player.ManaRegenAmount = 25f;
+        float remainingBuffDuration = Armor.buffDuration;
         float originalLastTime = lastMageArmorTime;
+        GameManager.instance.ActivateMageBuff();
         Debug.Log("Buff applied");
-        Debug.Log("Defence is: " + player.defenceMultiplier + " Mana regen rate is: " + player.ManaRegenAmount);
         yield return new WaitForSeconds(Armor.buffDuration);
-        Debug.Log("Buff ended"); 
+        
 
+        Debug.Log("Buff ended");
+        GameManager.instance.DisableMageBuff();
+       
         player.defenceMultiplier = 1f;
         player.ManaRegenAmount = 12f;
         lastMageArmorTime = Time.time;
         StartCoroutine(MageArmorCoolDown());
+    }
+    private void UpdateBuffDurationText(float remainingText)
+    {
+        mageArmorBuffText.text = "Mathf.Ceil(remainingText))s"; 
     }
         
     private IEnumerator MageArmorCoolDown()
