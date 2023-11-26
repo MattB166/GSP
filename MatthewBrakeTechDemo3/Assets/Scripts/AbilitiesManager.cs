@@ -6,7 +6,11 @@ public class AbilitiesManager : MonoBehaviour
 {
   
     public static AbilitiesManager instance;
-    private FireBall fireBall; 
+
+    private PlayerController player;
+    private FireBall fireBall;
+    private ArcaneMissile missile;
+    private MageArmor mageArmor;
     
     private GameObject activeFireBall;
     private GameObject activeMissile;
@@ -45,14 +49,28 @@ public class AbilitiesManager : MonoBehaviour
     }
 
 
-    public IEnumerator UseMissile()
+    public IEnumerator UseMissile(PlayerController player, EnemyController targetPos, GameObject missilePrefab, float speed, float CastTime)
     {
-        yield return new WaitForSeconds(3f);
+        yield return StartCoroutine(CastingDelay(CastTime));
+        
+       
+       
     }
 
     public IEnumerator UseFrostLance()
     {
         yield return new WaitForSeconds(3f);
+    }
+
+    public IEnumerator UseMageArmor()
+    {
+        player.defenceMultiplier = 0.65f;
+        player.ManaRegenAmount = 25f;
+        yield return new WaitForSeconds(mageArmor.buffDuration);
+
+        player.defenceMultiplier = 1f;
+        player.ManaRegenAmount = 12f; 
+
     }
 
     public IEnumerator CastingDelay(float castTime)

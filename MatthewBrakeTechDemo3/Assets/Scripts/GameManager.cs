@@ -15,7 +15,7 @@ public class GameManager : MonoBehaviour
     public Slider enemyHealthSlider;
     public Slider enemyManaSlider;
     public EnemyController activeEnemy;
-    //public List<Image> BuffsDebuffs; 
+    public List<Image> BuffsDebuffs; 
     
    
     public List<EnemyController> enemies;

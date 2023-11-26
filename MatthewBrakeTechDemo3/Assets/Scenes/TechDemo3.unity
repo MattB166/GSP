@@ -791,6 +791,7 @@ MonoBehaviour:
   enemyHealthSlider: {fileID: 2040486169}
   enemyManaSlider: {fileID: 1670591901}
   activeEnemy: {fileID: 0}
+  BuffsDebuffs: []
   enemies: []
   castBarSlider: {fileID: 209796466}
   autoAttack: {fileID: 549330002}
@@ -1239,7 +1240,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 322946590}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 835751263}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: ArcaneMissile
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &322946590
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3166,7 +3179,7 @@ MonoBehaviour:
   Missile: {fileID: 11400000, guid: 6f3c291a8f4108e4492d8913a6bf3bed, type: 2}
   FrostLance: {fileID: 11400000, guid: 6765c2c38f865e14b901dc6cf6047217, type: 2}
   FireBallPrefab: {fileID: 3559088757689278234, guid: d460ea2819b6c6847903f4343330f25d, type: 3}
-  MissilePrefab: {fileID: 0}
+  MissilePrefab: {fileID: 3821205949062756429, guid: 8b56bbbac51c84c4b9b6ad2adfffe339, type: 3}
   FrostLancePrefab: {fileID: 0}
   ArmorPrefab: {fileID: 0}
   playerStats: {fileID: 11400000, guid: a6e894ef5f3c58a4d8633d65261b8430, type: 2}

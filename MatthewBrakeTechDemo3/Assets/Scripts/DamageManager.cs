@@ -118,9 +118,21 @@ public class DamageManager : MonoBehaviour
         else
         {
             return false; 
-        }
-         
+        }    
             
+    }
+    private static bool IsMissileCrit()
+    {
+        float criticalChance = 25;
+        float randomCritical = Random.value * 100;
+        if(randomCritical <= criticalChance)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 
 
@@ -131,7 +143,7 @@ public class DamageManager : MonoBehaviour
         {
             Debug.Log("Ability has hit");
             bool isCrit = IsCriticalHit();
-
+            bool isMissileCrit = IsMissileCrit();   
 
             switch(ability)
             {
@@ -141,7 +153,7 @@ public class DamageManager : MonoBehaviour
                     //Debug.Log("Doing Damage");
                     break;
                 case ArcaneMissile arcaneMissile:
-                    DealArcaneMissileDamage(target,arcaneMissile,isCrit);
+                    DealArcaneMissileDamage(target,arcaneMissile,isMissileCrit);
                     break;
 
             }
@@ -173,9 +185,16 @@ public class DamageManager : MonoBehaviour
 
       instance.StartCoroutine(ApplyDamageOverTime(target,additionalDamage,interval, numSecs));
     }
-    private static void DealArcaneMissileDamage(EnemyController target, ArcaneMissile arcaneMissile, bool isCrit)
+    private static void DealArcaneMissileDamage(EnemyController target, ArcaneMissile arcaneMissile, bool isMissileCrit)
     {
-
+        if(isMissileCrit)
+        {
+            //moment of brilliance
+        }
+        else
+        {
+            target.TakeDamage(arcaneMissile.basePowerPerMissile); 
+        }
     }
 
     private static float calculateDamageOverTime(float additionalDamage, float additionalDamageInterval, float duration)

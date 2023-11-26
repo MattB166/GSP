@@ -25,6 +25,7 @@ public class PlayerController : MonoBehaviour
     public float currentHealth;
     public float maxMana;
     public float currentMana;
+    public float ManaRegenAmount;
     public float meleeAttackSpeed;
     private float nextAttackTime = 0f;
     public float defenceMultiplier;
@@ -52,6 +53,7 @@ public class PlayerController : MonoBehaviour
         player = FindFirstObjectByType<PlayerController>(); 
         startingPos = transform.position;
         initialisePlayer();
+        StartCoroutine(ManaRegen());
         Debug.Log("Abilities are: " + playerStats.abilities);
     }
 
@@ -61,6 +63,7 @@ public class PlayerController : MonoBehaviour
         CheckDetectionRadius(); 
         updateAutoAttackButton();
        
+
 
     }
     private void FixedUpdate()
@@ -77,14 +80,25 @@ public class PlayerController : MonoBehaviour
         currentMana = playerStats.maxMana; 
         meleeAttackSpeed = playerStats.meleeAttackSpeed;
         defenceMultiplier = playerStats.defenceMultiplier;
+        ManaRegenAmount = playerStats.manaRegen;
         transform.position = startingPos; 
         animator.SetBool("isDead", false);
         isPlayerDead = false; 
         
     }
-    public void ManaRegen()
+    private IEnumerator ManaRegen()
     {
-        
+        while(true)
+        {
+            yield return new WaitForSeconds(1f);
+            IncreaseMana(ManaRegenAmount); 
+
+        }
+    }
+
+    private void IncreaseMana(float amount)
+    {
+        currentMana = Mathf.Min(currentMana + amount, maxMana); 
     }
 
     private void OnDrawGizmos()
@@ -276,20 +290,38 @@ public class PlayerController : MonoBehaviour
             {
                 Debug.Log("Abilities manager is null");
             }
-            
-            
-           
-
         }
         else
         {
             Debug.Log("Not enough mana to perform FireBall/ Current Enemy Null");
         }
-      
-        
-          
-    
     }
+    public void ArcaneMissile()
+    {
+        currentEnemy = GameManager.instance.activeEnemy;
+        if(currentMana >= Missile.manaCost && currentEnemy != null)
+        {
+            if(AbilitiesManager.instance != null)
+            {
+                StartCoroutine(AbilitiesManager.instance.UseMissile(player,currentEnemy,MissilePrefab, 10f,Missile.castingTime));
+            }
+            
+            //currentMana -= Missile.manaCost; have this happen at end in case of cancelation 
+        }
+        else
+        {
+            Debug.Log("Not enough to perform missile attack"); 
+        }
+    }
+    public void MageArmor()
+    {
+        currentMana -= Armor.manaCost;
+        StartCoroutine(AbilitiesManager.instance.UseMageArmor());
+
+    }
+           
+        
+    
     
    
 

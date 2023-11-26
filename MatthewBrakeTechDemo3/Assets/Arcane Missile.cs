@@ -6,6 +6,8 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Ability", menuName = "Abilities/Arcane Missile")]
 public class ArcaneMissile : Ability
 {
+    
+    public float NumberOfMissiles = 5;
     public float basePowerPerMissile = 15f;
     public float missileInterval = 1.0f;
     public float criticalHitChance = 25f;
