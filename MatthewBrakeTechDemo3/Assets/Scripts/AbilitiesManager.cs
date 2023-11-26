@@ -35,8 +35,12 @@ public class AbilitiesManager : MonoBehaviour
         activeFireBall = Instantiate(fireBallPrefab, spawnPos, Quaternion.identity);
 
         Vector3 direction = (targetPos.transform.position - spawnPos).normalized;
+        Debug.Log("Direction: " + direction);
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        Debug.Log("Angle: " + angle);
+        activeFireBall.transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
 
-        activeFireBall.GetComponent<Rigidbody2D>().velocity = direction * speed;
+        activeFireBall.GetComponent<Rigidbody2D>().velocity = direction * speed; 
         //DamageManager.DealEnemyAbilityDamage(targetPos, fireBall);
     }
 

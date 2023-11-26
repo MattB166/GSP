@@ -15,13 +15,20 @@ public class GameManager : MonoBehaviour
     public Slider enemyHealthSlider;
     public Slider enemyManaSlider;
     public EnemyController activeEnemy;
+    //public List<Image> BuffsDebuffs; 
+    
    
     public List<EnemyController> enemies;
 
     [Header("General References")]
     public Slider castBarSlider;
     public GameObject autoAttack;
-    public Image FireballButtonImage; 
+    public Image fireBallButtonImage; 
+    private FireBall fireBall;
+    private ArcaneMissile arcaneMissile;
+    private FrostLance FrostLance;
+    private MageArmor armor;
+    //public Image FireBallEnabled;
 
     [Header("Player References")]
     public GameObject playerUIPanel;
@@ -54,6 +61,7 @@ public class GameManager : MonoBehaviour
         enemyUIPanel.SetActive(false);
         autoAttack.SetActive(false);
         isPlayerDead= false;
+        
     }
 
     // Update is called once per frame
@@ -61,7 +69,8 @@ public class GameManager : MonoBehaviour
     {
         UpdatePlayerUI();
         updateEnemyUI();
-        UpdateGame(); 
+        UpdateGame();
+       
         
     }
 
@@ -140,7 +149,9 @@ public class GameManager : MonoBehaviour
     void UpdatePlayerUI()
     {
         playerHealthSlider.value = player.currentHealth; 
-        playerManaSlider.value = player.currentMana;    
+        playerManaSlider.value = player.currentMana;
+
+      
     }
 
     public void SetActiveCast(Ability ability)
@@ -206,5 +217,8 @@ public class GameManager : MonoBehaviour
             }
         }
     }
+
+   
+   
    
 }

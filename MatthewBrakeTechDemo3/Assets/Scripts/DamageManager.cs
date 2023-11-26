@@ -114,7 +114,7 @@ public class DamageManager : MonoBehaviour
 
     public static void DealEnemyAbilityDamage(EnemyController target, Ability ability)
     {
-        Debug.Log("Entered ability damage function");
+        //Debug.Log("Entered ability damage function");
         if (IsHit(hitChance))
         {
             bool isCrit = IsCriticalHit();
@@ -123,9 +123,9 @@ public class DamageManager : MonoBehaviour
             switch(ability)
             {
                 case FireBall fireBall:
-                    Debug.Log("Ability is fireball"); 
+                    //Debug.Log("Ability is fireball"); 
                     DealFireBallDamage(target, fireBall, isCrit);
-                    Debug.Log("Doing Damage");
+                    //Debug.Log("Doing Damage");
                     break;
                 case ArcaneMissile arcaneMissile:
                     DealArcaneMissileDamage(target,arcaneMissile,isCrit);
@@ -167,6 +167,7 @@ public class DamageManager : MonoBehaviour
 
     private static IEnumerator ApplyDamageOverTime(EnemyController target, float damage, float interval, int secs)
     {
+        
         for(int i = 0; i < secs; i++)
         {
             yield return new WaitForSeconds(interval);

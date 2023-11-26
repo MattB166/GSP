@@ -269,7 +269,7 @@ public class PlayerController : MonoBehaviour
                 //FireBallCollision fireBallCollision = FireBallPrefab.GetComponent<FireBallCollision>();
                 //fireBallCollision.setFireBall(fireBall);
                 
-                StartCoroutine(AbilitiesManager.instance.UseFireball(player, currentEnemy, FireBallPrefab, 7f, fireBall.castingTime));
+                StartCoroutine(AbilitiesManager.instance.UseFireball(player, currentEnemy, FireBallPrefab, 10f, fireBall.castingTime));
                 
             }
             else

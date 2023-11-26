@@ -11,15 +11,14 @@ public class FireBallCollision : MonoBehaviour
     //{
     //    fireBall = fb;
     //}
-    
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.collider.CompareTag("Enemy"))
+        if (collision.CompareTag("Enemy"))
         {
-            EnemyController enemy = collision.collider.GetComponent<EnemyController>();
+            EnemyController enemy = collision.GetComponent<EnemyController>();
 
-            if(enemy != null)
+            if (enemy != null)
             {
                 DamageManager.DealEnemyAbilityDamage(enemy, fireBall);
                 Debug.Log("Damage done to enemy through fireball");
@@ -30,5 +29,9 @@ public class FireBallCollision : MonoBehaviour
             }
             Destroy(gameObject);
         }
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        
     }
 }
