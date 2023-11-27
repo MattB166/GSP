@@ -32,7 +32,8 @@ public class GameManager : MonoBehaviour
     public Image mageBuffImage;
     public TextMeshProUGUI armorBuffText;
     public Image armorButtonImage; 
-    public TextMeshProUGUI armorCoolDownText; 
+    public TextMeshProUGUI armorCoolDownText;
+    
     
 
     //public Image FireBallEnabled;
@@ -70,6 +71,7 @@ public class GameManager : MonoBehaviour
         isPlayerDead= false;
         mageBuffImage.enabled=false;
         armorButtonImage.enabled=false;
+        fireBallButtonImage.enabled = true;
     }
 
     // Update is called once per frame
@@ -111,6 +113,7 @@ public class GameManager : MonoBehaviour
         {
             Debug.Log("Setting active enemy: " + newEnemy.name);
             activeEnemy = newEnemy;
+            fireBallButtonImage.enabled=false;  
             
         }
         else
@@ -118,6 +121,7 @@ public class GameManager : MonoBehaviour
             activeEnemy = null;
             enemyIcon.sprite = null;
             enemyHealthSlider.value = float.MinValue;
+            fireBallButtonImage.enabled = true;
         }
 
 

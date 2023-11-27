@@ -91,4 +91,6 @@ public class AbilitiesManager : MonoBehaviour
         yield return new WaitForSeconds(castTime);
         Debug.Log("Causing delay whilst casting spell");
     }
+
+    
 }

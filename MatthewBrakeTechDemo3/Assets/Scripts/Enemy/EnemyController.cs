@@ -42,11 +42,12 @@ public class EnemyController : MonoBehaviour
     private Vector3 EnemyStartingPos;
     private Quaternion EnemyStartingRot;
     private SpriteRenderer sprite;
-    public bool isEnemyDead; 
+    public bool isEnemyDead;
+    private int AttackCount;
+    private bool isEnraged; 
+    private Transform playerTransform = null;
 
-    private Transform playerTransform = null; 
-     
-     
+    private PlayerController player;
     
     // Start is called before the first frame update
     void Start()
@@ -148,6 +149,8 @@ public class EnemyController : MonoBehaviour
         baseDamage = EnemyStats.baseDamage;
         aggroSpeed = EnemyStats.aggroSpeed;
         timeBetweenAttacks = EnemyStats.rangedAttackSpeed;
+        AttackCount = 0;
+        isEnraged = false; 
         rb = GetComponent<Rigidbody2D>(); 
         if(transform.position != EnemyStartingPos)
         {
@@ -270,6 +273,7 @@ public class EnemyController : MonoBehaviour
     {
         if(playerTransform != null && enemyState != EnemyState.Dead)
         {
+            enemyAnim.SetBool("isAttacking", false);
             AttackTimer += Time.deltaTime;
             //Debug.Log(AttackTimer);
             if (AttackTimer >= timeBetweenAttacks)
@@ -289,8 +293,14 @@ public class EnemyController : MonoBehaviour
     {
         if(playerTransform != null)
         {
+            AttackCount++;
+            enemyAnim.SetBool("isAttacking", true);
             DamageManager.DealPlayerDamage(playerTransform.gameObject, baseDamage);
-            //Debug.Log("Attemped Attack on Player");
+           
+            
+            
+            
+           //Debug.Log("Attemped Attack on Player");
             enemyState = EnemyState.Chase;
             //Debug.Log("Moved back to chase phase"); 
         }
@@ -298,6 +308,16 @@ public class EnemyController : MonoBehaviour
         {
             Debug.Log("Cant attack player"); 
         }
+        //enemyAnim.SetBool("isAttacking", false); 
+    }
+
+    private void Enrage()
+    {
+        isEnraged = true;
+
+        baseDamage *= 2;
+
+        
     }
 
     private void Die()

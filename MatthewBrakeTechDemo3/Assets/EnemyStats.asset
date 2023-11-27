@@ -20,3 +20,4 @@ MonoBehaviour:
   detectionRadius: 2
   aggroSpeed: 1
   icon: {fileID: -6311986064991273897, guid: 1bd2a40ca6056dd4cbaca8c8e5748a6d, type: 3}
+  ToxicCastTime: 2.5

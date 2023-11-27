@@ -14,6 +14,8 @@ public class EnemyStats : ScriptableObject
     public float rangedAttackSpeed;
     public float detectionRadius;
     public float aggroSpeed; 
-    public Sprite icon; 
+    public Sprite icon;
+    public float ToxicCastTime;
+    public float ToxicDebuffLifeTime; 
     
 }
