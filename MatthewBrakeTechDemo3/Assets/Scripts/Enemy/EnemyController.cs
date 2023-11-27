@@ -50,11 +50,14 @@ public class EnemyController : MonoBehaviour
     
 
     private PlayerController player;
-    
+    private void Awake()
+    {
+        EnemyStartingPos = transform.position;
+    }
     // Start is called before the first frame update
     void Start()
     {
-        EnemyStartingPos = transform.position; 
+        //EnemyStartingPos = transform.position; 
         EnemyStartingRot = transform.rotation;
         initialiseEnemy();
     }
