@@ -213,6 +213,12 @@ public class DamageManager : MonoBehaviour
         }
     }
    
-
+    public static void AdditionalPoisonDamage(GameObject target, float damage)
+    {
+        PlayerController player = target.GetComponent<PlayerController>();
+        
+        player.TakeDamage(damage);
+        Debug.Log("Additional Poison Damage taken!"); 
+    }
 
 }

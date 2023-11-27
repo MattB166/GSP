@@ -12,8 +12,8 @@ public class EnemyController : MonoBehaviour
    public EnemyStats EnemyStats;
    public TextMeshProUGUI text; //for testing 
                                 ////need reference to UI so can change current target  
-                                ///
-    
+    ///
+   
     public enum EnemyState
     {
         Idle, 
@@ -46,6 +46,8 @@ public class EnemyController : MonoBehaviour
     private int AttackCount;
     private bool isEnraged; 
     private Transform playerTransform = null;
+    public SpriteRenderer enemySprite;
+    
 
     private PlayerController player;
     
@@ -293,14 +295,42 @@ public class EnemyController : MonoBehaviour
     {
         if(playerTransform != null)
         {
+            float poisonDamage = 10f;
             AttackCount++;
+
+            if (AttackCount == 3)
+            {
+                AbilitiesManager.instance.UseToxicSplit();
+                AbilitiesManager.instance.ApplyToxicSplitDamage(poisonDamage);
+
+                AttackCount = 0;
+            }
+            
+           
             enemyAnim.SetBool("isAttacking", true);
             DamageManager.DealPlayerDamage(playerTransform.gameObject, baseDamage);
-           
+            Debug.Log("Base damage taken on player");
+            if (Random.Range(0f, 1f) <= 0.5f)
+            {
+                
+                DamageManager.AdditionalPoisonDamage(playerTransform.gameObject, poisonDamage);
+                
+               
+            }
+            else
+            {
+                Debug.Log("No additional poison damage taken"); 
+            }
+
             
-            
-            
-           //Debug.Log("Attemped Attack on Player");
+
+            if((float)currentHealth / maxHealth <0.2f)
+            {
+                Enrage();
+            }
+
+
+            //Debug.Log("Attemped Attack on Player");
             enemyState = EnemyState.Chase;
             //Debug.Log("Moved back to chase phase"); 
         }
@@ -314,10 +344,15 @@ public class EnemyController : MonoBehaviour
     private void Enrage()
     {
         isEnraged = true;
-
+        Debug.Log("Enemy Enraged!");
         baseDamage *= 2;
-
+        Color EnrageColour = new Color(255, 0, 0, 255);
+        SetTint(EnrageColour);
         
+    }
+    private void SetTint(Color color)
+    {
+        enemySprite.color = color;
     }
 
     private void Die()

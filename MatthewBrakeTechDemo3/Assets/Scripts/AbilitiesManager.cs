@@ -15,6 +15,9 @@ public class AbilitiesManager : MonoBehaviour
     private GameObject activeFireBall;
     private GameObject activeMissile;
 
+    private bool toxicSplitActive = false;
+    private float toxicSplitDamage = 0;
+
     private void Awake()
     {
         if (instance == null)
@@ -93,4 +96,31 @@ public class AbilitiesManager : MonoBehaviour
     }
 
     
+
+    public IEnumerator UseToxicSplit()
+    {
+        yield return new WaitForSeconds(2.5f);
+        Debug.Log("Toxic Split Cast");
+        toxicSplitActive = true;
+        GameManager.instance.ApplyToxicSplit();
+        StartCoroutine(ToxicSplitDuration());
+    }
+
+    private IEnumerator ToxicSplitDuration()
+    {
+        yield return new WaitForSeconds(20f);
+        toxicSplitActive = false;
+        toxicSplitDamage = 0;
+        Debug.Log("Toxic Split ended");
+        
+    }
+
+    public void ApplyToxicSplitDamage(float damage)
+    {
+        if(toxicSplitActive == true)
+        {
+            toxicSplitDamage += damage * 2;
+            Debug.Log("Toxic Split damage: " + toxicSplitDamage);
+        }
+    }
 }

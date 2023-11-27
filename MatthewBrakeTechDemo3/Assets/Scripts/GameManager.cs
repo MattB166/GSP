@@ -255,6 +255,11 @@ public class GameManager : MonoBehaviour
         armorCoolDownText.text = TimeLeft.ToString(); 
 
     }
+
+    public void ApplyToxicSplit()
+    {
+
+    }
    
    
 }

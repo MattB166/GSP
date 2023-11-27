@@ -1758,6 +1758,7 @@ MonoBehaviour:
   floatingDamage: {fileID: 3025089940272494458, guid: 9f0017a0e5c6b764caa0004bc9d1a0f3, type: 3}
   offset: {x: 0, y: 5, z: 0}
   isEnemyDead: 0
+  enemySprite: {fileID: 465414790}
 --- !u!61 &465414795
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4642,6 +4643,7 @@ MonoBehaviour:
   floatingDamage: {fileID: 3025089940272494458, guid: 9f0017a0e5c6b764caa0004bc9d1a0f3, type: 3}
   offset: {x: 0, y: 5, z: 0}
   isEnemyDead: 0
+  enemySprite: {fileID: 1372530309}
 --- !u!50 &1372530307
 Rigidbody2D:
   serializedVersion: 4
